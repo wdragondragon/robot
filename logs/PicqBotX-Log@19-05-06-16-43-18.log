@@ -1,0 +1,28 @@
+[19-05-06 16:43:18] [PicqBotX] [INFO] 
+[19-05-06 16:43:18] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[19-05-06 16:43:18] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[19-05-06 16:43:18] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[19-05-06 16:43:18] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[19-05-06 16:43:18] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[19-05-06 16:43:18] [PicqBotX] [INFO]                 /_/         v3.2.2.896
+[19-05-06 16:43:18] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(26.37 ms)
+[19-05-06 16:43:18] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(2.22 ms)
+[19-05-06 16:43:18] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.01 ms)
+[19-05-06 16:43:18] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(25.46 ms)
+[19-05-06 16:43:18] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(0.68 ms)
+[19-05-06 16:43:18] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(1.41 ms)
+[19-05-06 16:43:19] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(1.74 ms)
+[19-05-06 16:43:19] [PicqBotX] [WARNING] 账号 Bot01: 版本正确, 不过用酷Q Pro的话效果更好哦!
+[19-05-06 16:43:19] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[19-05-06 16:43:19] [PicqBotX] [INFO] 正在启动...
+[19-05-06 16:43:21] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-06 16:43:21] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"font":9090160,"message":"!u","message_id":99,"message_type":"private","post_type":"message","raw_message":"!u","self_id":2997400528,"sender":{"age":8,"nickname":"0 4 . 2 2","sex":"male","user_id":1061917196},"sub_type":"friend","time":1557132200,"user_id":1061917196}
+[19-05-06 16:43:21] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-06 16:43:21] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":9089968,"group_id":556981260,"message":"第999段 速度110.32 击键4.10 码长2.23 字数423 时间03:49.51 回改20 退格13 回车0 键数940 键准96.49% 键法79.17% 打词38.63% 峰值140.3/6.06/1.75 输入法:西风瘦码 校检:26f8c 极速跟打器v1.46","message_id":100,"message_type":"group","post_type":"message","raw_message":"第999段 速度110.32 击键4.10 码长2.23 字数423 时间03:49.51 回改20 退格13 回车0 键数940 键准96.49% 键法79.17% 打词38.63% 峰值140.3/6.06/1.75 输入法:西风瘦码 校检:26f8c 极速跟打器v1.46","self_id":2997400528,"sender":{"age":0,"area":"","card":"翱翔无限-西风瘦码","level":"新日电动车","nickname":"翱翔无限","role":"member","sex":"male","title":"","user_id":19083091},"sub_type":"normal","time":1557132201,"user_id":19083091}
+[19-05-06 16:43:22] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-06 16:43:22] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"font":9089968,"message":"!u","message_id":101,"message_type":"private","post_type":"message","raw_message":"!u","self_id":2997400528,"sender":{"age":8,"nickname":"0 4 . 2 2","sex":"male","user_id":1061917196},"sub_type":"friend","time":1557132202,"user_id":1061917196}
+[19-05-06 16:43:26] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-06 16:43:26] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"font":9091760,"message":"!i","message_id":102,"message_type":"private","post_type":"message","raw_message":"!i","self_id":2997400528,"sender":{"age":8,"nickname":"0 4 . 2 2","sex":"male","user_id":1061917196},"sub_type":"friend","time":1557132206,"user_id":1061917196}
+[19-05-06 16:43:30] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-06 16:43:30] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"font":9091696,"message":"!名字","message_id":103,"message_type":"private","post_type":"message","raw_message":"!名字","self_id":2997400528,"sender":{"age":8,"nickname":"0 4 . 2 2","sex":"male","user_id":1061917196},"sub_type":"friend","time":1557132210,"user_id":1061917196}
+[19-05-06 16:43:33] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
