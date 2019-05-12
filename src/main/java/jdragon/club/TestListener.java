@@ -9,10 +9,26 @@ public class TestListener extends IcqListener
     @EventHandler
     public void onPMEvent(EventPrivateMessage event)
     {
-        System.out.println("接到消息");
-
+        String message,fuhao;
+        message = event.getMessage();
+        fuhao = message.substring(message.length()-2);
+        message = replaceYouMe(message);
+        if(fuhao.equals("吗？")||fuhao.equals("啊？")||fuhao.equals("呢？")||fuhao.equals("吧？")) {
+            event.respond(message.substring(0,message.length()-2)+"！");
+            return;
+        }
+        fuhao = message.substring(message.length()-1);
         // 判断消息是不是这段文字, 如果是就回复那段文字, 很简单的测试_(:з」∠)_
-        if (event.getMessage().equals("你以为这是 yangjinhe/maintain-robot?"))
-            event.respond("其实是我 HyDevelop/PicqBotX 哒!");
+        if(fuhao.equals("?")||fuhao.equals("？")) {
+            event.respond(message.substring(0,message.length()-1)+"！");
+            return;
+        }
+        event.respond(message);
+    }
+    String  replaceYouMe(String message){
+        message = message.replace("我","&");
+        message = message.replace("你","我");
+        message = message.replace("&","你");
+        return message;
     }
 }
