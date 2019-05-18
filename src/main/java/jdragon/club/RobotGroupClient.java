@@ -4,6 +4,7 @@ import ConDatebase.ComArti;
 import ConDatebase.Conn;
 import ConDatebase.InConn;
 import ConDatebase.OutConn;
+import GroupFollowWar.GroupFollowThread;
 import GroupWar.GroupThread;
 import Tool.RegexText;
 import cc.moecraft.icq.event.EventHandler;
@@ -31,9 +32,10 @@ public class RobotGroupClient extends IcqListener {
             CarryComShow(event);
         if(!respondSign)
             ShowGroupList(event);
-        if(!respondSign)
-            CreateCom(event);
-        
+        if(!respondSign) {
+            CreateCijicom(event);
+            CreateFollowCom(event);
+        }
     }
     private void CarryName(EventMessage event){
         try {
@@ -155,7 +157,7 @@ public class RobotGroupClient extends IcqListener {
     }
 
     static HashMap<Long, GroupThread> GroupWarList = new HashMap<Long, GroupThread>();
-    private void CreateCom(EventGroupMessage event) {
+    private void CreateCijicom(EventGroupMessage event) {
         try {
             String message = event.getMessage();
 //            System.out.println("随机战场操作");
@@ -251,5 +253,96 @@ public class RobotGroupClient extends IcqListener {
                 }
             }
         }catch (Exception e){event.respond("未知原因，操作失败");}
+    }
+    static HashMap<Long, GroupFollowThread> GroupFollowWarList = new HashMap<Long, GroupFollowThread>();
+    private void CreateFollowCom(EventGroupMessage event){
+        try{
+            String message = event.getMessage();
+            String s[] = message.split(" ");
+            int length = s.length;
+            Long GroupID = RegexText.getGroupID(event.toString());
+            Long ID = event.getSenderId();
+            String at = "[CQ:at,qq="+ID+"]\n";
+            if(length==2&&s[0].equals("#随机团战")) {
+                if (GroupFollowWarList.containsKey(GroupID))
+                    event.respond(at + "随机团战已存在，若重开请先销毁");
+                else {//总长 段长 段时间
+                    GroupFollowThread gp = new GroupFollowThread(event, Integer.valueOf(s[1]), GroupID);
+                    GroupFollowWarList.put(GroupID, gp);
+                    gp.start();
+                    event.respond(at + "已开启一个每段字数为" + s[1] + "的团战");
+                }
+            } else if (message.equals("#加入团战")) {
+                if (GroupFollowWarList.containsKey(GroupID)) {
+                    GroupFollowThread gp = GroupFollowWarList.get(GroupID);
+                    if (gp.getIDlist().containsKey(ID))
+                        event.respond(at+"请勿重复加入,退出团战指令：#退出团战");
+                    else {
+                        gp.addID(ID);
+                        event.respond(at+"加入成功");
+                    }
+                } else
+                    event.respond(at+"该群还未创建团战，指令：#随机团战");
+            } else if (message.equals("#退出团战")) {
+                if (GroupFollowWarList.containsKey(GroupID)) {
+                    GroupFollowThread gp = GroupFollowWarList.get(GroupID);
+                    if (!gp.getIDlist().containsKey(ID))
+                        event.respond(at + "你未曾加入团战，无法执行退出");
+                    else {
+                        gp.removeID(ID);
+                        event.respond(at + "退出成功");
+                    }
+                } else
+                    event.respond(at + "该群还未创建团战，指令：#随机团战");
+            }else if(message.equals("#团战启动")){
+                if (GroupFollowWarList.containsKey(GroupID)) {
+                    GroupFollowThread gp = GroupFollowWarList.get(GroupID);
+                    if (gp.getStartSign())
+                        event.respond(at+"团战已启动");
+                    else if (!gp.getIDlist().containsKey(ID))
+                        event.respond(at+"你未曾加入团战，无法执行启动");
+                    else {
+                        gp.setStartSign(true);
+                        event.respond("团战启动！战斗开始！");
+                    }
+                } else
+                    event.respond(at+"该群还未创建团战，指令：#随机团战");
+            }else if(message.equals("#团战销毁")){
+                if(GroupFollowWarList.containsKey(GroupID)){
+                    GroupFollowThread gp = GroupFollowWarList.get(GroupID);
+                    gp.stop();
+                    GroupFollowWarList.remove(GroupID);
+                    event.respond(at+"团战已销毁");
+                }else
+                    event.respond(at+"该群还未创建团战，指令：#随机团战");
+            }else if(message.equals("#团战帮助")||message.equals("#随机团战")){
+                message = "#随机战场 文章总长度 分段长度 间隔时间 = 创建一个战场\n"+
+                        "#加入战场 = 加入战场\n"+
+                        "#战场成员 = 查询已加入战场的群友\n"+
+                        "#退出战场 = 退出本群战场\n"+
+                        "#战场启动 = 与已加入战场的群友一起进行限时分段跟打\n"+
+                        "#战场销毁 = 将本群创建的战场删除";
+                event.respond(message);
+            }else if(GroupFollowWarList.containsKey(GroupID)){
+                GroupFollowThread gp = GroupFollowWarList.get(GroupID);
+//                if(message.equals(gp.message)){
+//                    Map<Long,Integer> idlist = gp.getIDlist();
+//                    int i = idlist.get(ID);
+//                    idlist.put(ID,i+1);
+//                    System.out.println("加分："+(i+1));
+//                }
+                if(message.equals("#团战成员")){
+                    Map<Long,Integer> idlist = gp.getIDlist();
+                    String number = "";
+                    for(Long k:idlist.keySet()){
+                        number += "用户Q号："+k+"\n";
+                    }
+                    number += "共"+idlist.size()+"个成员准备进入团场";
+                    event.respond(number);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

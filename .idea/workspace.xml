@@ -7,34 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c16079da-fbac-4e16-9ddd-79757c892b77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ConDatebase/InConn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ConDatebase/OutConn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GroupWar/Count.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GroupWar/GroupThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Tool/RegexText.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Tool/SortMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/RamdomLoad.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GroupFollowWar/GroupFollowThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/robot_jar/robot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/robot_jar/robot.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/robot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ConDatebase/AllUserNum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConDatebase/AllUserNum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ConDatebase/ComArti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConDatebase/ComArti.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ConDatebase/Conn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConDatebase/Conn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ConDatebase/OneUserNum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConDatebase/OneUserNum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/CommandSay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/CommandSay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/CommandVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/CommandVersion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/ReturnAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/ReturnAll.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/ReturnLast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/ReturnLast.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/RobotCrewl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/RobotCrewl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/TestFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/TestListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jdragon/club/TestFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jdragon/club/TestListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jdragon/club/robot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jdragon/club/robot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -75,39 +51,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-15">
-              <caret line="67" column="39" lean-forward="true" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
+            <state relative-caret-position="1684">
+              <caret line="332" column="19" lean-forward="true" selection-start-line="332" selection-start-column="19" selection-end-line="332" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Tool/SortMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" selection-start-column="13" selection-end-column="13" />
-              <folding>
-                <element signature="e#583#609#0" expanded="true" />
-                <element signature="e#753#975#0" expanded="true" />
-                <element signature="e#974#975#0" expanded="true" />
+                <element signature="e#10849#10874#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Tool/RegexText.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GroupFollowWar/GroupFollowThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-510">
-              <caret line="76" column="43" lean-forward="true" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
+            <state relative-caret-position="82">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
               <folding>
-                <element signature="method#CarryCom#0;class#RegexText#0" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#370#371#0" expanded="true" />
+                <element signature="e#404#405#0" expanded="true" />
+                <element signature="e#439#440#0" expanded="true" />
+                <element signature="e#466#467#0" expanded="true" />
+                <element signature="e#287#302#0" expanded="true" />
+                <element signature="e#348#362#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,11 +128,14 @@
         <option value="$PROJECT_DIR$/src/main/java/ConDatebase/OutConn.java" />
         <option value="$PROJECT_DIR$/src/main/java/ConDatebase/InConn.java" />
         <option value="$PROJECT_DIR$/src/main/java/jdragon/club/RegexText.java" />
-        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/jdragon/club/SortMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/GroupWar/GroupThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/Tool/RegexText.java" />
         <option value="$PROJECT_DIR$/src/main/java/Tool/SortMap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GroupFollowWar/HumanBean.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GroupFollowWar/GroupThread.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GroupFollowWar/GroupFollowThread.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java" />
       </list>
     </option>
   </component>
@@ -229,14 +201,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ConDatebase" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="robot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="GroupWar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -246,14 +210,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="club" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="robot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Tool" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="robot" type="b2602c69:ProjectViewProjectNode" />
@@ -362,7 +318,7 @@
       <workItem from="1557735353634" duration="974000" />
       <workItem from="1557834838284" duration="34528000" />
       <workItem from="1557931539148" duration="16880000" />
-      <workItem from="1558059198139" duration="13750000" />
+      <workItem from="1558059198139" duration="18134000" />
     </task>
     <task id="LOCAL-00001" summary="获取历史赛文，拖拉机版本号，个人信息，全部人信息">
       <created>1557649729157</created>
@@ -371,17 +327,23 @@
       <option name="project" value="LOCAL" />
       <updated>1557649729157</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="随机战场系统">
+      <created>1558178338367</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1558178338367</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116355000" />
+    <option name="totallyTimeSpent" value="120739000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="-8" width="1307" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23656777" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23656777" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -389,8 +351,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.3290735" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4979952" weight="0.2971246" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3290735" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4979952" visible="true" weight="0.2971246" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -448,7 +410,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="获取历史赛文，拖拉机版本号，个人信息，全部人信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="获取历史赛文，拖拉机版本号，个人信息，全部人信息" />
+    <MESSAGE value="随机战场系统" />
+    <option name="LAST_COMMIT_MESSAGE" value="随机战场系统" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/main.iml" />
@@ -638,37 +601,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GroupWar/GroupThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1672">
-          <caret line="76" column="44" lean-forward="true" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#313#328#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="67" column="39" lean-forward="true" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Tool/RegexText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-510">
-          <caret line="76" column="43" lean-forward="true" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
-          <folding>
-            <element signature="method#CarryCom#0;class#RegexText#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Tool/SortMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -677,6 +609,74 @@
             <element signature="e#583#609#0" expanded="true" />
             <element signature="e#753#975#0" expanded="true" />
             <element signature="e#974#975#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Tool/RegexText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="76" column="43" lean-forward="true" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
+          <folding>
+            <element signature="method#CarryCom#0;class#RegexText#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GroupFollowWar/HumanBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding>
+            <element signature="e#156#157#0" expanded="true" />
+            <element signature="e#196#197#0" expanded="true" />
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#259#260#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#393#394#0" expanded="true" />
+            <element signature="e#422#423#0" expanded="true" />
+            <element signature="e#466#467#0" expanded="true" />
+            <element signature="e#502#503#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GroupWar/GroupThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="89" column="43" selection-start-line="89" selection-start-column="43" selection-end-line="89" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#269#284#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GroupFollowWar/GroupFollowThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+            <element signature="e#439#440#0" expanded="true" />
+            <element signature="e#466#467#0" expanded="true" />
+            <element signature="e#287#302#0" expanded="true" />
+            <element signature="e#348#362#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1684">
+          <caret line="332" column="19" lean-forward="true" selection-start-line="332" selection-start-column="19" selection-end-line="332" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#10849#10874#0" expanded="true" />
           </folding>
         </state>
       </provider>
