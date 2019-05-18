@@ -1,72 +1,61 @@
 package ConDatebase;
 
-
-import cc.moecraft.icq.event.EventHandler;
-import cc.moecraft.icq.event.IcqListener;
-import cc.moecraft.icq.event.events.message.EventMessage;
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Calendar;
+public class ComArti {
 
-public class ComArti extends IcqListener {
-    private static String url="jdbc:mysql://localhost:3306/students?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull";//è¿æ¥æ•°æ®åº“çš„urlï¼Œtestæ˜¯æˆ‘è‡ªå·±çš„ä¸€ä¸ªæ•°æ®åº“å•Šå®å®ä»¬ã€‚
-    private static String user="root";//mysqlç™»å½•å
-    private static String pass="951753";//mysqlç™»å½•å¯†ç 
-    private String getComArti(Date date){
+    private static String getComArti(Date date){
         String sql = "SELECT * FROM everydaysaiwen where saiwendate=?";
         String respond = "";
         try {
-            Connection con = Conn.getConnection(url, user, pass);
-            PreparedStatement ptmt = con.prepareStatement(sql);
+            Connection con = Conn.getConnection();
+            PreparedStatement ptmt = Conn.getPtmt(con,sql);
             ptmt.setDate(1, date);
             ResultSet rs = ptmt.executeQuery();
             if (rs.next()) {
-                respond = date + "æ‹–æ‹‰æœºèµ›æ–‡-" + rs.getString("author") + "\n";
+                respond = date + "ÍÏÀ­»úÈüÎÄ-" + rs.getString("author") + "\n";
                 respond += rs.getString("saiwen") + "\n";
-                respond += "-----ç¬¬0æ®µ-å…±" + rs.getString("saiwen").length() + "å­—";
+                respond += "-----µÚ0¶Î-¹²" + rs.getString("saiwen").length() + "×Ö";
             } else {
-                respond = "æ²¡æœ‰è¿™ä¸€å¤©çš„èµ›æ–‡";
+                respond = "Ã»ÓĞÕâÒ»ÌìµÄÈüÎÄ";
             }
+            con.close();
         }catch (Exception e){
             e.printStackTrace();
         }
         return respond;
     }
-    private String AddZero(String str){
-        String time[] = str.split("-");
-        if(time[1].length()==1){time[1]="0"+time[1];}
-        if(time[2].length()==1){time[2]="0"+time[2];}
-        return  time[0]+"-"+time[1]+"-"+time[2];
-
-    }
-    private Date getdate(){
-        int y,m,d;
-        Calendar cal;
-        cal= Calendar.getInstance();
-        y=cal.get(Calendar.YEAR);
-        m=cal.get(Calendar.MONTH);
-        d=cal.get(Calendar.DATE);
-        return new Date(y-1900,m,d);
-    }
-
-    @EventHandler
-    public void onPMEvent(EventMessage event){
-        String message = event.getMessage();
-        String s[] = message.split(" ");
-        Long QQnum = event.getSenderId();
-
-        s[1] = AddZero(s[1]);
-        if(s.length==2&&s[0].equals("èµ›æ–‡")){
-            if(getdate().toString().equals(s[1])){
-                event.respond("[CQ:at,qq="+QQnum+"]\n"+"ä¸èƒ½è·å–ä»Šæ—¥èµ›æ–‡");
-                return;
+    private static String getComMath(Date date){
+        String sql = "select * from saiwenchengji where date=? order by sudu DESC";
+        String respond = "";
+        boolean sign = false;
+        try {
+            Connection con = Conn.getConnection();
+            PreparedStatement ptst = Conn.getPtmt(con,sql);
+            ptst.setDate(1, date);
+            ResultSet rs = ptst.executeQuery();
+            while(rs.next()){
+                String name = rs.getString("name");
+                Double sudu = rs.getDouble("sudu");
+                respond += name + " "+sudu+"\n";
+                sign = true;
             }
-            Date date = Date.valueOf(s[1]);
+            if(!sign)respond = "ÎŞ¸ÃÌìÈüÎÄ³É¼¨";
 
-            event.respond(getComArti(date));
+        }catch (Exception e){
+            e.printStackTrace();
         }
+        return respond;
+    }
+
+    public static String  responseStr(String s,Long QQnum,Date date,int model){
+        if(Conn.getdate().toString().equals(s)&&model==1)
+            return "[CQ:at,qq="+QQnum+"]\n"+"²»ÄÜ»ñÈ¡½ñÈÕÈüÎÄ";
+        else if(model==1)
+            return getComArti(date);
+        else
+            return getComMath(date);
     }
 }

@@ -6,33 +6,34 @@ import cc.moecraft.icq.PicqConfig;
 
 public class robot
 {
+    public static Long tljGroupNum = 974172771L;
+    public static  Long xiaochaiQ = 207938707L;
     public static void main(String[] args)
     {
-        // åˆ›å»ºæœºå™¨äººå¯¹è±¡ ( ä¼ å…¥é…ç½® )
+        // ´´½¨»úÆ÷ÈË¶ÔÏó ( ´«ÈëÅäÖÃ )
         PicqBotX bot = new PicqBotX(new PicqConfig(9999).setDebug(true));
 
-        // æ·»åŠ ä¸€ä¸ªæœºå™¨äººè´¦æˆ· ( åå­—, å‘é€URL, å‘é€ç«¯å£ )
+        // Ìí¼ÓÒ»¸ö»úÆ÷ÈËÕË»§ ( Ãû×Ö, ·¢ËÍURL, ·¢ËÍ¶Ë¿Ú )
         bot.addAccount("Bot01", "127.0.0.1", 5700);
 
-        // æ³¨å†Œäº‹ä»¶ç›‘å¬å™¨, å¯ä»¥æ³¨å†Œå¤šä¸ªç›‘å¬å™¨
+        // ×¢²áÊÂ¼ş¼àÌıÆ÷, ¿ÉÒÔ×¢²á¶à¸ö¼àÌıÆ÷
         bot.getEventManager().registerListeners(
-                new TestListener(),//äººå·¥æ™ºéšœ
-                new ComArti(),
-                new OneUserNum()
+                new OneUserNum(),
+                new RobotGroupClient()
         );
-        // å¯ç”¨æŒ‡ä»¤ç®¡ç†å™¨
-        // è¿™äº›å­—ç¬¦ä¸²æ˜¯æŒ‡ä»¤å‰ç¼€, æ¯”å¦‚æŒ‡ä»¤"!help"çš„å‰ç¼€å°±æ˜¯"!"
+        // ÆôÓÃÖ¸Áî¹ÜÀíÆ÷
+        // ÕâĞ©×Ö·û´®ÊÇÖ¸ÁîÇ°×º, ±ÈÈçÖ¸Áî"!help"µÄÇ°×º¾ÍÊÇ"!"
         bot.enableCommandManager("bot -", "!", "/", "~");
 
-        // æ³¨å†ŒæŒ‡ä»¤, å¯ä»¥æ³¨å†Œå¤šä¸ªæŒ‡ä»¤
+        // ×¢²áÖ¸Áî, ¿ÉÒÔ×¢²á¶à¸öÖ¸Áî
         bot.getCommandManager().registerCommands(
-                new CommandSay(),//è¿”å›è‡ªå·±åå­—
-                new ReturnLast(),//è¿”å›æœ€åä¸€æ¡æ¶ˆè´¹è®°å½•
-                new ReturnAll(),//è¿”å›å½“æ—¥å…¨éƒ¨æ¶ˆè´¹è®°å½•
-                new CommandVersion(),//è¿”å›ç‰ˆæœ¬å·
+                new CommandSay(),//·µ»Ø×Ô¼ºÃû×Ö
+                new ReturnLast(),//·µ»Ø×îºóÒ»ÌõÏû·Ñ¼ÇÂ¼
+                new ReturnAll(),//·µ»Øµ±ÈÕÈ«²¿Ïû·Ñ¼ÇÂ¼
+                new CommandVersion(),//·µ»Ø°æ±¾
                 new AllUserNum()
         );
-        // å¯åŠ¨æœºå™¨äºº, ä¸ä¼šå ç”¨ä¸»çº¿ç¨‹
+        // Æô¶¯»úÆ÷ÈË, ²»»áÕ¼ÓÃÖ÷Ïß³Ì
         bot.startBot();
     }
 }

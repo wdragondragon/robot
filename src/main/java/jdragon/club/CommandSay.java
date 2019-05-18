@@ -10,11 +10,11 @@ import java.util.ArrayList;
 public class CommandSay implements EverywhereCommand {
 
     public CommandProperties properties() {
-        return new CommandProperties ("username", "u", "åå­—");
+        return new CommandProperties ("username", "u", "Ãû×Ö");
     }
 
     public String run(EventMessage eventMessage, User user, String s, ArrayList<String> arrayList) {
-        return "æˆ‘å«robot";
+        return "ÎÒ½Ğrobot";
     }
 
 

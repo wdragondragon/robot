@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ReturnLast implements EverywhereCommand {
 
     public CommandProperties properties() {
-        return new CommandProperties ("last", "l", "æœ€åæ¶ˆè´¹è®°å½•");
+        return new CommandProperties ("last", "l", "×îºóÏû·Ñ¼ÇÂ¼");
     }
 
     public String run(EventMessage eventMessage, User user, String s, ArrayList<String> arrayList) {

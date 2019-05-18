@@ -5,20 +5,16 @@ import cc.moecraft.icq.event.IcqListener;
 import cc.moecraft.icq.event.events.message.EventMessage;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class OneUserNum extends IcqListener {
-    public static String url="jdbc:mysql://localhost:3306/students?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull";//è¿æ¥æ•°æ®åº“çš„urlï¼Œtestæ˜¯æˆ‘è‡ªå·±çš„ä¸€ä¸ªæ•°æ®åº“å•Šå®å®ä»¬ã€‚
-    public  static String user="root";//mysqlç™»å½•å
-    public  static String pass="951753";//mysqlç™»å½•å¯†ç 
     String getComArti(String username,Long QQnum){
-        String sql = "SELECT * FROM client where username=?";
+        String sql = "SELECT a.*,(SELECT COUNT(DISTINCT aver) FROM client AS b WHERE a.aver<b.aver)+1 as rank FROM client as a where a.username=?";
         String respond = "[CQ:at,qq="+QQnum+"]\n";
         try {
-            Connection con = Conn.getConnection(url, user, pass);
-            PreparedStatement ptmt = con.prepareStatement(sql);
+            Connection con = Conn.getConnection();
+            PreparedStatement ptmt = Conn.getPtmt(con,sql);
             ptmt.setString(1, username);
             ResultSet rs = ptmt.executeQuery();
             if (rs.next()) {
@@ -26,11 +22,15 @@ public class OneUserNum extends IcqListener {
                 int right = rs.getInt("rightnum");
                 int mis = rs.getInt("misnum");
                 int datenum = rs.getInt("datenum");
+                int rank = rs.getInt("rank");
                 double aver = rs.getInt("aver");
-                String online = rs.getInt("online")==1?"åœ¨çº¿":"ä¸åœ¨çº¿";
-                respond += username+" æ€»:"+all+" å¯¹:"+right+" é”™:"+mis+" ä»Šæ—¥:"+datenum+"\nå¹³å‡æˆç»©:"+aver+" åœ¨çº¿çŠ¶æ€:"+online;
+                String online = rs.getInt("online")==1?"ÔÚÏß":"²»ÔÚÏß";
+                int n = rs.getInt("n");
+                respond += "ÓÃ»§Ãû£º"+username+"\n×ÖÊıÇé¿ö£º×Ü£º"+all+" ¶Ô£º"+right+" ´í£º"+mis+" ½ñÈÕ£º"+datenum+
+                        "\nÈüÎÄÇé¿ö£ºÀÛ¼Æ¸ú´ò"+n+"´Î Æ½¾ù³É¼¨£º"+aver+" ÅÅÃû£º"+rank+
+                        "\nÔÚÏß×´Ì¬£º"+online;
             } else {
-                respond += "è¯¥ç”¨æˆ·ä¸å­˜åœ¨";
+                respond += "¸ÃÓÃ»§²»´æÔÚ";
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -43,7 +43,7 @@ public class OneUserNum extends IcqListener {
         String message = event.getMessage();
         String s[] = message.split(" ");
         Long QQnum = event.getSenderId();
-        if(s.length==2&&s[0].equals("æŸ¥")){
+        if(s.length==2&&s[0].equals("ÍÏÀ­»ú")){
             event.respond(getComArti(s[1],QQnum));
         }
     }
