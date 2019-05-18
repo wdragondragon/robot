@@ -1,0 +1,38 @@
+[19-05-16 22:03:04] [PicqBotX] [INFO] 
+[19-05-16 22:03:04] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[19-05-16 22:03:04] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[19-05-16 22:03:04] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[19-05-16 22:03:04] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[19-05-16 22:03:04] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[19-05-16 22:03:04] [PicqBotX] [INFO]                 /_/         v3.2.2.896
+[19-05-16 22:03:04] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(53.96 ms)
+[19-05-16 22:03:04] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(2.72 ms)
+[19-05-16 22:03:04] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.01 ms)
+[19-05-16 22:03:04] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(70.19 ms)
+[19-05-16 22:03:04] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(1.14 ms)
+[19-05-16 22:03:04] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(3.71 ms)
+[19-05-16 22:03:04] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(2.42 ms)
+[19-05-16 22:03:04] [PicqBotX] [WARNING] 账号 Bot01: 版本正确, 不过用酷Q Pro的话效果更好哦!
+[19-05-16 22:03:04] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[19-05-16 22:03:04] [PicqBotX] [INFO] 正在启动...
+[19-05-16 22:03:10] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 22:03:10] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738888,"group_id":522394334,"message":"#随机战场 10 3 3","message_id":13652,"message_type":"group","post_type":"message","raw_message":"#随机战场 10 3 3","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558015390,"user_id":1061917196}
+[19-05-16 22:03:13] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 22:03:13] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738888,"group_id":522394334,"message":"#加入战场","message_id":13654,"message_type":"group","post_type":"message","raw_message":"#加入战场","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558015393,"user_id":1061917196}
+[19-05-16 22:03:14] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 22:03:14] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738184,"group_id":522394334,"message":"#战场启动","message_id":13656,"message_type":"group","post_type":"message","raw_message":"#战场启动","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558015394,"user_id":1061917196}
+[19-05-16 22:03:16] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 22:03:16] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43647992,"group_id":522394334,"message":"上月巴","message_id":13659,"message_type":"group","post_type":"message","raw_message":"上月巴","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558015396,"user_id":1061917196}
+[19-05-16 22:03:21] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 22:03:21] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738120,"group_id":522394334,"message":"黎现代","message_id":13662,"message_type":"group","post_type":"message","raw_message":"黎现代","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558015401,"user_id":1061917196}
+[19-05-16 22:03:23] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 22:03:23] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738536,"group_id":522394334,"message":"艺术博","message_id":13663,"message_type":"group","post_type":"message","raw_message":"艺术博","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558015403,"user_id":1061917196}
+[19-05-16 22:03:25] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 22:03:25] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738728,"group_id":522394334,"message":"谁能","message_id":13665,"message_type":"group","post_type":"message","raw_message":"谁能","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558015405,"user_id":1061917196}
+[19-05-16 22:03:26] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 22:03:26] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738792,"group_id":723795668,"message":"问一下大佬们，像‘袋’这样的字是打ddry，还是打ddr；","message_id":13666,"message_type":"group","post_type":"message","raw_message":"问一下大佬们，像‘袋’这样的字是打ddry，还是打ddr；","self_id":2997400528,"sender":{"age":30,"area":"广州","card":"","level":"高手","nickname":"末朗","role":"member","sex":"male","title":"","user_id":565566460},"sub_type":"normal","time":1558015406,"user_id":565566460}
+[19-05-16 22:03:26] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 22:03:26] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738952,"group_id":522394334,"message":"物","message_id":13667,"message_type":"group","post_type":"message","raw_message":"物","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558015406,"user_id":1061917196}
+[19-05-16 22:05:31] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 22:05:31] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738888,"group_id":723795668,"message":"第999段 速度119.72 击键6.90 码长3.46 标顶理论1.00 文章难度100.00 字数100 回改12 退格5 错字0 键数346 选重22 键准93.64% 键法81.82%(左108:右132:空格75) 打词率7.14% 选重率22.00% 拖拉机跟打器 版本1.601 Windows 10版  校验VV^JQ_","message_id":13670,"message_type":"group","post_type":"message","raw_message":"第999段 速度119.72 击键6.90 码长3.46 标顶理论1.00 文章难度100.00 字数100 回改12 退格5 错字0 键数346 选重22 键准93.64% 键法81.82%(左108:右132:空格75) 打词率7.14% 选重率22.00% 拖拉机跟打器 版本1.601 Windows 10版  校验VV^JQ_","self_id":2997400528,"sender":{"age":22,"area":"","card":"哀","level":"中级","nickname":"哀","role":"member","sex":"male","title":"","user_id":1452940959},"sub_type":"normal","time":1558015531,"user_id":1452940959}
+[19-05-16 22:06:04] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0

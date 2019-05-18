@@ -1,0 +1,40 @@
+[19-05-15 16:46:40] [PicqBotX] [INFO] 
+[19-05-15 16:46:40] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[19-05-15 16:46:40] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[19-05-15 16:46:40] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[19-05-15 16:46:40] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[19-05-15 16:46:40] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[19-05-15 16:46:40] [PicqBotX] [INFO]                 /_/         v3.2.2.896
+[19-05-15 16:46:40] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(28.38 ms)
+[19-05-15 16:46:40] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(1.79 ms)
+[19-05-15 16:46:40] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.01 ms)
+[19-05-15 16:46:41] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(30.77 ms)
+[19-05-15 16:46:41] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(1.0 ms)
+[19-05-15 16:46:41] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(1.99 ms)
+[19-05-15 16:46:41] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(2.35 ms)
+[19-05-15 16:46:41] [PicqBotX] [WARNING] 账号 Bot01: 版本正确, 不过用酷Q Pro的话效果更好哦!
+[19-05-15 16:46:41] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[19-05-15 16:46:41] [PicqBotX] [INFO] 正在启动...
+[19-05-15 16:47:06] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 16:47:06] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"font":8102152,"message":"!u","message_id":11319,"message_type":"private","post_type":"message","raw_message":"!u","self_id":2997400528,"sender":{"age":8,"nickname":"0 4 . 2 2","sex":"male","user_id":1061917196},"sub_type":"friend","time":1557910026,"user_id":1061917196}
+[19-05-15 16:47:42] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 16:47:42] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"font":8102504,"message":"!U","message_id":11321,"message_type":"private","post_type":"message","raw_message":"!U","self_id":2997400528,"sender":{"age":8,"nickname":"0 4 . 2 2","sex":"male","user_id":1061917196},"sub_type":"friend","time":1557910062,"user_id":1061917196}
+[19-05-15 16:47:46] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 16:47:46] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8101608,"group_id":556981260,"message":"第999段 速度73.86 击键0.87 码长0.71 字数472 时间06:21 回改41 回车0 重打0 打词79.32% 峰值83.08 输入法:星二 校检:05ab7 极速云跟打手机版v0.11","message_id":11323,"message_type":"group","post_type":"message","raw_message":"第999段 速度73.86 击键0.87 码长0.71 字数472 时间06:21 回改41 回车0 重打0 打词79.32% 峰值83.08 输入法:星二 校检:05ab7 极速云跟打手机版v0.11","self_id":2997400528,"sender":{"age":0,"area":"","card":"空白—星二","level":"死飞单车","nickname":"","role":"member","sex":"unknown","title":"","user_id":29141847},"sub_type":"normal","time":1557910066,"user_id":29141847}
+[19-05-15 16:47:55] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 16:47:55] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8102344,"group_id":556981260,"message":"上70了[CQ:face,id=178]","message_id":11325,"message_type":"group","post_type":"message","raw_message":"上70了[CQ:face,id=178]","self_id":2997400528,"sender":{"age":0,"area":"","card":"空白—星二","level":"死飞单车","nickname":"","role":"member","sex":"unknown","title":"","user_id":29141847},"sub_type":"normal","time":1557910075,"user_id":29141847}
+[19-05-15 16:48:00] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 16:48:00] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"font":8102248,"message":"!v","message_id":11326,"message_type":"private","post_type":"message","raw_message":"!v","self_id":2997400528,"sender":{"age":8,"nickname":"0 4 . 2 2","sex":"male","user_id":1061917196},"sub_type":"friend","time":1557910080,"user_id":1061917196}
+[19-05-15 16:48:19] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 16:48:19] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8101704,"group_id":556981260,"message":"不是吧，现在这个新的功能似乎是面向全体的","message_id":11329,"message_type":"group","post_type":"message","raw_message":"不是吧，现在这个新的功能似乎是面向全体的","self_id":2997400528,"sender":{"age":0,"area":"广州","card":"无聊-小鹤","level":"新日电动车","nickname":"无聊","role":"member","sex":"male","title":"","user_id":779855010},"sub_type":"normal","time":1557910098,"user_id":779855010}
+[19-05-15 16:48:22] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 16:48:22] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8102120,"group_id":723795668,"message":"随机一文，长度500","message_id":11330,"message_type":"group","post_type":"message","raw_message":"随机一文，长度500","self_id":2997400528,"sender":{"age":22,"area":"梧州","card":"菜鸟小鹤双拼","level":"高手","nickname":"放空","role":"member","sex":"female","title":"","user_id":1468665177},"sub_type":"normal","time":1557910102,"user_id":1468665177}
+[19-05-15 16:48:23] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 16:48:23] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8102152,"group_id":723795668,"message":"《地窖》散文第1期-作者：吉.塞斯勃隆\r\n国王将他的一个决定公布天下：每月要出宫一次，进入寻常百姓家，并和他们共进晚餐。朝廷的反对派立刻对国王的这种做法加以评论。国王无论干什么，反对派准会发表点攻击性的评论，评论是各种各样的：什么“毫无主见”啊，“怯懦无能”啊，等等，这已经成为他们每天的必修课。在他们眼里，国王所做的一切都有问题，就是国王的所作所为虽然达到了与他们一致的目标，却没有完全听从他们的意见，也是国王不尊重他们，无视他们存在的表现。这回国王去臣民家里进餐一事，他们只报以耸耸肩膀，鄙夷地斥之为“收买人心”。但这一次，他们彻底错了。因为国王的这项决定，看来事情不大，但却是国王的一番用意。国王喜欢研究历史，他明白要坐稳他的王位，人民的支持起着十分重要的作用。而国王本人，自从登基以来，已经觉察到一些深深扎根的危机，要越过这堵墙，还真得费点力气。猜疑本身就是卫兵，从隔阂发展到互不体谅是顺乎情理的。而今国王就是想打破这种局面，也许用的不是最好的方法，但应该是很有效的。总之，国王的主意已定。看来他并未被反对派的言论所影响。他的大臣们几次劝阻都没有奏效。警察总长对此事尤为惶恐。\r\n-----第1段-----","message_id":11331,"message_type":"group","post_type":"message","raw_message":"《地窖》散文第1期-作者：吉.塞斯勃隆\r\n国王将他的一个决定公布天下：每月要出宫一次，进入寻常百姓家，并和他们共进晚餐。朝廷的反对派立刻对国王的这种做法加以评论。国王无论干什么，反对派准会发表点攻击性的评论，评论是各种各样的：什么“毫无主见”啊，“怯懦无能”啊，等等，这已经成为他们每天的必修课。在他们眼里，国王所做的一切都有问题，就是国王的所作所为虽然达到了与他们一致的目标，却没有完全听从他们的意见，也是国王不尊重他们，无视他们存在的表现。这回国王去臣民家里进餐一事，他们只报以耸耸肩膀，鄙夷地斥之为“收买人心”。但这一次，他们彻底错了。因为国王的这项决定，看来事情不大，但却是国王的一番用意。国王喜欢研究历史，他明白要坐稳他的王位，人民的支持起着十分重要的作用。而国王本人，自从登基以来，已经觉察到一些深深扎根的危机，要越过这堵墙，还真得费点力气。猜疑本身就是卫兵，从隔阂发展到互不体谅是顺乎情理的。而今国王就是想打破这种局面，也许用的不是最好的方法，但应该是很有效的。总之，国王的主意已定。看来他并未被反对派的言论所影响。他的大臣们几次劝阻都没有奏效。警察总长对此事尤为惶恐。\r\n-----第1段-----","self_id":2997400528,"sender":{"age":1,"area":"","card":"群帅","level":"小白","nickname":"拆小鹤","role":"member","sex":"female","title":"","user_id":428826691},"sub_type":"normal","time":1557910102,"user_id":428826691}
+[19-05-15 16:48:27] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 16:48:27] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8102280,"group_id":556981260,"message":"设置名片 无聊","message_id":11332,"message_type":"group","post_type":"message","raw_message":"设置名片 无聊","self_id":2997400528,"sender":{"age":0,"area":"广州","card":"无聊-小鹤","level":"新日电动车","nickname":"无聊","role":"member","sex":"male","title":"","user_id":779855010},"sub_type":"normal","time":1557910107,"user_id":779855010}
+[19-05-15 16:48:27] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 16:48:27] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8101736,"group_id":556981260,"message":"[CQ:at,qq=779855010]\r\n已存在相同用户名 Q号为：779855010","message_id":11334,"message_type":"group","post_type":"message","raw_message":"[CQ:at,qq=779855010]\r\n已存在相同用户名 Q号为：779855010","self_id":2997400528,"sender":{"age":22,"area":"广州","card":"鹤-单","level":"死飞单车","nickname":"鹤","role":"member","sex":"female","title":"","user_id":1061917110},"sub_type":"normal","time":1557910107,"user_id":1061917110}
+[19-05-15 16:48:29] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 16:48:29] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"font":8101800,"message":"!用户字数","message_id":11335,"message_type":"private","post_type":"message","raw_message":"!用户字数","self_id":2997400528,"sender":{"age":8,"nickname":"0 4 . 2 2","sex":"male","user_id":1061917196},"sub_type":"friend","time":1557910109,"user_id":1061917196}
+[19-05-15 16:48:34] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0

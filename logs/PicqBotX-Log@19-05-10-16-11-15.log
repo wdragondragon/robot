@@ -1,0 +1,26 @@
+[19-05-10 16:11:15] [PicqBotX] [INFO] 
+[19-05-10 16:11:15] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[19-05-10 16:11:15] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[19-05-10 16:11:15] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[19-05-10 16:11:15] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[19-05-10 16:11:15] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[19-05-10 16:11:15] [PicqBotX] [INFO]                 /_/         v3.2.2.896
+[19-05-10 16:11:15] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(26.89 ms)
+[19-05-10 16:11:15] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(1.97 ms)
+[19-05-10 16:11:15] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.01 ms)
+[19-05-10 16:11:15] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(32.09 ms)
+[19-05-10 16:11:15] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(1.36 ms)
+[19-05-10 16:11:15] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(1.92 ms)
+[19-05-10 16:11:16] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(11.76 ms)
+[19-05-10 16:11:16] [PicqBotX] [WARNING] 账号 Bot01: 版本正确, 不过用酷Q Pro的话效果更好哦!
+[19-05-10 16:11:16] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[19-05-10 16:11:16] [PicqBotX] [INFO] 正在启动...
+[19-05-10 16:11:18] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-10 16:11:18] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"font":8390080,"message":"!a","message_id":2204,"message_type":"private","post_type":"message","raw_message":"!a","self_id":2997400528,"sender":{"age":8,"nickname":"0 4 . 2 2","sex":"male","user_id":1061917196},"sub_type":"friend","time":1557475878,"user_id":1061917196}
+[19-05-10 16:11:37] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-10 16:11:37] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8390240,"group_id":556981260,"message":"第999段 速度104.89<106.99 回改35 错字2 字数512 秒数285.45 键数35 起打于16:07:07 √个有×各也·错1罚5 标记关 防伪R3 峰值186.67 QQ09+ 201314","message_id":2206,"message_type":"group","post_type":"message","raw_message":"第999段 速度104.89<106.99 回改35 错字2 字数512 秒数285.45 键数35 起打于16:07:07 √个有×各也·错1罚5 标记关 防伪R3 峰值186.67 QQ09+ 201314","self_id":2997400528,"sender":{"age":0,"area":"上海","card":"池鱼-亚伟","level":"小蹦哒","nickname":"池鱼","role":"member","sex":"female","title":"","user_id":1957992261},"sub_type":"normal","time":1557475897,"user_id":1957992261}
+[19-05-10 16:11:47] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-10 16:11:47] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8390176,"group_id":556981260,"message":"[CQ:at,qq=2845530960] 赛文里面有捣乱[CQ:face,id=178]","message_id":2207,"message_type":"group","post_type":"message","raw_message":"[CQ:at,qq=2845530960] 赛文里面有捣乱[CQ:face,id=178]","self_id":2997400528,"sender":{"age":0,"area":"","card":"让心如风-蓝宝石","level":"五菱宏光","nickname":"让心如水","role":"admin","sex":"unknown","title":"","user_id":2329377621},"sub_type":"normal","time":1557475907,"user_id":2329377621}
+[19-05-10 16:11:52] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-10 16:11:52] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8390592,"group_id":556981260,"message":"唉","message_id":2208,"message_type":"group","post_type":"message","raw_message":"唉","self_id":2997400528,"sender":{"age":0,"area":"上海","card":"池鱼-亚伟","level":"小蹦哒","nickname":"池鱼","role":"member","sex":"female","title":"","user_id":1957992261},"sub_type":"normal","time":1557475912,"user_id":1957992261}
+[19-05-10 16:11:55] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0

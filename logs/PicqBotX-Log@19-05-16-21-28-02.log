@@ -1,0 +1,28 @@
+[19-05-16 21:28:02] [PicqBotX] [INFO] 
+[19-05-16 21:28:02] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[19-05-16 21:28:02] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[19-05-16 21:28:02] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[19-05-16 21:28:02] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[19-05-16 21:28:02] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[19-05-16 21:28:02] [PicqBotX] [INFO]                 /_/         v3.2.2.896
+[19-05-16 21:28:02] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(37.62 ms)
+[19-05-16 21:28:02] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(2.36 ms)
+[19-05-16 21:28:02] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.01 ms)
+[19-05-16 21:28:02] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(42.3 ms)
+[19-05-16 21:28:02] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(1.15 ms)
+[19-05-16 21:28:02] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(1.45 ms)
+[19-05-16 21:28:03] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(2.11 ms)
+[19-05-16 21:28:03] [PicqBotX] [WARNING] 账号 Bot01: 版本正确, 不过用酷Q Pro的话效果更好哦!
+[19-05-16 21:28:03] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[19-05-16 21:28:03] [PicqBotX] [INFO] 正在启动...
+[19-05-16 21:28:06] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 21:28:06] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738536,"group_id":522394334,"message":"#随机战场 50 30 3","message_id":13451,"message_type":"group","post_type":"message","raw_message":"#随机战场 50 30 3","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558013286,"user_id":1061917196}
+[19-05-16 21:28:09] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 21:28:09] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738344,"group_id":522394334,"message":"#加入战场","message_id":13453,"message_type":"group","post_type":"message","raw_message":"#加入战场","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558013289,"user_id":1061917196}
+[19-05-16 21:28:11] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 21:28:11] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738440,"group_id":522394334,"message":"#战场启动","message_id":13455,"message_type":"group","post_type":"message","raw_message":"#战场启动","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558013291,"user_id":1061917196}
+[19-05-16 21:28:37] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 21:28:37] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43647992,"group_id":522394334,"message":"#随机战场 50 20 3","message_id":13459,"message_type":"group","post_type":"message","raw_message":"#随机战场 50 20 3","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558013317,"user_id":1061917196}
+[19-05-16 21:28:43] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-16 21:28:43] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43738600,"group_id":522394334,"message":"#战场启动","message_id":13461,"message_type":"group","post_type":"message","raw_message":"#战场启动","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1558013323,"user_id":1061917196}
+[19-05-16 21:28:50] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0

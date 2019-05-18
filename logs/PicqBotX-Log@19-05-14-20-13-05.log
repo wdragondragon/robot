@@ -1,0 +1,28 @@
+[19-05-14 20:13:05] [PicqBotX] [INFO] 
+[19-05-14 20:13:05] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[19-05-14 20:13:05] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[19-05-14 20:13:05] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[19-05-14 20:13:05] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[19-05-14 20:13:05] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[19-05-14 20:13:05] [PicqBotX] [INFO]                 /_/         v3.2.2.896
+[19-05-14 20:13:05] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(36.64 ms)
+[19-05-14 20:13:05] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(2.13 ms)
+[19-05-14 20:13:05] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.0 ms)
+[19-05-14 20:13:05] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(36.1 ms)
+[19-05-14 20:13:05] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(1.14 ms)
+[19-05-14 20:13:05] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(2.2 ms)
+[19-05-14 20:13:05] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(2.12 ms)
+[19-05-14 20:13:05] [PicqBotX] [WARNING] 账号 Bot01: 版本正确, 不过用酷Q Pro的话效果更好哦!
+[19-05-14 20:13:05] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[19-05-14 20:13:05] [PicqBotX] [INFO] 正在启动...
+[19-05-14 20:13:05] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-14 20:13:05] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":6235360,"group_id":522394334,"message":"第999段 速度251.79 击键9.67 码长2.30 词库理论2.17 回改15(3.19s) 连改4 键准94.87% 停留&#91;许多&#93;1.31s 输入法:小鹤双拼飞扬版 校验:14957 个签:此键抚平天下不平事，此键无愧天下有愧人 t46.15","message_id":9972,"message_type":"group","post_type":"message","raw_message":"第999段 速度251.79 击键9.67 码长2.30 词库理论2.17 回改15(3.19s) 连改4 键准94.87% 停留&#91;许多&#93;1.31s 输入法:小鹤双拼飞扬版 校验:14957 个签:此键抚平天下不平事，此键无愧天下有愧人 t46.15","self_id":2997400528,"sender":{"age":0,"area":"","card":"八-小鹤音形","level":"中级","nickname":"温华","role":"member","sex":"unknown","title":"","user_id":871218215},"sub_type":"normal","time":1557835985,"user_id":871218215}
+[19-05-14 20:13:10] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-14 20:13:10] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":6235904,"group_id":522394334,"message":"#赛文","message_id":9973,"message_type":"group","post_type":"message","raw_message":"#赛文","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1557835990,"user_id":1061917196}
+[19-05-14 20:13:11] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-14 20:13:11] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":6235136,"group_id":522394334,"message":"《始于眉毛》日赛第532期-二花制作\r\n因为是女人，而且要就业，她就想选择一个以女性美吸引人的职业。可是，谁也没有说过她美。她找到的，却是禁止化妆的职业。一天，上司把她叫到跟前说：“你描眉了吧？”“没有啊！”她怯生生地用手指沾了点唾沫，把眉毛擦了擦。“那么，你是修剪过喽？”“没有啊！生来就是这样。”她几乎哭出来了。“唔，你好歹有双漂亮的眉毛，就是不在这里工作，你也能活下去吧。”从她的眉毛，上司找到了裁减她的借口。她才第一次明确地了解到了自己的眉毛之美。她满心喜悦，连失业的悲哀也忘却了。自己也有美的地方，对结婚也就有信心了。丈夫没有说她的眉毛长的美。他说她的乳房美，脊背、双膝也很美。然后，然后……别人告诉她，她身上有许多美，她沉湎在幸福之中。但是，一想到丈夫搜遍了她身上的美之后又将会怎样，她也就禁不住怀念起当初以为自己身上没有一点美而认命了的时候那种无忧无虑来了。\r\n-----第999段-1200S-366Z-4L-78eed272V--c.sw.1.1\r\n本文由 散文 组成","message_id":9974,"message_type":"group","post_type":"message","raw_message":"《始于眉毛》日赛第532期-二花制作\r\n因为是女人，而且要就业，她就想选择一个以女性美吸引人的职业。可是，谁也没有说过她美。她找到的，却是禁止化妆的职业。一天，上司把她叫到跟前说：“你描眉了吧？”“没有啊！”她怯生生地用手指沾了点唾沫，把眉毛擦了擦。“那么，你是修剪过喽？”“没有啊！生来就是这样。”她几乎哭出来了。“唔，你好歹有双漂亮的眉毛，就是不在这里工作，你也能活下去吧。”从她的眉毛，上司找到了裁减她的借口。她才第一次明确地了解到了自己的眉毛之美。她满心喜悦，连失业的悲哀也忘却了。自己也有美的地方，对结婚也就有信心了。丈夫没有说她的眉毛长的美。他说她的乳房美，脊背、双膝也很美。然后，然后……别人告诉她，她身上有许多美，她沉湎在幸福之中。但是，一想到丈夫搜遍了她身上的美之后又将会怎样，她也就禁不住怀念起当初以为自己身上没有一点美而认命了的时候那种无忧无虑来了。\r\n-----第999段-1200S-366Z-4L-78eed272V--c.sw.1.1\r\n本文由 散文 组成","self_id":2997400528,"sender":{"age":6,"area":"北京","card":"","level":"小白","nickname":"小拆","role":"member","sex":"female","title":"","user_id":207938707},"sub_type":"normal","time":1557835991,"user_id":207938707}
+[19-05-14 20:13:16] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-14 20:13:16] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":6235840,"group_id":522394334,"message":"他这个还是很科学的","message_id":9975,"message_type":"group","post_type":"message","raw_message":"他这个还是很科学的","self_id":2997400528,"sender":{"age":28,"area":"成都","card":"一枝独秀—谭八风","level":"了解群图书馆","nickname":"云华","role":"member","sex":"male","title":"","user_id":2297714857},"sub_type":"normal","time":1557835996,"user_id":2297714857}
+[19-05-14 20:13:26] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-14 20:13:26] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":6235936,"group_id":522394334,"message":"单字只打一个小时","message_id":9976,"message_type":"group","post_type":"message","raw_message":"单字只打一个小时","self_id":2997400528,"sender":{"age":28,"area":"成都","card":"一枝独秀—谭八风","level":"了解群图书馆","nickname":"云华","role":"member","sex":"male","title":"","user_id":2297714857},"sub_type":"normal","time":1557836006,"user_id":2297714857}
+[19-05-14 20:13:34] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0

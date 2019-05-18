@@ -1,0 +1,32 @@
+[19-05-15 20:21:13] [PicqBotX] [INFO] 
+[19-05-15 20:21:13] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[19-05-15 20:21:13] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[19-05-15 20:21:13] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[19-05-15 20:21:13] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[19-05-15 20:21:13] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[19-05-15 20:21:13] [PicqBotX] [INFO]                 /_/         v3.2.2.896
+[19-05-15 20:21:13] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(36.74 ms)
+[19-05-15 20:21:13] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(2.06 ms)
+[19-05-15 20:21:13] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.01 ms)
+[19-05-15 20:21:13] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(31.05 ms)
+[19-05-15 20:21:13] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(1.18 ms)
+[19-05-15 20:21:13] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(1.58 ms)
+[19-05-15 20:21:13] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(2.29 ms)
+[19-05-15 20:21:13] [PicqBotX] [WARNING] 账号 Bot01: 版本正确, 不过用酷Q Pro的话效果更好哦!
+[19-05-15 20:21:13] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[19-05-15 20:21:13] [PicqBotX] [INFO] 正在启动...
+[19-05-15 20:21:16] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 20:21:16] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":7378144,"group_id":556981260,"message":"。。。","message_id":11918,"message_type":"group","post_type":"message","raw_message":"。。。","self_id":2997400528,"sender":{"age":1,"area":"阿拉伯联合酋长国","card":"圈-字根通用码","level":"新日电动车","nickname":"圈","role":"member","sex":"male","title":"","user_id":1816436708},"sub_type":"normal","time":1557922876,"user_id":1816436708}
+[19-05-15 20:21:17] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 20:21:17] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":7378016,"group_id":522394334,"message":"群映射列表","message_id":11919,"message_type":"group","post_type":"message","raw_message":"群映射列表","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1557922877,"user_id":1061917196}
+[19-05-15 20:21:28] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 20:21:28] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":7378304,"group_id":556981260,"message":"要用电脑吗","message_id":11920,"message_type":"group","post_type":"message","raw_message":"要用电脑吗","self_id":2997400528,"sender":{"age":1,"area":"阿拉伯联合酋长国","card":"圈-字根通用码","level":"新日电动车","nickname":"圈","role":"member","sex":"male","title":"","user_id":1816436708},"sub_type":"normal","time":1557922888,"user_id":1816436708}
+[19-05-15 20:21:29] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 20:21:29] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":7378528,"group_id":522394334,"message":"群映射列表","message_id":11921,"message_type":"group","post_type":"message","raw_message":"群映射列表","self_id":2997400528,"sender":{"age":8,"area":"广州","card":"谭宇-养生式跟打","level":"入门","nickname":"0 4 . 2 2","role":"admin","sex":"male","title":"","user_id":1061917196},"sub_type":"normal","time":1557922889,"user_id":1061917196}
+[19-05-15 20:21:32] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 20:21:32] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":7378528,"group_id":556981260,"message":"懒得死","message_id":11922,"message_type":"group","post_type":"message","raw_message":"懒得死","self_id":2997400528,"sender":{"age":1,"area":"阿拉伯联合酋长国","card":"圈-字根通用码","level":"新日电动车","nickname":"圈","role":"member","sex":"male","title":"","user_id":1816436708},"sub_type":"normal","time":1557922892,"user_id":1816436708}
+[19-05-15 20:21:33] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 20:21:33] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":7378080,"group_id":556981260,"message":"开","message_id":11923,"message_type":"group","post_type":"message","raw_message":"开","self_id":2997400528,"sender":{"age":1,"area":"阿拉伯联合酋长国","card":"圈-字根通用码","level":"新日电动车","nickname":"圈","role":"member","sex":"male","title":"","user_id":1816436708},"sub_type":"normal","time":1557922893,"user_id":1816436708}
+[19-05-15 20:21:40] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-15 20:21:40] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":7378624,"group_id":556981260,"message":"懒得开","message_id":11924,"message_type":"group","post_type":"message","raw_message":"懒得开","self_id":2997400528,"sender":{"age":1,"area":"阿拉伯联合酋长国","card":"圈-字根通用码","level":"新日电动车","nickname":"圈","role":"member","sex":"male","title":"","user_id":1816436708},"sub_type":"normal","time":1557922900,"user_id":1816436708}
+[19-05-15 20:21:47] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0

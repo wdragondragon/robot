@@ -1,0 +1,26 @@
+[19-05-11 10:39:55] [PicqBotX] [INFO] 
+[19-05-11 10:39:55] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[19-05-11 10:39:55] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[19-05-11 10:39:55] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[19-05-11 10:39:55] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[19-05-11 10:39:55] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[19-05-11 10:39:55] [PicqBotX] [INFO]                 /_/         v3.2.2.896
+[19-05-11 10:39:55] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(33.14 ms)
+[19-05-11 10:39:55] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(3.17 ms)
+[19-05-11 10:39:55] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.01 ms)
+[19-05-11 10:39:55] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(31.92 ms)
+[19-05-11 10:39:55] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(0.91 ms)
+[19-05-11 10:39:55] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(1.46 ms)
+[19-05-11 10:39:55] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(2.26 ms)
+[19-05-11 10:39:55] [PicqBotX] [WARNING] 账号 Bot01: 版本正确, 不过用酷Q Pro的话效果更好哦!
+[19-05-11 10:39:55] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[19-05-11 10:39:55] [PicqBotX] [INFO] 正在启动...
+[19-05-11 10:40:04] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-11 10:40:04] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8389088,"group_id":522394334,"message":"mac打游戏的话，体验也不是怎么好的","message_id":3050,"message_type":"group","post_type":"message","raw_message":"mac打游戏的话，体验也不是怎么好的","self_id":2997400528,"sender":{"age":24,"area":"漯河","card":"努力超过一百——杨小草","level":"了解群图书馆","nickname":"这样子？","role":"member","sex":"male","title":"","user_id":596787921},"sub_type":"normal","time":1557542404,"user_id":596787921}
+[19-05-11 10:40:06] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-11 10:40:06] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"font":8389152,"message":"你好！","message_id":3051,"message_type":"private","post_type":"message","raw_message":"你好！","self_id":2997400528,"sender":{"age":8,"nickname":"0 4 . 2 2","sex":"male","user_id":1061917196},"sub_type":"friend","time":1557542406,"user_id":1061917196}
+[19-05-11 10:40:09] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-11 10:40:09] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"font":8388768,"message":"哈喽！","message_id":3053,"message_type":"private","post_type":"message","raw_message":"哈喽！","self_id":2997400528,"sender":{"age":8,"nickname":"0 4 . 2 2","sex":"male","user_id":1061917196},"sub_type":"friend","time":1557542409,"user_id":1061917196}
+[19-05-11 10:41:01] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
+[19-05-11 10:41:01] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8388960,"group_id":522394334,"message":"macos还没win好用的，反正我的感觉就是[CQ:face,id=182]","message_id":3055,"message_type":"group","post_type":"message","raw_message":"macos还没win好用的，反正我的感觉就是[CQ:face,id=182]","self_id":2997400528,"sender":{"age":24,"area":"漯河","card":"努力超过一百——杨小草","level":"了解群图书馆","nickname":"这样子？","role":"member","sex":"male","title":"","user_id":596787921},"sub_type":"normal","time":1557542461,"user_id":596787921}
+[19-05-11 10:41:18] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.8.0
