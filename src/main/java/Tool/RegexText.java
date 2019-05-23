@@ -82,6 +82,9 @@ public class RegexText {
 		double [] Grade = new double[3];
 		int SpeedSign = event.indexOf("ËÙ¶È");
 		int SpeedEnd = event.indexOf(" ",SpeedSign);
+		int temp = event.indexOf("/",SpeedSign);
+		if(temp<SpeedEnd&&temp!=-1)SpeedEnd=temp;
+
 		int keylengthSign = event.indexOf("Âë³¤");
 		int keylengthEnd = event.indexOf(" ",keylengthSign);
 		int keySpeedSign = event.indexOf("»÷¼ü");

@@ -1,8 +1,8 @@
 package GroupFollowWar;
 
+import Tool.SortMap;
 import cc.moecraft.icq.event.events.message.EventGroupMessage;
-
-
+import jdragon.club.RamdomLoad;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,36 +12,64 @@ public class GroupFollowThread extends  Thread {
     Long groupid;
     EventGroupMessage event;
     boolean start = false;
-    public void setStartSign(boolean strat) {
-        this.start = strat;
-    }
-    public boolean getStartSign(){
-        return start;
-    }
-
     Map<Long,Integer> IDlist = new HashMap<Long, Integer>();
-    Map<Long,Double> IDspend = new HashMap<Long, Double>();
+    Map<Long, Double> IDspendlist = new HashMap<Long,Double>();
+    String art = "";
+
+
     public GroupFollowThread(EventGroupMessage event, int length, Long groupid){
         this.event = event;
         this.length = length;
         this.groupid = groupid;
     }
-    public void run(){
-
+    public void nextDuan(){
+        this.duan++;
+        String message = "临时成绩\n";
+        message += SortMap.SendsortValueFollow(IDlist,IDspendlist);
+        event.respond(message);
+        send();
+        resert();
+    }
+    public void send(){
+        String message = "";
+        while(art.length()<duan*Integer.valueOf(length))
+            art+=RamdomLoad.getRamdomWenben();
+        message += art.substring((duan-1)*length,duan*length);
+        message = "随机混战\n" + message + "\n-----第"+duan+"段-每段"+length+"字";
+        event.respond(message);
+    }
+    public void resert(){
+        for(Long k:IDspendlist.keySet()) {
+            IDspendlist.put(k, 0.0);
+        }
     }
     public void addID(Long id){
         IDlist.put(id,0);
-        IDspend.put(id,0.0);
+        IDspendlist.put(id,0.0);
     }
     public void removeID(Long id){
         IDlist.remove(id);
-        IDspend.remove(id);
+        IDspendlist.remove(id);
     }
     public Map<Long,Integer> getIDlist(){
         return IDlist;
     }
-    public Map<Long,Double> getIDspeed(){
-        return IDspend;
+    public int getDuan(){
+        return duan;
     }
-
+    public double getIDspend(Long id){
+        return IDspendlist.get(id);
+    }
+    public void setIDspend(Long id,double speed) {
+        IDspendlist.put(id,speed);
+    }
+    public Map<Long,Double> getIDspendlist(){
+        return IDspendlist;
+    }
+    public void setStartSign(boolean start) {
+        this.start = start;
+    }
+    public boolean getStartSign(){
+        return start;
+    }
 }

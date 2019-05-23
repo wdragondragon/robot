@@ -19,7 +19,8 @@ public class robot
         // 注册事件监听器, 可以注册多个监听器
         bot.getEventManager().registerListeners(
                 new OneUserNum(),
-                new RobotGroupClient()
+                new RobotGroupClient(),
+                new MessageMove()
         );
         // 启用指令管理器
         // 这些字符串是指令前缀, 比如指令"!help"的前缀就是"!"
