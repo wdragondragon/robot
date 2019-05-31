@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ReturnAll implements EverywhereCommand {
 
     public CommandProperties properties() {
-        return new CommandProperties ("alltoday", "a", "当日消费记录");
+        return new CommandProperties ("alltoday", "a", "褰撴棩娑堣垂璁板綍");
     }
 
     public String run(EventMessage eventMessage, User user, String s, ArrayList<String> arrayList) {

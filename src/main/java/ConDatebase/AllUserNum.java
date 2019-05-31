@@ -22,7 +22,7 @@ public class AllUserNum implements EverywhereCommand {
                 String all = fullStr(String.valueOf(rs.getInt(3)));
                 String right = fullStr(String.valueOf(rs.getInt(4)));
                 String mis = String.valueOf(rs.getInt(5));
-                s += "°∞"+name+"°± ◊‹"+all+" ∂‘"+right+" ¥Ì"+mis+"\n";
+                s += "‚Äú"+name+"‚Äù ÊÄª"+all+" ÂØπ"+right+" Èîô"+mis+"\n";
             }
             con.close();
         }catch(Exception e){
@@ -33,7 +33,7 @@ public class AllUserNum implements EverywhereCommand {
     private String  fullStr(String str){
         if(str.length()<10){
             for(int i = 0;i<10-str.length();i++)
-                str += "°™";
+                str += "‚Äî";
         }
         return str;
     }
@@ -41,6 +41,6 @@ public class AllUserNum implements EverywhereCommand {
         return getAllUser();
     }
     public CommandProperties properties() {
-        return new CommandProperties("usernum", "u", "”√ªß◊÷ ˝");
+        return new CommandProperties("usernum", "u", "Áî®Êà∑Â≠óÊï∞");
     }
 }

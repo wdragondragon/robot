@@ -13,19 +13,19 @@ public class MessageMove  extends IcqListener {
         String message = event.getMessage();
         Long GroupID = RegexText.getGroupID(event.toString());
         Long ID = event.getSenderId();
-        if(message.equals("¿ªÆô×ª·¢")) {
+        if(message.equals("å¼€å¯è½¬å‘")) {
             if(ID==1061917196L) {
                 open = true;
-                event.respond("Ð¡º×Ë«Æ´Á·Ï°Ò»Èº£¬¶þÈºÁÄÌì×ª·¢¿ªÆô");
+                event.respond("å°é¹¤åŒæ‹¼ç»ƒä¹ ä¸€ç¾¤ï¼ŒäºŒç¾¤èŠå¤©è½¬å‘å¼€å¯");
             }else
-                event.respond("ÎÞ²Ù×÷È¨ÏÞ");
+                event.respond("æ— æ“ä½œæƒé™");
             return ;
-        } else if (message.equals("¹Ø±Õ×ª·¢")) {
+        } else if (message.equals("å…³é—­è½¬å‘")) {
             if(ID==1061917196L) {
                 open = false;
-                event.respond("Ð¡º×Ë«Æ´Á·Ï°Ò»Èº£¬¶þÈºÁÄÌì×ª·¢¹Ø±Õ");
+                event.respond("å°é¹¤åŒæ‹¼ç»ƒä¹ ä¸€ç¾¤ï¼ŒäºŒç¾¤èŠå¤©è½¬å‘å…³é—­");
             }else
-                event.respond("ÎÞ²Ù×÷È¨ÏÞ");
+                event.respond("æ— æ“ä½œæƒé™");
             return ;
         }
         String returnMes = ID+"\n"+message;
@@ -33,7 +33,7 @@ public class MessageMove  extends IcqListener {
 
         if(message.length()>5)
             temp = message.substring(0,4);
-        if(open&&ID!=207938707L&&!temp.equals("µÚ999¶Î")) {
+        if(open&&ID!=207938707L&&!temp.equals("ç¬¬999æ®µ")) {
             if (GroupID == 522394334L)
                 event.getHttpApi().sendGroupMsg(723795668L, returnMes);
             else if (GroupID == 723795668L)

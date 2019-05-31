@@ -4,12 +4,14 @@ import cc.moecraft.icq.event.events.message.EventGroupMessage;
 import jdragon.club.RamdomLoad;
 import Tool.SortMap;
 
+import java.net.IDN;
 import java.util.HashMap;
 import java.util.Map;
 
 public class GroupThread extends Thread {
     Map<Long,Integer> IDlist = new HashMap<Long, Integer>();
-    boolean start = false;  //Õ½³¡Æô¶¯±êÖ¾·ÀÖ¹ÖØ¸´Æô¶¯
+    Map<Long,String> IDName = new HashMap<Long, String>();
+    boolean start = false;  //æˆ˜åœºå¯åŠ¨æ ‡å¿—é˜²æ­¢é‡å¤å¯åŠ¨
     int length,onelength,time,nowtime = 1;
     public String message = "";
     Long groupid;
@@ -22,10 +24,10 @@ public class GroupThread extends Thread {
         this.groupid = groupid;
     }
     public void run(){
-        //»ñÈ¡ÎÄÕÂ
+        //è·å–æ–‡ç« 
         String art = "";
-        boolean setsign = false;//ÉèÖÃ·¢ËÍÈüÎÄ±êÖ¾
-        Count count = new Count(time);//µ¹¼ÆÊ±Àà
+        boolean setsign = false;//è®¾ç½®å‘é€èµ›æ–‡æ ‡å¿—
+        Count count = new Count(time);//å€’è®¡æ—¶ç±»
         count.start();
         while(true) {
             try {
@@ -43,11 +45,11 @@ public class GroupThread extends Thread {
                         if (count.getTime() == time) {
                             count.setTime(0);
                             nowtime++;
-                            System.out.println("ÏÂÒ»¶Î");
+                            System.out.println("ä¸‹ä¸€æ®µ");
                             setsign = false;
                         }
                         if (count.getTime() == 0) {
-                            if (!setsign) { //·ÀÖ¹µÈÓÚ0Ê±ÖØ¸´·¢ËÍÈüÎÄ
+                            if (!setsign) { //é˜²æ­¢ç­‰äº0æ—¶é‡å¤å‘é€èµ›æ–‡
                                 for (Long k : IDlist.keySet()) {
                                     if (nowtime * onelength < length)
                                         message = art.substring((nowtime - 1) * onelength, nowtime * onelength);
@@ -64,7 +66,7 @@ public class GroupThread extends Thread {
                                 if (!start) {
                                     count.setRunSign(false);
                                     String chengji = "";
-                                    chengji += SortMap.SendsortValue(IDlist)+"ÎÄÒÑ·¢¿Õ£¬Õ½³¡¹Ø±Õ";
+                                    chengji += SortMap.SendsortValue(IDlist,IDName)+"æ–‡å·²å‘ç©ºï¼Œæˆ˜åœºå…³é—­";
                                     event.getHttpApi().sendGroupMsg(groupid, chengji);
                                 }
 
@@ -81,8 +83,9 @@ public class GroupThread extends Thread {
     public Map<Long,Integer> getIDlist(){
         return IDlist;
     }
-    public void addID(Long id){
+    public void addID(Long id,String name){
         IDlist.put(id,0);
+        IDName.put(id,name);
     }
     public boolean getStartSign(){
         return  start;
@@ -93,5 +96,6 @@ public class GroupThread extends Thread {
     }
     public void removeID(Long id){
         IDlist.remove(id);
+        IDName.remove(id);
     }
 }

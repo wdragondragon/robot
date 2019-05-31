@@ -11,10 +11,10 @@ import java.util.regex.Pattern;
 
 public class RamdomLoad {
 	public static String getRamdomWenben(){
-			String str = getUrlConStr();//»ñµÃÍøÕ¾str
-			String regex = "<p>(.*?)</p>";//ÕıÔòÆ¥Åä³ö<p>Óë</p>Ö®¼ä
-			Pattern pattern = Pattern.compile(regex);//Æ¥ÅäÄ£Ê½
-			Matcher m = pattern.matcher(str);//ÅĞ¶ÏÊÇ·ñ·ûºÏÆ¥Åä
+			String str = getUrlConStr();//è·å¾—ç½‘ç«™str
+			String regex = "<p>(.*?)</p>";//æ­£åˆ™åŒ¹é…å‡º<p>ä¸</p>ä¹‹é—´
+			Pattern pattern = Pattern.compile(regex);//åŒ¹é…æ¨¡å¼
+			Matcher m = pattern.matcher(str);//åˆ¤æ–­æ˜¯å¦ç¬¦åˆåŒ¹é…
 			String str1 = "";
 			while(m.find()){
 				int i =1;
@@ -27,7 +27,7 @@ public class RamdomLoad {
 	static String getUrlConStr(){
 		try{
 			URL url = new URL("https://meiriyiwen.com/random");
-			URLConnection urlcon = url.openConnection(); //Ä£Äâä¯ÀÀÆ÷·¢³öÇëÇó
+			URLConnection urlcon = url.openConnection(); //æ¨¡æ‹Ÿæµè§ˆå™¨å‘å‡ºè¯·æ±‚
 //			urlcon.setRequestProperty("User-agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36");
 			urlcon.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0");
 			InputStreamReader in = new InputStreamReader(urlcon.getInputStream(),"utf-8");

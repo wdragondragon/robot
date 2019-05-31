@@ -28,7 +28,7 @@ public class InConn {
                 ptmt.setString(4,Com[0]);
                 ptmt.execute();
                 con.close();
-                System.out.println("Ìí¼ÓÈüÎÄ:"+groupid+"ÈÕÆÚ:"+ Conn.getdate());
+                System.out.println("æ·»åŠ èµ›æ–‡:"+groupid+"æ—¥æœŸ:"+ Conn.getdate());
             }
 
         }catch (Exception e){
@@ -37,7 +37,7 @@ public class InConn {
     }
     public static void addMaxComMath(Long id,Long groupid,double[] Com){
         try{
-            String sql = "select * from groupsaiwenMax where id=? and groupid=? and date=?";
+            String sql = "select * from groupsaiwenmax where id=? and groupid=? and date=?";
             Connection con = Conn.getConnection();
             PreparedStatement ptmt = Conn.getPtmt(con,sql);
             ptmt.setLong(1,id);
@@ -47,7 +47,7 @@ public class InConn {
             if(rs.next()){
                 double speed = rs.getDouble("speed");
                 if(speed<Com[0]){
-                    sql = "update groupsaiwenMax set speed=?,keyspeed=?,keylength=? where id=? and groupid=? and date=?";
+                    sql = "update groupsaiwenmax set speed=?,keyspeed=?,keylength=? where id=? and groupid=? and date=?";
                     ptmt = Conn.getPtmt(con,sql);
                     ptmt.setDouble(1,Com[0]);
                     ptmt.setDouble(2,Com[1]);
@@ -56,20 +56,20 @@ public class InConn {
                     ptmt.setLong(5,groupid);
                     ptmt.setDate(6,Conn.getdate());
                     ptmt.execute();
-                    System.out.println("¸ü¸Ä³É¼¨"+id+" Èº"+groupid);
+                    System.out.println("æ›´æ”¹æˆç»©"+id+" ç¾¤"+groupid);
                 }
             }
             else{
-                sql = "insert into groupsaiwenMax values(?,?,?,?,?,?)";
+                sql = "insert into groupsaiwenmax values(?,?,?,?,?,?)";
                 ptmt = Conn.getPtmt(con,sql);
-                ptmt.setLong(1,id);
-                ptmt.setLong(2,groupid);
+                ptmt.setLong(1,groupid);
+                ptmt.setLong(2,id);
                 ptmt.setDate(3,Conn.getdate());
                 ptmt.setDouble(4,Com[0]);
                 ptmt.setDouble(5,Com[1]);
                 ptmt.setDouble(6,Com[2]);
                 ptmt.execute();
-                System.out.println("Ìí¼Ó³É¼¨"+id+" Èº"+groupid);
+                System.out.println("æ·»åŠ æˆç»©"+id+" ç¾¤"+groupid);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -126,13 +126,13 @@ public class InConn {
             PreparedStatement ptmt = Conn.getPtmt(con,sql1);
             ptmt.setString(1,name);
             ResultSet rs = ptmt.executeQuery();
-            if(rs.next())return "ÒÑ´æÔÚÏàÍ¬ÓÃ»§Ãû QºÅÎª£º"+rs.getLong("id");
+            if(rs.next())return "å·²å­˜åœ¨ç›¸åŒç”¨æˆ·å Qå·ä¸ºï¼š"+rs.getLong("id");
             ptmt = Conn.getPtmt(con,sql);
             ptmt.setString(1,name);
             ptmt.setLong(2,id);
-            return "¸ü¸Ä³É¹¦ ÕËºÅ£º"+id+" ÃûÆ¬£º"+name;
+            return "æ›´æ”¹æˆåŠŸ è´¦å·ï¼š"+id+" åç‰‡ï¼š"+name;
         }catch (Exception e){
-            return "¸ü¸ÄÊ§°Ü£¬ÏÈ´òÒ»ÆªÈüÎÄÉÏÆÁ³É¼¨";
+            return "æ›´æ”¹å¤±è´¥ï¼Œå…ˆæ‰“ä¸€ç¯‡èµ›æ–‡ä¸Šå±æˆç»©";
         }
     }
 }

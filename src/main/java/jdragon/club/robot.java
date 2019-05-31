@@ -1,6 +1,7 @@
 package jdragon.club;
 
 import  ConDatebase.*;
+import PlayCards.CardCarry;
 import cc.moecraft.icq.PicqBotX;
 import cc.moecraft.icq.PicqConfig;
 
@@ -10,31 +11,33 @@ public class robot
     public static  Long xiaochaiQ = 207938707L;
     public static void main(String[] args)
     {
-        // ´´½¨»úÆ÷ÈË¶ÔÏó ( ´«ÈëÅäÖÃ )
+        // åˆ›å»ºæœºå™¨äººå¯¹è±¡ ( ä¼ å…¥é…ç½® )
         PicqBotX bot = new PicqBotX(new PicqConfig(9999).setDebug(true));
 
-        // Ìí¼ÓÒ»¸ö»úÆ÷ÈËÕË»§ ( Ãû×Ö, ·¢ËÍURL, ·¢ËÍ¶Ë¿Ú )
+        // æ·»åŠ ä¸€ä¸ªæœºå™¨äººè´¦æˆ· ( åå­—, å‘é€URL, å‘é€ç«¯å£ )
         bot.addAccount("Bot01", "127.0.0.1", 5700);
 
-        // ×¢²áÊÂ¼ş¼àÌıÆ÷, ¿ÉÒÔ×¢²á¶à¸ö¼àÌıÆ÷
+        // æ³¨å†Œäº‹ä»¶ç›‘å¬å™¨, å¯ä»¥æ³¨å†Œå¤šä¸ªç›‘å¬å™¨
         bot.getEventManager().registerListeners(
                 new OneUserNum(),
                 new RobotGroupClient(),
-                new MessageMove()
+                new MessageMove(),
+                new Translate(),
+                new CardCarry()
         );
-        // ÆôÓÃÖ¸Áî¹ÜÀíÆ÷
-        // ÕâĞ©×Ö·û´®ÊÇÖ¸ÁîÇ°×º, ±ÈÈçÖ¸Áî"!help"µÄÇ°×º¾ÍÊÇ"!"
+        // å¯ç”¨æŒ‡ä»¤ç®¡ç†å™¨
+        // è¿™äº›å­—ç¬¦ä¸²æ˜¯æŒ‡ä»¤å‰ç¼€, æ¯”å¦‚æŒ‡ä»¤"!help"çš„å‰ç¼€å°±æ˜¯"!"
         bot.enableCommandManager("bot -", "!", "/", "~");
 
-        // ×¢²áÖ¸Áî, ¿ÉÒÔ×¢²á¶à¸öÖ¸Áî
+        // æ³¨å†ŒæŒ‡ä»¤, å¯ä»¥æ³¨å†Œå¤šä¸ªæŒ‡ä»¤
         bot.getCommandManager().registerCommands(
-                new CommandSay(),//·µ»Ø×Ô¼ºÃû×Ö
-                new ReturnLast(),//·µ»Ø×îºóÒ»ÌõÏû·Ñ¼ÇÂ¼
-                new ReturnAll(),//·µ»Øµ±ÈÕÈ«²¿Ïû·Ñ¼ÇÂ¼
-                new CommandVersion(),//·µ»Ø°æ±¾
+                new CommandSay(),//è¿”å›è‡ªå·±åå­—
+                new ReturnLast(),//è¿”å›æœ€åä¸€æ¡æ¶ˆè´¹è®°å½•
+                new ReturnAll(),//è¿”å›å½“æ—¥å…¨éƒ¨æ¶ˆè´¹è®°å½•
+                new CommandVersion(),//è¿”å›ç‰ˆæœ¬
                 new AllUserNum()
         );
-        // Æô¶¯»úÆ÷ÈË, ²»»áÕ¼ÓÃÖ÷Ïß³Ì
+        // å¯åŠ¨æœºå™¨äºº, ä¸ä¼šå ç”¨ä¸»çº¿ç¨‹
         bot.startBot();
     }
 }

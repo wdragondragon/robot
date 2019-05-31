@@ -1,6 +1,11 @@
 package Tool;
 
 
+import ConDatebase.OutConn;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegexText {
 	private int gang = 0;
 	private int kong = 0;
@@ -14,7 +19,7 @@ public class RegexText {
 		a = str.toCharArray();
 		length = str.length();
 		for(j=length-1;j>0;j--){
-			if(a[j]=='µÚ'){
+			if(a[j]=='ç¬¬'){
 				for(k=j-1;k>=j-5;k--){
 					if(a[k]=='-'){gang++;}
 				}
@@ -23,7 +28,7 @@ public class RegexText {
 					kong=0;
 //					duan = String.copyValueOf(a, j+1,5);
 					duan = "";
-					while(a[j]!='¶Î'){
+					while(a[j]!='æ®µ'){
 						duan = duan+a[j];j++;
 					}
 				}
@@ -69,7 +74,7 @@ public class RegexText {
 		comarti[0] = title;
 		comarti[1] = str;
 		comarti[2] = String.valueOf(duan1);
-//		System.out.println("±êÌâ:"+title+"\n"+str);
+//		System.out.println("æ ‡é¢˜:"+title+"\n"+str);
 		return comarti;
 	}
 	public static Long getGroupID(String event){
@@ -80,14 +85,14 @@ public class RegexText {
 	}
 	public static double[] getGrade(String event){
 		double [] Grade = new double[3];
-		int SpeedSign = event.indexOf("ËÙ¶È");
+		int SpeedSign = event.indexOf("é€Ÿåº¦");
 		int SpeedEnd = event.indexOf(" ",SpeedSign);
 		int temp = event.indexOf("/",SpeedSign);
 		if(temp<SpeedEnd&&temp!=-1)SpeedEnd=temp;
 
-		int keylengthSign = event.indexOf("Âë³¤");
+		int keylengthSign = event.indexOf("ç é•¿");
 		int keylengthEnd = event.indexOf(" ",keylengthSign);
-		int keySpeedSign = event.indexOf("»÷¼ü");
+		int keySpeedSign = event.indexOf("å‡»é”®");
 		int keySpeedEnd = event.indexOf(" ",keySpeedSign);
 
 		Grade[0] = Double.parseDouble(event.substring(SpeedSign+2,SpeedEnd));
@@ -106,10 +111,16 @@ public class RegexText {
 	}
 	public static String qukong(String str){return str.replaceAll("\\s*", "");}
 	public static String instead(String str){
-		str = str.replaceAll(",","£¬");
-		str = str.replaceAll("\\.","¡£");
-		str = str.replaceAll(";","£»");
-		str = str.replaceAll(":","£º");
+		str = str.replaceAll(",","ï¼Œ");
+		str = str.replaceAll("\\.","ã€‚");
+		str = str.replaceAll(";","ï¼›");
+		str = str.replaceAll(":","ï¼š");
 		return  str;
+	}
+	public static Matcher isAt(String str ){
+		String regex = "\\[CQ:at,qq=(.*?)\\]";//æ­£åˆ™åŒ¹é…å‡º<p>ä¸</p>ä¹‹é—´
+		Pattern pattern = Pattern.compile(regex);//åŒ¹é…æ¨¡å¼
+		Matcher m = pattern.matcher(str);//åˆ¤æ–­æ˜¯å¦ç¬¦åˆåŒ¹é…
+		return  m;
 	}
 }

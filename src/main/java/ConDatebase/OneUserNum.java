@@ -24,13 +24,13 @@ public class OneUserNum extends IcqListener {
                 int datenum = rs.getInt("datenum");
                 int rank = rs.getInt("rank");
                 double aver = rs.getInt("aver");
-                String online = rs.getInt("online")==1?"ÔÚÏß":"²»ÔÚÏß";
+                String online = rs.getInt("online")==1?"åœ¨çº¿":"ä¸åœ¨çº¿";
                 int n = rs.getInt("n");
-                respond += "ÓÃ»§Ãû£º"+username+"\n×ÖÊıÇé¿ö£º×Ü£º"+all+" ¶Ô£º"+right+" ´í£º"+mis+" ½ñÈÕ£º"+datenum+
-                        "\nÈüÎÄÇé¿ö£ºÀÛ¼Æ¸ú´ò"+n+"´Î Æ½¾ù³É¼¨£º"+aver+" ÅÅÃû£º"+rank+
-                        "\nÔÚÏß×´Ì¬£º"+online;
+                respond += "ç”¨æˆ·åï¼š"+username+"\nå­—æ•°æƒ…å†µï¼šæ€»ï¼š"+all+" å¯¹ï¼š"+right+" é”™ï¼š"+mis+" ä»Šæ—¥ï¼š"+datenum+
+                        "\nèµ›æ–‡æƒ…å†µï¼šç´¯è®¡è·Ÿæ‰“"+n+"æ¬¡ å¹³å‡æˆç»©ï¼š"+aver+" æ’åï¼š"+rank+
+                        "\nåœ¨çº¿çŠ¶æ€ï¼š"+online;
             } else {
-                respond += "¸ÃÓÃ»§²»´æÔÚ";
+                respond += "è¯¥ç”¨æˆ·ä¸å­˜åœ¨";
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -43,7 +43,7 @@ public class OneUserNum extends IcqListener {
         String message = event.getMessage();
         String s[] = message.split(" ");
         Long QQnum = event.getSenderId();
-        if(s.length==2&&s[0].equals("ÍÏÀ­»ú")){
+        if(s.length==2&&s[0].equals("æ‹–æ‹‰æœº")){
             event.respond(getComArti(s[1],QQnum));
         }
     }

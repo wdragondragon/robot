@@ -25,7 +25,7 @@ public class RobotCrewl {
 //            sendmessage(str);
 
         }catch (Exception e){
-            System.out.println("连接错误");
+            System.out.println("杩炴帴閿欒");
             e.printStackTrace();
         }
         return str;
@@ -81,7 +81,7 @@ public class RobotCrewl {
     }
     public static int recordnum(int num) throws InterruptedException{
         num++;
-        System.out.println("次数:" + num);
+        System.out.println("娆℃暟:" + num);
         Thread.sleep(60 * 1000);
         return num;
     }

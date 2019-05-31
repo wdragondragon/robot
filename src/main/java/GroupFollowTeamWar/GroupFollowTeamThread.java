@@ -20,6 +20,7 @@ public class GroupFollowTeamThread {
     Map<Integer,List<Long>> Member = new HashMap<Integer, List<Long>>();
     Map<Integer,Integer> math = new HashMap<Integer, Integer>();
     Map<Integer,Double> avermath = new HashMap<Integer, Double>();
+    Map<Long,String> namelist = new HashMap<Long, String>();
     public GroupFollowTeamThread(EventGroupMessage event,int length){
         this.event = event;
         this.length = length;
@@ -42,9 +43,9 @@ public class GroupFollowTeamThread {
         }
     }
     public void nextDuan(){
-        String message = "¡Ÿ ±≥…º®\n";
+        String message = "‰∏¥Êó∂ÊàêÁª©\n";
         averspeed();
-        message += SortMap.SendsortValueTeamOneSpeed(speedlist);
+        message += SortMap.SendsortValueTeamOneSpeed(speedlist,namelist);
         message += SortMap.SendsortValueTeamSpeed(avermath,math);
         event.respond(message);
         this.duan++;
@@ -55,7 +56,7 @@ public class GroupFollowTeamThread {
     public void averspeed(){
         for(int i =1 ;i<=Member.size();i++){
             int membernum = Member.get(i).size();
-            System.out.println(i+"∂”»À ˝£∫"+membernum);
+            System.out.println(i+"Èòü‰∫∫Êï∞Ôºö"+membernum);
             Double averspeed = 0.0;
             for( int j = 0;j<membernum;j++) {
                 averspeed += speedlist.get(Member.get(i).get(j));
@@ -71,7 +72,7 @@ public class GroupFollowTeamThread {
         while(art.length()<duan*Integer.valueOf(length))
             art+= RamdomLoad.getRamdomWenben();
         message += art.substring((duan-1)*length,duan*length);
-        message = "ÀÊª˙Õ≈’Ω\n" + message + "\n-----µ⁄"+duan+"∂Œ-√ø∂Œ"+length+"◊÷";
+        message = "ÈöèÊú∫Âõ¢Êàò\n" + message + "\n-----Á¨¨"+duan+"ÊÆµ-ÊØèÊÆµ"+length+"Â≠ó";
         event.respond(message);
     }
     public int isEmpty(Long id){
@@ -82,15 +83,16 @@ public class GroupFollowTeamThread {
         }
         return -1;
     }
-    public void addID(int GroupNum,Long id){
+    public void addID(int GroupNum,Long id,String name){
         String at = "[CQ:at,qq="+id+"]\n";
         int i = isEmpty(id);
         if(i!=-1)
-            event.respond(at+"ƒ„“—º”»Î¡À"+(i)+"∂”£¨«ÎŒ÷ÿ∏¥º”»Î∂”ŒÈ");
+            event.respond(at+"‰Ω†Â∑≤Âä†ÂÖ•‰∫Ü"+(i)+"ÈòüÔºåËØ∑ÂãøÈáçÂ§çÂä†ÂÖ•Èòü‰ºç");
         else {
             Member.get(GroupNum).add(id);
             speedlist.put(id, 0.0);
-            event.respond(at + "º”»Î≥…π¶");
+            namelist.put(id,name);
+            event.respond(at + "Âä†ÂÖ•ÊàêÂäü");
         }
     }
     public void removeID(Long id){
@@ -98,10 +100,12 @@ public class GroupFollowTeamThread {
         int i = isEmpty(id);
         if(i!=-1) {
             Member.get(i).remove(id);
-            event.respond(at + "“—ÕÀ≥ˆ" + (i) + "∂”");
+            speedlist.remove(id);
+            namelist.remove(id);
+            event.respond(at + "Â∑≤ÈÄÄÂá∫" + (i) + "Èòü");
         }
         else
-            event.respond(at + "ƒ„Œ¥‘¯º”»Î∫Œ»À∂”ŒÈ");
+            event.respond(at + "‰Ω†Êú™ÊõæÂä†ÂÖ•‰Ωï‰∫∫Èòü‰ºç");
     }
     public Map<Integer,Integer> getMath(){
         return math;

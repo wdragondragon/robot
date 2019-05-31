@@ -14,6 +14,7 @@ public class GroupFollowThread extends  Thread {
     boolean start = false;
     Map<Long,Integer> IDlist = new HashMap<Long, Integer>();
     Map<Long, Double> IDspendlist = new HashMap<Long,Double>();
+    Map<Long,String> IDName = new HashMap<Long, String>();
     String art = "";
 
 
@@ -24,8 +25,8 @@ public class GroupFollowThread extends  Thread {
     }
     public void nextDuan(){
         this.duan++;
-        String message = "¡Ÿ ±≥…º®\n";
-        message += SortMap.SendsortValueFollow(IDlist,IDspendlist);
+        String message = "‰∏¥Êó∂ÊàêÁª©\n";
+        message += SortMap.SendsortValueFollow(IDlist,IDspendlist,IDName);
         event.respond(message);
         send();
         resert();
@@ -35,7 +36,7 @@ public class GroupFollowThread extends  Thread {
         while(art.length()<duan*Integer.valueOf(length))
             art+=RamdomLoad.getRamdomWenben();
         message += art.substring((duan-1)*length,duan*length);
-        message = "ÀÊª˙ªÏ’Ω\n" + message + "\n-----µ⁄"+duan+"∂Œ-√ø∂Œ"+length+"◊÷";
+        message = "ÈöèÊú∫Ê∑∑Êàò\n" + message + "\n-----Á¨¨"+duan+"ÊÆµ-ÊØèÊÆµ"+length+"Â≠ó";
         event.respond(message);
     }
     public void resert(){
@@ -43,13 +44,15 @@ public class GroupFollowThread extends  Thread {
             IDspendlist.put(k, 0.0);
         }
     }
-    public void addID(Long id){
+    public void addID(Long id,String name){
         IDlist.put(id,0);
         IDspendlist.put(id,0.0);
+        IDName.put(id,name);
     }
     public void removeID(Long id){
         IDlist.remove(id);
         IDspendlist.remove(id);
+        IDName.remove(id);
     }
     public Map<Long,Integer> getIDlist(){
         return IDlist;
@@ -71,5 +74,8 @@ public class GroupFollowThread extends  Thread {
     }
     public boolean getStartSign(){
         return start;
+    }
+    public Map<Long,String> getIDnamelist(){
+        return  IDName;
     }
 }

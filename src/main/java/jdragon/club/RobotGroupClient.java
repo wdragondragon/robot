@@ -9,22 +9,35 @@ import GroupFollowWar.GroupFollowThread;
 import GroupWar.GroupThread;
 import Tool.RegexText;
 import Tool.SortMap;
+import Tool.initGroupList;
 import cc.moecraft.icq.event.EventHandler;
 import cc.moecraft.icq.event.IcqListener;
 import cc.moecraft.icq.event.events.message.EventGroupMessage;
 import cc.moecraft.icq.event.events.message.EventMessage;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 
 public class RobotGroupClient extends IcqListener {
     boolean respondSign;
+    boolean init = false;
     @EventHandler
     public void Carry(EventGroupMessage event)
     {
+        System.out.println(event);
+        System.out.println("ç¾¤å·ï¼š"+event.getGroupId()+        //è·å–ç¾¤åç‰‡
+                " Qå·ï¼š"+event.getGroupSender().getInfo().getUserId()+
+                " ç¾¤åç‰‡ï¼š"+event.getGroupSender().getInfo().getCard()+
+                " æ˜µç§°ï¼š"+event.getGroupSender().getInfo().getNickname());
+        if(!init) {
+            initGroupList.init(event);
+            init = true;
+        }
         respondSign = false;
         CarryName(event);
         if(!respondSign)
@@ -41,18 +54,27 @@ public class RobotGroupClient extends IcqListener {
         }
         CreateFollowTeamCom(event);
     }
-    private void CarryName(EventMessage event){
+
+    private void CarryName(EventGroupMessage event){
         try {
-//            System.out.println("ÃûÆ¬²Ù×÷");
+            System.out.println("åç‰‡æ“ä½œ");
             String set[] = event.getMessage().split(" ");
             Long id = event.getSenderId();
             String message = "[CQ:at,qq=" + id + "]\n";
-            if (set[0].equals("ÉèÖÃÃûÆ¬")) {
+            if (set[0].equals("è®¾ç½®åç‰‡")) {
                 message += InConn.setName(set[1], id);
                 event.respond(message);
                 respondSign = true;
-            } else if (set[0].equals("²éÑ¯")) {
-                message += OutConn.ShowName(set[1]);
+            } else if (set[0].equals("æŸ¥è¯¢")) {
+                System.out.println(event.getMessage());
+                Matcher m = RegexText.isAt(event.getMessage());
+                if(m.find()){
+                    System.out.println(m.group(1));
+                    message += OutConn.ShowName(m.group(1));
+                }
+                else {
+                    message += OutConn.ShowName(set[1]);
+                }
                 event.respond(message);
                 respondSign = true;
             }
@@ -63,12 +85,12 @@ public class RobotGroupClient extends IcqListener {
         try {
             RegexText rgt = new RegexText();
             String Com[] = rgt.CarryCom(event.getMessage());
-            System.out.println("ÊÕ¼¯999¶Î²Ù×÷");
+            System.out.println("æ”¶é›†999æ®µæ“ä½œ");
             if (Com[2].equals("999")) {
                 String message = Com[0] + "\n" + Com[1];
                 Long GroupId = rgt.getGroupID(event.toString());
                 Long SendId = event.getSenderId();
-                message = "Èº:" + GroupId + " ÈË:" + SendId + " ²¶»ñÈüÎÄ¶Î£º\n" + message;
+                message = "ç¾¤:" + GroupId + " äºº:" + SendId + " æ•è·èµ›æ–‡æ®µï¼š\n" + message;
                 System.out.println(message);
                 if (SendId.equals(robot.xiaochaiQ)) {
                     InConn.AddGroupSaiwen(GroupId, Com);
@@ -79,11 +101,11 @@ public class RobotGroupClient extends IcqListener {
     }
     private void CarryComGrade(EventMessage event){
         try {
-            if (event.getMessage().substring(0, 5).equals("µÚ999¶Î")) {
+            if (event.getMessage().substring(0, 5).equals("ç¬¬999æ®µ")) {
                 Long GroupID = RegexText.getGroupID(event.toString());
                 Long SendID = event.getSenderId();
                 double Grade[] = RegexText.getGrade(event.getMessage());
-                String message = "ÈººÅ:" + GroupID + "ÓÃ»§:" + SendID + "\nËÙ¶È:" + Grade[0] + " »÷¼ü:" + Grade[1] + " Âë³¤:" + Grade[2];
+                String message = "ç¾¤å·:" + GroupID + "ç”¨æˆ·:" + SendID + "\né€Ÿåº¦:" + Grade[0] + " å‡»é”®:" + Grade[1] + " ç é•¿:" + Grade[2];
                 System.out.println(message);
                 InConn.AddRobotHistory(SendID, GroupID, Grade);
                 InConn.addMaxComMath(SendID, GroupID, Grade);
@@ -92,50 +114,62 @@ public class RobotGroupClient extends IcqListener {
             }
         }catch (Exception e){}
     }
-    private void CarryComShow(EventMessage event){
+    private void CarryComShow(EventGroupMessage event){
         try {
             String message = event.getMessage();
-//            System.out.println("ÈüÎÄºÍ³É¼¨²Ù×÷");
+            System.out.println("èµ›æ–‡å’Œæˆç»©æ“ä½œ");
             String s[] = message.split(" ");
             s[s.length - 1] = RegexText.AddZero(s[s.length - 1]);
             Date date = Date.valueOf(s[s.length - 1]);
+            Matcher m = RegexText.isAt(s[1]);
             Long QQnum = event.getSenderId();
+
             if (s.length == 2) {
-                if (s[0].equals("ÈüÎÄ")) {
+                if (s[0].equals("èµ›æ–‡")) {
                     event.respond(ComArti.responseStr(s[1], QQnum, date, 1));
                     respondSign = true;
-                } else if (s[0].equals("³É¼¨")) {
+                } else if (s[0].equals("æˆç»©")) {
                     event.respond(ComArti.responseStr(s[1], QQnum, date, 2));
                     respondSign = true;
                 }
             } else if (s.length == 3) {
-                if (s[0].equals("ÈüÎÄ")) {
+                if (s[0].equals("èµ›æ–‡")) {
                     event.respond(OutConn.ShowGroupSaiwen(s[1], date));
                     respondSign = true;
-                } else if (s[0].equals("³É¼¨")) {
+                } else if (s[0].equals("æˆç»©")) {
+                    event.respond(OutConn.ShowGroupSaiwenMath(s[1],date));
                     respondSign = true;
                 }
             } else if (s.length == 4) {
-                if (s[0].equals("³É¼¨")) {
-                    event.respond(OutConn.ShowGroupIdMath(s[1], s[2], date));
+                System.out.println("é•¿åº¦4");
+                if (s[0].equals("æˆç»©")) {
+                    System.out.println("æˆç»©");
+                    Long QQ;
+                    if(m.find())
+                        QQ = Long.valueOf(m.group(1));
+                    else
+                        QQ = Long.valueOf(s[1]);
+                    event.respond(OutConn.ShowGroupIdMath(QQ, s[2], date,event.getGroupSender().getInfo().getCard()));
                     respondSign = true;
                 }
             }
-        }catch (Exception e){}
+        }catch (Exception e){
+//            e.printStackTrace();
+        }
     }
     private void ShowGroupList(EventMessage event){
         try {
             String message = event.getMessage();
-//            System.out.println("ÈºÓ³Éä²Ù×÷");
+            System.out.println("ç¾¤æ˜ å°„æ“ä½œ");
             boolean sessced = false;
-            if (message.equals("ÈºÓ³ÉäÁĞ±í")) {
+            if (message.equals("ç¾¤æ˜ å°„åˆ—è¡¨")) {
                 try {
                     String sql = "select * from groupmap";
                     Connection con = Conn.getConnection();
                     ResultSet rs = Conn.getStmtSet(con, sql);
                     message = "";
                     while (rs.next()) {
-                        message += rs.getString("groupname") + "£º" +
+                        message += rs.getString("groupname") + "ï¼š" +
                                 rs.getString("groupid") + "\n";
                         sessced = true;
                     }
@@ -145,18 +179,18 @@ public class RobotGroupClient extends IcqListener {
                 if (sessced)
                     event.respond(message.substring(0, message.length() - 1));
                 respondSign = true;
-            } else if (message.equals("ÈË¹¤ÖÇÕÏ°ïÖú")) {
+            } else if (message.equals("äººå·¥æ™ºéšœå¸®åŠ©")) {
                 event.respond(
-                        "ÈºÓ³ÉäÁĞ±í = ²éÑ¯¸÷´ó¸ú´òÈºÓ³ÉäµÄËõĞ´Ãû×Ö\n" +
-                                "ÉèÖÃÃûÆ¬ ÃûÆ¬ = ÉèÖÃÄãÃûÆ¬£¨²»ÊÇÈºÃûÆ¬£©\n" +
-                                "²éÑ¯ ÄãµÄÃûÆ¬ = ²éÑ¯ÄãµÄÈüÎÄÉÏÆÁ³É¼¨¸Å¿ö\n" +
-                                "ÈüÎÄ Äê-ÔÂ-ÈÕ=²éÑ¯ÍÏÀ­»úÄ³ÌìÈüÎÄ\n" +
-                                "³É¼¨ Äê-ÔÂ-ÈÕ = ²éÑ¯ÍÏÀ­»úÄ³ÌìÈüÎÄ³É¼¨\n" +
-                                "ÈüÎÄ ÈºÓ³ÉäÃû×Ö Äê-ÔÂ-ÈÕ = ²éÑ¯Ä³¸öÈºÄ³Ò»ÌìµÄÈüÎÄ\n" +
-                                "³É¼¨ ÄãµÄÃûÆ¬ ÈºÓ³ÉäÃû×Ö Äê-ÔÂ-ÈÕ = ²éÑ¯ÄãÔÚÄ³¸öÈºÄ³ÌìÈüÎÄ³É¼¨ÉÏÆÁ¼ÇÂ¼\n"+
-                                "#Ëæ»úÕ½³¡ Æô¶¯²»ĞèÒª¸ú´òÆ÷µÄQQË½ÁÄ×÷¶ÔÕÕÇø£¬QÈºÁÄÌì¿ò×÷¸ú´òÇøµÄ¶ÔÕ½Ä£Ê½\n"+
-                                "#Ëæ»ú»ìÕ½ Æô¶¯Ò»¸öÒÔ¸öÈËÎªµ¥Î»¼Æ·ÖµÄ¸ú´ò·¢ÎÄ\n"+
-                                "#Ëæ»úÍÅÕ½ Æô¶¯Ò»¸öÒÔ¶ÓÎéÎªµ¥Î»¼Æ·ÖµÄ¸ú´ò·¢ÎÄ"
+                        "ç¾¤æ˜ å°„åˆ—è¡¨ = æŸ¥è¯¢å„å¤§è·Ÿæ‰“ç¾¤æ˜ å°„çš„ç¼©å†™åå­—\n" +
+                                "è®¾ç½®åç‰‡ åç‰‡ = è®¾ç½®ä½ åç‰‡ï¼ˆä¸æ˜¯ç¾¤åç‰‡ï¼‰\n" +
+                                "æŸ¥è¯¢ ä½ çš„åç‰‡ = æŸ¥è¯¢ä½ çš„èµ›æ–‡ä¸Šå±æˆç»©æ¦‚å†µ\n" +
+                                "èµ›æ–‡ å¹´-æœˆ-æ—¥=æŸ¥è¯¢æ‹–æ‹‰æœºæŸå¤©èµ›æ–‡\n" +
+                                "æˆç»© å¹´-æœˆ-æ—¥ = æŸ¥è¯¢æ‹–æ‹‰æœºæŸå¤©èµ›æ–‡æˆç»©\n" +
+                                "èµ›æ–‡ ç¾¤æ˜ å°„åå­— å¹´-æœˆ-æ—¥ = æŸ¥è¯¢æŸä¸ªç¾¤æŸä¸€å¤©çš„èµ›æ–‡\n" +
+                                "æˆç»© ä½ çš„åç‰‡ ç¾¤æ˜ å°„åå­— å¹´-æœˆ-æ—¥ = æŸ¥è¯¢ä½ åœ¨æŸä¸ªç¾¤æŸå¤©èµ›æ–‡æˆç»©ä¸Šå±è®°å½•\n"+
+                                "#éšæœºæˆ˜åœº å¯åŠ¨ä¸éœ€è¦è·Ÿæ‰“å™¨çš„QQç§èŠä½œå¯¹ç…§åŒºï¼ŒQç¾¤èŠå¤©æ¡†ä½œè·Ÿæ‰“åŒºçš„å¯¹æˆ˜æ¨¡å¼\n"+
+                                "#éšæœºæ··æˆ˜ å¯åŠ¨ä¸€ä¸ªä»¥ä¸ªäººä¸ºå•ä½è®¡åˆ†çš„è·Ÿæ‰“å‘æ–‡\n"+
+                                "#éšæœºå›¢æˆ˜ å¯åŠ¨ä¸€ä¸ªä»¥é˜Ÿä¼ä¸ºå•ä½è®¡åˆ†çš„è·Ÿæ‰“å‘æ–‡"
                 );
                 respondSign = true;
             }
@@ -172,72 +206,72 @@ public class RobotGroupClient extends IcqListener {
             Long GroupID = RegexText.getGroupID(event.toString());
             Long ID = event.getSenderId();
             String at = "[CQ:at,qq="+ID+"]\n";
-            if (length == 4 && s[0].equals("#Ëæ»úÕ½³¡")) {
+            if (length == 4 && s[0].equals("#éšæœºæˆ˜åœº")) {
                 if (GroupWarList.containsKey(GroupID))
-                    event.respond(at+"Ëæ»úÕ½³¡ÒÑ´æÔÚ");
-                else {//×Ü³¤ ¶Î³¤ ¶ÎÊ±¼ä
+                    event.respond(at+"éšæœºæˆ˜åœºå·²å­˜åœ¨");
+                else {//æ€»é•¿ æ®µé•¿ æ®µæ—¶é—´
                     GroupThread gp = new GroupThread(Integer.valueOf(s[1]), Integer.valueOf(s[2]),
                             Integer.valueOf(s[3]),event,GroupID);
                     GroupWarList.put(GroupID, gp);
                     gp.start();
-                    event.respond(at+"ÒÑ¿ªÆôÒ»¸ö×Ü³¤¶ÈÎª" + s[1] + "£¬Ò»¶Î×ÖÊıÎª" + s[2] + "£¬Ã¿¶Î¼ä¸ôÎª" + s[3] + "ÃëµÄÕ½³¡");
+                    event.respond(at+"å·²å¼€å¯ä¸€ä¸ªæ€»é•¿åº¦ä¸º" + s[1] + "ï¼Œä¸€æ®µå­—æ•°ä¸º" + s[2] + "ï¼Œæ¯æ®µé—´éš”ä¸º" + s[3] + "ç§’çš„æˆ˜åœº");
                 }
-            } else if (message.equals("#¼ÓÈëÕ½³¡")) {
+            } else if (message.equals("#åŠ å…¥æˆ˜åœº")) {
                 if (GroupWarList.containsKey(GroupID)) {
                     GroupThread gp = GroupWarList.get(GroupID);
                     if (gp.getStartSign())
-                        event.respond(at+"¼ÓÈëÊ§°Ü£¬Õ½³¡ÒÑ¿ªÊ¼£¬ÇëµÈ´ıÏÂÒ»³¡");
+                        event.respond(at+"åŠ å…¥å¤±è´¥ï¼Œæˆ˜åœºå·²å¼€å§‹ï¼Œè¯·ç­‰å¾…ä¸‹ä¸€åœº");
                     else if (gp.getIDlist().containsKey(ID))
-                        event.respond(at+"ÇëÎğÖØ¸´¼ÓÈë,ÍË³öÕ½³¡Ö¸Áî£º#ÍË³öÕ½³¡");
+                        event.respond(at+"è¯·å‹¿é‡å¤åŠ å…¥,é€€å‡ºæˆ˜åœºæŒ‡ä»¤ï¼š#é€€å‡ºæˆ˜åœº");
                     else {
-                        gp.addID(ID);
-                        event.respond(at+"¼ÓÈë³É¹¦");
+                        gp.addID(ID,event.getGroupSender().getInfo().getCard());
+                        event.respond(at+"åŠ å…¥æˆåŠŸ");
                     }
                 } else
-                    event.respond(at+"¸ÃÈº»¹Î´´´½¨Õ½³¡£¬Ö¸Áî£º#Ëæ»úÕ½³¡");
-            } else if (message.equals("#ÍË³öÕ½³¡")) {
+                    event.respond(at+"è¯¥ç¾¤è¿˜æœªåˆ›å»ºæˆ˜åœºï¼ŒæŒ‡ä»¤ï¼š#éšæœºæˆ˜åœº");
+            } else if (message.equals("#é€€å‡ºæˆ˜åœº")) {
                 if (GroupWarList.containsKey(GroupID)) {
                     GroupThread gp = GroupWarList.get(GroupID);
                     if (gp.getStartSign())
-                        event.respond(at+"ÍË³öÊ§°Ü£¬Õ½³¡ÒÑ¿ªÊ¼£¬Õ½³¡½áÊø×Ô¶¯ÍË³ö");
+                        event.respond(at+"é€€å‡ºå¤±è´¥ï¼Œæˆ˜åœºå·²å¼€å§‹ï¼Œæˆ˜åœºç»“æŸè‡ªåŠ¨é€€å‡º");
                     else if (!gp.getIDlist().containsKey(ID))
-                        event.respond(at+"ÄãÎ´Ôø¼ÓÈëÕ½³¡£¬ÎŞ·¨Ö´ĞĞÍË³ö");
+                        event.respond(at+"ä½ æœªæ›¾åŠ å…¥æˆ˜åœºï¼Œæ— æ³•æ‰§è¡Œé€€å‡º");
                     else {
                         gp.removeID(ID);
-                        event.respond(at+"ÍË³ö³É¹¦");
+                        event.respond(at+"é€€å‡ºæˆåŠŸ");
                     }
                 } else
-                    event.respond(at+"¸ÃÈº»¹Î´´´½¨Õ½³¡£¬Ö¸Áî£º#Ëæ»úÕ½³¡");
-            }else if(message.equals("#Õ½³¡Æô¶¯")){
+                    event.respond(at+"è¯¥ç¾¤è¿˜æœªåˆ›å»ºæˆ˜åœºï¼ŒæŒ‡ä»¤ï¼š#éšæœºæˆ˜åœº");
+            }else if(message.equals("#æˆ˜åœºå¯åŠ¨")){
                 if (GroupWarList.containsKey(GroupID)) {
                     GroupThread gp = GroupWarList.get(GroupID);
                     if (gp.getStartSign())
-                        event.respond(at+"Õ½³¡ÒÑÆô¶¯");
+                        event.respond(at+"æˆ˜åœºå·²å¯åŠ¨");
                     else if (!gp.getIDlist().containsKey(ID))
-                        event.respond(at+"ÄãÎ´Ôø¼ÓÈëÕ½³¡£¬ÎŞ·¨Ö´ĞĞÆô¶¯");
+                        event.respond(at+"ä½ æœªæ›¾åŠ å…¥æˆ˜åœºï¼Œæ— æ³•æ‰§è¡Œå¯åŠ¨");
                     else {
                         gp.setStartSign(true);
-                        event.respond("Õ½³¡Æô¶¯£¡Õ½¶·¿ªÊ¼£¡");
+                        event.respond("æˆ˜åœºå¯åŠ¨ï¼æˆ˜æ–—å¼€å§‹ï¼");
                     }
                 } else
-                    event.respond(at+"¸ÃÈº»¹Î´´´½¨Õ½³¡£¬Ö¸Áî£º#Ëæ»úÕ½³¡");
+                    event.respond(at+"è¯¥ç¾¤è¿˜æœªåˆ›å»ºæˆ˜åœºï¼ŒæŒ‡ä»¤ï¼š#éšæœºæˆ˜åœº");
             }
-            else if(message.equals("#Õ½³¡Ïú»Ù")){
+            else if(message.equals("#æˆ˜åœºé”€æ¯")){
                 if(GroupWarList.containsKey(GroupID)){
                     GroupThread gp = GroupWarList.get(GroupID);
                     gp.stop();
                     GroupWarList.remove(GroupID);
-                    event.respond(at+"Õ½³¡ÒÑÏú»Ù");
+                    event.respond(at+"æˆ˜åœºå·²é”€æ¯");
                 }else
-                    event.respond(at+"¸ÃÈº»¹Î´´´½¨Õ½³¡£¬Ö¸Áî£º#Ëæ»úÕ½³¡");
+                    event.respond(at+"è¯¥ç¾¤è¿˜æœªåˆ›å»ºæˆ˜åœºï¼ŒæŒ‡ä»¤ï¼š#éšæœºæˆ˜åœº");
             }
-            else if(message.equals("#Õ½³¡°ïÖú")||message.equals("#Ëæ»úÕ½³¡")){
-                message = "#Ëæ»úÕ½³¡ ÎÄÕÂ×Ü³¤¶È ·Ö¶Î³¤¶È ¼ä¸ôÊ±¼ä = ´´½¨Ò»¸öÕ½³¡\n"+
-                        "#¼ÓÈëÕ½³¡ = ¼ÓÈëÕ½³¡\n"+
-                        "#Õ½³¡³ÉÔ± = ²éÑ¯ÒÑ¼ÓÈëÕ½³¡µÄÈºÓÑ\n"+
-                        "#ÍË³öÕ½³¡ = ÍË³ö±¾ÈºÕ½³¡\n"+
-                        "#Õ½³¡Æô¶¯ = ÓëÒÑ¼ÓÈëÕ½³¡µÄÈºÓÑÒ»Æğ½øĞĞÏŞÊ±·Ö¶Î¸ú´ò\n"+
-                        "#Õ½³¡Ïú»Ù = ½«±¾Èº´´½¨µÄÕ½³¡É¾³ı";
+            else if(message.equals("#æˆ˜åœºå¸®åŠ©")||message.equals("#éšæœºæˆ˜åœº")){
+                message = "#éšæœºæˆ˜åœº æ–‡ç« æ€»é•¿åº¦ åˆ†æ®µé•¿åº¦ é—´éš”æ—¶é—´ = åˆ›å»ºä¸€ä¸ªæˆ˜åœº\n"+
+                        "#åŠ å…¥æˆ˜åœº = åŠ å…¥æˆ˜åœº\n"+
+                        "#æˆ˜åœºæˆå‘˜ = æŸ¥è¯¢å·²åŠ å…¥æˆ˜åœºçš„ç¾¤å‹\n"+
+                        "#é€€å‡ºæˆ˜åœº = é€€å‡ºæœ¬ç¾¤æˆ˜åœº\n"+
+                        "#æˆ˜åœºå¯åŠ¨ = ä¸å·²åŠ å…¥æˆ˜åœºçš„ç¾¤å‹ä¸€èµ·è¿›è¡Œé™æ—¶åˆ†æ®µè·Ÿæ‰“\n"+
+                        "#æˆ˜åœºé”€æ¯ = å°†æœ¬ç¾¤åˆ›å»ºçš„æˆ˜åœºåˆ é™¤";
                 event.respond(message);
             }
             else if(GroupWarList.containsKey(GroupID)){
@@ -246,19 +280,19 @@ public class RobotGroupClient extends IcqListener {
                     Map<Long,Integer> idlist = gp.getIDlist();
                     int i = idlist.get(ID);
                     idlist.put(ID,i+1);
-                    System.out.println("¼Ó·Ö£º"+(i+1));
+                    System.out.println("åŠ åˆ†ï¼š"+(i+1));
                 }
-                else if(message.equals("#Õ½³¡³ÉÔ±")){
+                else if(message.equals("#æˆ˜åœºæˆå‘˜")){
                     Map<Long,Integer> idlist = gp.getIDlist();
                     String number = "";
                     for(Long k:idlist.keySet()){
-                        number += "ÓÃ»§QºÅ£º"+k+"\n";
+                        number += "ç”¨æˆ·Qå·ï¼š"+k+"\n";
                     }
-                    number += "¹²"+idlist.size()+"¸ö³ÉÔ±×¼±¸½øÈëÕ½³¡";
+                    number += "å…±"+idlist.size()+"ä¸ªæˆå‘˜å‡†å¤‡è¿›å…¥æˆ˜åœº";
                     event.respond(number);
                 }
             }
-        }catch (Exception e){event.respond("Î´ÖªÔ­Òò£¬²Ù×÷Ê§°Ü");}
+        }catch (Exception e){event.respond("æœªçŸ¥åŸå› ï¼Œæ“ä½œå¤±è´¥");}
     }
     static HashMap<Long, GroupFollowThread> GroupFollowWarList = new HashMap<Long, GroupFollowThread>();
     private void CreateFollowCom(EventGroupMessage event){
@@ -269,76 +303,76 @@ public class RobotGroupClient extends IcqListener {
             Long GroupID = RegexText.getGroupID(event.toString());
             Long ID = event.getSenderId();
             String at = "[CQ:at,qq="+ID+"]\n";
-            if(length==2&&s[0].equals("#Ëæ»ú»ìÕ½")) {
+            if(length==2&&s[0].equals("#éšæœºæ··æˆ˜")) {
                 if (GroupFollowWarList.containsKey(GroupID))
-                    event.respond(at + "Ëæ»ú»ìÕ½ÒÑ´æÔÚ£¬ÈôÖØ¿ªÇëÏÈÏú»Ù");
-                else {//×Ü³¤ ¶Î³¤ ¶ÎÊ±¼ä
+                    event.respond(at + "éšæœºæ··æˆ˜å·²å­˜åœ¨ï¼Œè‹¥é‡å¼€è¯·å…ˆé”€æ¯");
+                else {//æ€»é•¿ æ®µé•¿ æ®µæ—¶é—´
                     GroupFollowThread gp = new GroupFollowThread(event, Integer.valueOf(s[1]), GroupID);
                     GroupFollowWarList.put(GroupID, gp);
                     gp.start();
-                    event.respond(at + "ÒÑ¿ªÆôÒ»¸öÃ¿¶Î×ÖÊıÎª" + s[1] + "µÄ»ìÕ½");
+                    event.respond(at + "å·²å¼€å¯ä¸€ä¸ªæ¯æ®µå­—æ•°ä¸º" + s[1] + "çš„æ··æˆ˜");
                 }
-            } else if (message.equals("#¼ÓÈë»ìÕ½")) {
+            } else if (message.equals("#åŠ å…¥æ··æˆ˜")) {
                 if (GroupFollowWarList.containsKey(GroupID)) {
                     GroupFollowThread gp = GroupFollowWarList.get(GroupID);
                     if (gp.getIDlist().containsKey(ID))
-                        event.respond(at+"ÇëÎğÖØ¸´¼ÓÈë,ÍË³ö»ìÕ½Ö¸Áî£º#ÍË³ö»ìÕ½");
+                        event.respond(at+"è¯·å‹¿é‡å¤åŠ å…¥,é€€å‡ºæ··æˆ˜æŒ‡ä»¤ï¼š#é€€å‡ºæ··æˆ˜");
                     else {
-                        gp.addID(ID);
-                        event.respond(at+"¼ÓÈë³É¹¦");
+                        gp.addID(ID,event.getGroupSender().getInfo().getCard());
+                        event.respond(at+"åŠ å…¥æˆåŠŸ");
                     }
                 } else
-                    event.respond(at+"¸ÃÈº»¹Î´´´½¨»ìÕ½£¬Ö¸Áî£º#Ëæ»ú»ìÕ½");
-            } else if (message.equals("#ÍË³ö»ìÕ½")) {
+                    event.respond(at+"è¯¥ç¾¤è¿˜æœªåˆ›å»ºæ··æˆ˜ï¼ŒæŒ‡ä»¤ï¼š#éšæœºæ··æˆ˜");
+            } else if (message.equals("#é€€å‡ºæ··æˆ˜")) {
                 if (GroupFollowWarList.containsKey(GroupID)) {
                     GroupFollowThread gp = GroupFollowWarList.get(GroupID);
                     if (!gp.getIDlist().containsKey(ID))
-                        event.respond(at + "ÄãÎ´Ôø¼ÓÈë»ìÕ½£¬ÎŞ·¨Ö´ĞĞÍË³ö");
+                        event.respond(at + "ä½ æœªæ›¾åŠ å…¥æ··æˆ˜ï¼Œæ— æ³•æ‰§è¡Œé€€å‡º");
                     else {
                         gp.removeID(ID);
-                        event.respond(at + "ÍË³ö³É¹¦");
+                        event.respond(at + "é€€å‡ºæˆåŠŸ");
                     }
                 } else
-                    event.respond(at + "¸ÃÈº»¹Î´´´½¨»ìÕ½£¬Ö¸Áî£º#Ëæ»ú»ìÕ½");
-            }else if(message.equals("#»ìÕ½Æô¶¯")){
+                    event.respond(at + "è¯¥ç¾¤è¿˜æœªåˆ›å»ºæ··æˆ˜ï¼ŒæŒ‡ä»¤ï¼š#éšæœºæ··æˆ˜");
+            }else if(message.equals("#æ··æˆ˜å¯åŠ¨")){
                 if (GroupFollowWarList.containsKey(GroupID)) {
                     GroupFollowThread gp = GroupFollowWarList.get(GroupID);
                     if (gp.getStartSign())
-                        event.respond(at+"»ìÕ½ÒÑÆô¶¯");
+                        event.respond(at+"æ··æˆ˜å·²å¯åŠ¨");
                     else if (!gp.getIDlist().containsKey(ID))
-                        event.respond(at+"ÄãÎ´Ôø¼ÓÈë»ìÕ½£¬ÎŞ·¨Ö´ĞĞÆô¶¯");
+                        event.respond(at+"ä½ æœªæ›¾åŠ å…¥æ··æˆ˜ï¼Œæ— æ³•æ‰§è¡Œå¯åŠ¨");
                     else {
                         gp.setStartSign(true);
-                        event.respond("»ìÕ½Æô¶¯£¡Õ½¶·¿ªÊ¼£¡");
+                        event.respond("æ··æˆ˜å¯åŠ¨ï¼æˆ˜æ–—å¼€å§‹ï¼");
                         gp.send();
                     }
                 } else
-                    event.respond(at+"¸ÃÈº»¹Î´´´½¨»ìÕ½£¬Ö¸Áî£º#Ëæ»ú»ìÕ½");
-            }else if(message.equals("#»ìÕ½½áËã")){
+                    event.respond(at+"è¯¥ç¾¤è¿˜æœªåˆ›å»ºæ··æˆ˜ï¼ŒæŒ‡ä»¤ï¼š#éšæœºæ··æˆ˜");
+            }else if(message.equals("#æ··æˆ˜ç»“ç®—")){
                 if(GroupFollowWarList.containsKey(GroupID)){
                     String message1 = "";
                     GroupFollowThread gp = GroupFollowWarList.get(GroupID);
-                    message1 += SortMap.SendsortValue(gp.getIDlist());
+                    message1 += SortMap.SendsortValue(gp.getIDlist(),gp.getIDnamelist());
                     gp.stop();
                     GroupFollowWarList.remove(GroupID);
-                    event.respond(at+"»ìÕ½ÒÑ½áËã\n"+message1);
+                    event.respond(at+"æ··æˆ˜å·²ç»“ç®—\n"+message1);
                 }else
-                    event.respond(at+"¸ÃÈº»¹Î´´´½¨»ìÕ½£¬Ö¸Áî£º#Ëæ»ú»ìÕ½");
-            }else if(message.equals("#»ìÕ½°ïÖú")||message.equals("#Ëæ»ú»ìÕ½")){
-                message = "#Ëæ»ú»ìÕ½ Ò»¶Î³¤¶È = ´´½¨Ò»¸ö»ìÕ½\n"+
-                        "#¼ÓÈë»ìÕ½ = ¼ÓÈë»ìÕ½\n"+
-                        "#»ìÕ½³ÉÔ± = ²éÑ¯ÒÑ¼ÓÈë»ìÕ½µÄÈºÓÑ\n"+
-                        "#ÍË³ö»ìÕ½ = ÍË³ö±¾Èº»ìÕ½\n"+
-                        "#»ìÕ½Æô¶¯ = ÓëÒÑ¼ÓÈë»ìÕ½µÄÈºÓÑÒ»Æğ½øĞĞ·Ö¶Î¸ú´ò\n"+
-                        "#»ìÕ½½áËã = ½«±¾Èº´´½¨µÄ»ìÕ½½áËã³É¼¨²¢É¾³ı\n"+
-                        "¼Ç·Ö¹æÔò£ºµÚÒ»Ãû3·Ö£¬µÚ¶şÃû2·Ö£¬µÚÈıÃû1·Ö£¬ÆäËûÃû´ÎÎŞ·Ö";
+                    event.respond(at+"è¯¥ç¾¤è¿˜æœªåˆ›å»ºæ··æˆ˜ï¼ŒæŒ‡ä»¤ï¼š#éšæœºæ··æˆ˜");
+            }else if(message.equals("#æ··æˆ˜å¸®åŠ©")||message.equals("#éšæœºæ··æˆ˜")){
+                message = "#éšæœºæ··æˆ˜ ä¸€æ®µé•¿åº¦ = åˆ›å»ºä¸€ä¸ªæ··æˆ˜\n"+
+                        "#åŠ å…¥æ··æˆ˜ = åŠ å…¥æ··æˆ˜\n"+
+                        "#æ··æˆ˜æˆå‘˜ = æŸ¥è¯¢å·²åŠ å…¥æ··æˆ˜çš„ç¾¤å‹\n"+
+                        "#é€€å‡ºæ··æˆ˜ = é€€å‡ºæœ¬ç¾¤æ··æˆ˜\n"+
+                        "#æ··æˆ˜å¯åŠ¨ = ä¸å·²åŠ å…¥æ··æˆ˜çš„ç¾¤å‹ä¸€èµ·è¿›è¡Œåˆ†æ®µè·Ÿæ‰“\n"+
+                        "#æ··æˆ˜ç»“ç®— = å°†æœ¬ç¾¤åˆ›å»ºçš„æ··æˆ˜ç»“ç®—æˆç»©å¹¶åˆ é™¤\n"+
+                        "è®°åˆ†è§„åˆ™ï¼šç¬¬ä¸€å3åˆ†ï¼Œç¬¬äºŒå2åˆ†ï¼Œç¬¬ä¸‰å1åˆ†ï¼Œå…¶ä»–åæ¬¡æ— åˆ†";
                 event.respond(message);
             }else if(GroupFollowWarList.containsKey(GroupID)){
                 GroupFollowThread gp = GroupFollowWarList.get(GroupID);
                 boolean next = true;
                 try {
                     String regex = "[^0123456789]+";
-                    if (message.substring(0, 1).equals("µÚ")&&
+                    if (message.substring(0, 1).equals("ç¬¬")&&
                             Integer.valueOf(message.substring(1,5).replaceAll(regex,""))==gp.getDuan()) {
                         double Grade[] = RegexText.getGrade(event.getMessage());
                         System.out.println(gp.getIDspend(ID));
@@ -359,13 +393,13 @@ public class RobotGroupClient extends IcqListener {
                     e.printStackTrace();
                 }
 
-                if(message.equals("#»ìÕ½³ÉÔ±")){
+                if(message.equals("#æ··æˆ˜æˆå‘˜")){
                     Map<Long,Integer> idlist = gp.getIDlist();
                     String number = "";
                     for(Long k:idlist.keySet()){
-                        number += "ÓÃ»§QºÅ£º"+k+"\n";
+                        number += "ç”¨æˆ·Qå·ï¼š"+k+"\n";
                     }
-                    number += "¹²"+idlist.size()+"¸ö³ÉÔ±×¼±¸½øÈëÍÅ³¡";
+                    number += "å…±"+idlist.size()+"ä¸ªæˆå‘˜å‡†å¤‡è¿›å…¥å›¢åœº";
                     event.respond(number);
                 }
             }
@@ -382,67 +416,67 @@ public class RobotGroupClient extends IcqListener {
             Long GroupID = RegexText.getGroupID(event.toString());
             Long ID = event.getSenderId();
             String at = "[CQ:at,qq="+ID+"]\n";
-            if(length==2&&s[0].equals("#Ëæ»úÍÅÕ½")) {
+            if(length==2&&s[0].equals("#éšæœºå›¢æˆ˜")) {
                 if (GroupFolloTeamWarList.containsKey(GroupID))
-                    event.respond(at + "Ëæ»úÍÅÕ½ÒÑ´æÔÚ£¬ÈôÖØ¿ªÇëÏÈÏú»Ù");
-                else {//×Ü³¤ ¶Î³¤ ¶ÎÊ±¼ä
+                    event.respond(at + "éšæœºå›¢æˆ˜å·²å­˜åœ¨ï¼Œè‹¥é‡å¼€è¯·å…ˆé”€æ¯");
+                else {//æ€»é•¿ æ®µé•¿ æ®µæ—¶é—´
                     GroupFollowTeamThread gp = new GroupFollowTeamThread(event, Integer.valueOf(s[1]));
                     GroupFolloTeamWarList.put(GroupID, gp);
 //                    gp.start();
-                    event.respond(at + "ÒÑ¿ªÆôÒ»¸öÃ¿¶Î×ÖÊıÎª" + s[1] + "µÄÍÅÕ½");
+                    event.respond(at + "å·²å¼€å¯ä¸€ä¸ªæ¯æ®µå­—æ•°ä¸º" + s[1] + "çš„å›¢æˆ˜");
                 }
-            } else if (length==2&&s[0].equals("#¼ÓÈëÍÅÕ½")) {
+            } else if (length==2&&s[0].equals("#åŠ å…¥å›¢æˆ˜")) {
                 if (GroupFolloTeamWarList.containsKey(GroupID)) {
                     GroupFollowTeamThread gp = GroupFolloTeamWarList.get(GroupID);
-                    gp.addID(Integer.valueOf(s[1]),ID);
+                    gp.addID(Integer.valueOf(s[1]),ID,event.getGroupSender().getInfo().getCard());
                 } else
-                    event.respond(at+"¸ÃÈº»¹Î´´´½¨ÍÅÕ½£¬Ö¸Áî£º#Ëæ»úÍÅÕ½");
-            } else if (message.equals("#ÍË³öÍÅÕ½")) {
+                    event.respond(at+"è¯¥ç¾¤è¿˜æœªåˆ›å»ºå›¢æˆ˜ï¼ŒæŒ‡ä»¤ï¼š#éšæœºå›¢æˆ˜");
+            } else if (message.equals("#é€€å‡ºå›¢æˆ˜")) {
                 if (GroupFolloTeamWarList.containsKey(GroupID)) {
                     GroupFollowTeamThread gp = GroupFolloTeamWarList.get(GroupID);
                     gp.removeID(ID);
 
                 } else
-                    event.respond(at + "¸ÃÈº»¹Î´´´½¨ÍÅÕ½£¬Ö¸Áî£º#Ëæ»úÍÅÕ½");
-            }else if(message.equals("#ÍÅÕ½Æô¶¯")){
+                    event.respond(at + "è¯¥ç¾¤è¿˜æœªåˆ›å»ºå›¢æˆ˜ï¼ŒæŒ‡ä»¤ï¼š#éšæœºå›¢æˆ˜");
+            }else if(message.equals("#å›¢æˆ˜å¯åŠ¨")){
             if (GroupFolloTeamWarList.containsKey(GroupID)) {
                 GroupFollowTeamThread gp = GroupFolloTeamWarList.get(GroupID);
                 if (gp.getStartSign())
-                    event.respond(at+"ÍÅÕ½ÒÑÆô¶¯");
+                    event.respond(at+"å›¢æˆ˜å·²å¯åŠ¨");
                 else if (gp.isEmpty(ID)==-1)
-                    event.respond(at+"ÄãÎ´Ôø¼ÓÈëÍÅÕ½£¬ÎŞ·¨Ö´ĞĞÆô¶¯");
+                    event.respond(at+"ä½ æœªæ›¾åŠ å…¥å›¢æˆ˜ï¼Œæ— æ³•æ‰§è¡Œå¯åŠ¨");
                 else {
                     gp.setStartSign(true);
-                    event.respond("ÍÅÕ½Æô¶¯£¡Õ½¶·¿ªÊ¼£¡");
+                    event.respond("å›¢æˆ˜å¯åŠ¨ï¼æˆ˜æ–—å¼€å§‹ï¼");
                     gp.send();
                 }
             } else
-                event.respond(at+"¸ÃÈº»¹Î´´´½¨ÍÅÕ½£¬Ö¸Áî£º#Ëæ»úÍÅÕ½");
-        }else if(message.equals("#ÍÅÕ½½áËã")){
+                event.respond(at+"è¯¥ç¾¤è¿˜æœªåˆ›å»ºå›¢æˆ˜ï¼ŒæŒ‡ä»¤ï¼š#éšæœºå›¢æˆ˜");
+        }else if(message.equals("#å›¢æˆ˜ç»“ç®—")){
             if(GroupFolloTeamWarList.containsKey(GroupID)){
                 String message1 = "";
                 GroupFollowTeamThread gp = GroupFolloTeamWarList.get(GroupID);
                 message1 += SortMap.SendsortValueTeamMath(gp.getMath());
 //                gp.stop();
                 GroupFolloTeamWarList.remove(GroupID);
-                event.respond(at+"ÍÅÕ½ÒÑ½áËã\n"+message1);
+                event.respond(at+"å›¢æˆ˜å·²ç»“ç®—\n"+message1);
             }else
-                event.respond(at+"¸ÃÈº»¹Î´´´½¨ÍÅÕ½£¬Ö¸Áî£º#Ëæ»úÍÅÕ½");
-        }else if(message.equals("#ÍÅÕ½°ïÖú")||message.equals("#Ëæ»úÍÅÕ½")){
-            message = "#Ëæ»úÍÅÕ½ Ò»¶Î³¤¶È = ´´½¨Ò»¸ö»ìÕ½\n"+
-                    "#¼ÓÈëÍÅÕ½ ¶ÓÎéºÅ = ¼ÓÈëÄ³¸ö¶ÓÎé×¼±¸ÍÅÕ½£¨¼ÓÈëÍÅÕ½ 1/2£©\n"+
-                    "#ÍÅÕ½³ÉÔ± = ²éÑ¯ÒÑ¼ÓÈë¸Ã¶ÓÎéµÄÈºÓÑ\n"+
-                    "#ÍË³öÍÅÕ½ = ÍË³öÒÑ¼ÓÈëµÄ¶ÓÎé\n"+
-                    "#ÍÅÕ½Æô¶¯ = ÓëÒÑ¼ÓÈëÍÅÕ½µÄÈºÓÑÒ»Æğ½øĞĞ·Ö¶Î¸ú´ò\n"+
-                    "#ÍÅÕ½½áËã = ½«±¾Èº´´½¨µÄÍÅÕ½½áËã³É¼¨²¢É¾³ı\n"+
-                    "¼Ç·Ö¹æÔò£ºÖ»·ÖÁ½Ö»¶ÓÎé£¬Ó®µÄµÃÒ»·Ö£¬°´ÕÕ¶ÓÎéÆ½¾ùËÙ¶È¼ÆËã";
+                event.respond(at+"è¯¥ç¾¤è¿˜æœªåˆ›å»ºå›¢æˆ˜ï¼ŒæŒ‡ä»¤ï¼š#éšæœºå›¢æˆ˜");
+        }else if(message.equals("#å›¢æˆ˜å¸®åŠ©")||message.equals("#éšæœºå›¢æˆ˜")){
+            message = "#éšæœºå›¢æˆ˜ ä¸€æ®µé•¿åº¦ = åˆ›å»ºä¸€ä¸ªæ··æˆ˜\n"+
+                    "#åŠ å…¥å›¢æˆ˜ é˜Ÿä¼å· = åŠ å…¥æŸä¸ªé˜Ÿä¼å‡†å¤‡å›¢æˆ˜ï¼ˆåŠ å…¥å›¢æˆ˜ 1/2ï¼‰\n"+
+                    "#å›¢æˆ˜æˆå‘˜ = æŸ¥è¯¢å·²åŠ å…¥è¯¥é˜Ÿä¼çš„ç¾¤å‹\n"+
+                    "#é€€å‡ºå›¢æˆ˜ = é€€å‡ºå·²åŠ å…¥çš„é˜Ÿä¼\n"+
+                    "#å›¢æˆ˜å¯åŠ¨ = ä¸å·²åŠ å…¥å›¢æˆ˜çš„ç¾¤å‹ä¸€èµ·è¿›è¡Œåˆ†æ®µè·Ÿæ‰“\n"+
+                    "#å›¢æˆ˜ç»“ç®— = å°†æœ¬ç¾¤åˆ›å»ºçš„å›¢æˆ˜ç»“ç®—æˆç»©å¹¶åˆ é™¤\n"+
+                    "è®°åˆ†è§„åˆ™ï¼šåªåˆ†ä¸¤åªé˜Ÿä¼ï¼Œèµ¢çš„å¾—ä¸€åˆ†ï¼ŒæŒ‰ç…§é˜Ÿä¼å¹³å‡é€Ÿåº¦è®¡ç®—";
             event.respond(message);
         }else if(GroupFolloTeamWarList.containsKey(GroupID)){
                 GroupFollowTeamThread gp = GroupFolloTeamWarList.get(GroupID);
                 boolean next = true;
                 try {
                     String regex = "[^0123456789]+";
-                    if (message.substring(0, 1).equals("µÚ")&&
+                    if (message.substring(0, 1).equals("ç¬¬")&&
                             Integer.valueOf(message.substring(1,5).replaceAll(regex,""))==gp.getDuan()) {
                         double Grade[] = RegexText.getGrade(event.getMessage());
 //                        System.out.println(gp.getIDspend(ID));
@@ -466,11 +500,11 @@ public class RobotGroupClient extends IcqListener {
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-                if(message.equals("#ÍÅÕ½³ÉÔ±")){
+                if(message.equals("#å›¢æˆ˜æˆå‘˜")){
                     String message1 = "";
                     for(Integer k:gp.getMember().keySet()){
                         List<Long> member = gp.getMember().get(k);
-                        message1 += k+"¶Ó³ÉÔ±£º\n";
+                        message1 += k+"é˜Ÿæˆå‘˜ï¼š\n";
                         for(int i = 0;i<member.size();i++){
                             message1 += member.get(i)+"\n";
                         }

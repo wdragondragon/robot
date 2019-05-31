@@ -1,6 +1,8 @@
 package ConDatebase;
 
 import Tool.RegexText;
+import Tool.initGroupList;
+import jdragon.club.RobotGroupClient;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,6 +10,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class OutConn {
+    public static String insteadName(Long id){
+        try{
+            String sql = "select name from robotclient where id=?";
+            Connection con = Conn.getConnection();
+            PreparedStatement ptmt = Conn.getPtmt(con,sql);
+            ptmt.setLong(1,id);
+            ResultSet rs = ptmt.executeQuery();
+            if(rs.next()){
+                return rs.getString("name");
+            }
+            else{
+                return "æœªè®¾å";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return "è·å–é”™è¯¯";
+        }
+    }
     public static String ShowName(String name){
         try {
             String sql = "select * from robotclient where name=?";
@@ -25,22 +45,22 @@ public class OutConn {
                 if(rs.next())
                     return getShowNameStr(rs);
                 else
-                    return "»ñÈ¡Ê§°Ü£¬ÎŞ³É¼¨»òÎŞÃû³Æ£¬ÏÈ´òÒ»ÆªÈüÎÄÉÏÆÁ³É¼¨ÊÔÊÔ¿´°É£¬Íü¼ÇÈºÃûÆ¬¿ÉÒÔÓÃQºÅ²éÑ¯Å¶";
+                    return "è·å–å¤±è´¥ï¼Œæ— æ”¶å½•æˆç»©";
             }
         }catch (Exception e){
 //            e.printStackTrace();
-            return "»ñÈ¡Ê§°Ü£¬ÎŞ³É¼¨»òÎŞÃû³Æ£¬ÏÈ´òÒ»ÆªÈüÎÄÉÏÆÁ³É¼¨ÊÔÊÔ¿´°É£¬Íü¼ÇÈºÃûÆ¬¿ÉÒÔÓÃQºÅ²éÑ¯Å¶";
+            return "è·å–å¤±è´¥ï¼Œæ— æ”¶å½•æˆç»©";
         }
     }
     private static String getShowNameStr(ResultSet rs){
         try {
             String name = rs.getString("name");
-            if(name==null)name="£¨Î´ÉèÖÃÃûÆ¬£© ";
-            return "ÓÃ»§Ãû£º"+name+" QºÅ£º"+rs.getLong("id")+
-                    "\nÉÏÆÁÈüÎÄ³É¼¨´ÎÊı£º"+rs.getInt("n")+
-                    "\nÆ½¾ùËÙ¶È£º"+ RegexText.FourOutFiveIn(rs.getDouble("speedaver"))+
-                    " Æ½¾ù»÷¼ü£º"+RegexText.FourOutFiveIn(rs.getDouble("keyspeedaver"))+
-                    " Æ½¾ùÂë³¤£º"+RegexText.FourOutFiveIn(rs.getDouble("keylengthaver"));
+            if(name==null)name="ï¼ˆæœªè®¾ç½®åç‰‡ï¼‰ ";
+            return "ç”¨æˆ·åï¼š"+ name +" Qå·ï¼š"+rs.getLong("id")+
+                    "\nä¸Šå±èµ›æ–‡æˆç»©æ¬¡æ•°ï¼š"+rs.getInt("n")+
+                    "\nå¹³å‡é€Ÿåº¦ï¼š"+ RegexText.FourOutFiveIn(rs.getDouble("speedaver"))+
+                    " å¹³å‡å‡»é”®ï¼š"+RegexText.FourOutFiveIn(rs.getDouble("keyspeedaver"))+
+                    " å¹³å‡ç é•¿ï¼š"+RegexText.FourOutFiveIn(rs.getDouble("keylengthaver"));
         }
         catch (Exception e){
             e.printStackTrace();
@@ -68,39 +88,79 @@ public class OutConn {
                 if(rs.next()){
                     String title = rs.getString("title");
                     String saiwen = rs.getString("saiwen");
-                    message = title+"\n"+saiwen+"\n-----µÚ1¶Î-¹²"+saiwen.length()+"×Ö";
+                    message = title+"\n"+saiwen+"\n-----ç¬¬1æ®µ-å…±"+saiwen.length()+"å­—";
                 }
                 else
-                    message = groupname+"ÔÚÕâÒ»ÌìÃ»ÓĞÈüÎÄ";
+                    message = groupname+"åœ¨è¿™ä¸€å¤©æ²¡æœ‰èµ›æ–‡";
             }
             else
-                message =  "Ã»ÓĞ"+groupname+"Õâ¸öÈº";
+                message =  "æ²¡æœ‰"+groupname+"è¿™ä¸ªç¾¤";
             conn.close();
         }catch (Exception e){
             e.printStackTrace();
         }
         return message;
     }
+    public static String ShowGroupSaiwenMath(String groupname,Date date){
+        String message = "";
+        Long groupid;
+        try{
+            String sql = "select groupid from groupmap where groupname=?";
+            Connection conn = Conn.getConnection();
+            PreparedStatement ptmt = Conn.getPtmt(conn,sql);
+            ptmt.setString(1,groupname);
+            ResultSet rs = ptmt.executeQuery();
 
-    public static String ShowGroupIdMath(String idname,String groupname,Date date) {
+            if(rs.next()) {
+
+                groupid = rs.getLong("groupid");
+                sql = "select * from groupsaiwenmax where groupid=? and date=? order by speed DESC";
+                ptmt = Conn.getPtmt(conn,sql);
+                System.out.println(groupid+":"+date);
+                ptmt.setLong(1,groupid);
+                ptmt.setDate(2,date);
+                rs = ptmt.executeQuery();
+                int i = 0;
+                while(rs.next()){
+                    i++;
+                    String name = initGroupList.GroupMemberCardMap.get(groupid).get(rs.getLong("id"));
+                    if(name.equals(""))
+                        name = ""+rs.getLong("id");
+                    message += i+ " "+rs.getDouble("speed")+" "+
+                            rs.getDouble("keyspeed")+" "+
+                            rs.getDouble("keylength")+"ï¼š" +name + "\n";
+                    System.out.println(i);
+                }
+                if(i==0)
+                    message = groupname+"åœ¨è¿™ä¸€å¤©æ²¡æœ‰èµ›æ–‡æˆç»©";
+            }
+            else
+                message =  "æ²¡æœ‰"+groupname+"è¿™ä¸ªç¾¤";
+            conn.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return message;
+    }
+    public static String ShowGroupIdMath(Long id,String groupname,Date date,String idname) {
         boolean have = false;
-        String message = date+"\nÓÃ»§Ãû£º"+idname+" Èº£º"+groupname;
-        String sql = "select id from robotclient where name=?";
-        Long id,groupid;
+        String message = date+"\nç”¨æˆ·åï¼š"+idname+" ç¾¤ï¼š"+groupname;
+//        String sql = "select id from robotclient where name=?";
+        Long groupid;
         try{
             Connection con = Conn.getConnection();
-            PreparedStatement ptmt = Conn.getPtmt(con,sql);
-            ptmt.setString(1,idname);
-            ResultSet rs = ptmt.executeQuery();
-            if(rs.next())id=rs.getLong("id");
-            else return "ÎŞ¸ÃÃûÆ¬£¬·¢ËÍÖ¸Áî£¨ÉèÖÃÃûÆ¬ Ãû×Ö£©À´ÉèÖÃÃûÆ¬£¬ÈôÒÑÉèÖÃÃûÆ¬£¬Çë³¢ÊÔ¸ú´òÒ»¶ÎÈüÎÄ²¢ÉÏÆÁ³É¼¨";
+//            PreparedStatement ptmt = Conn.getPtmt(con,sql);
+//            ptmt.setString(1,idname);
+//            ResultSet rs = ptmt.executeQuery();
+//            if(rs.next())id=rs.getLong("id");
+//            else return "æ— è¯¥åç‰‡ï¼Œå‘é€æŒ‡ä»¤ï¼ˆè®¾ç½®åç‰‡ åå­—ï¼‰æ¥è®¾ç½®åç‰‡ï¼Œè‹¥å·²è®¾ç½®åç‰‡ï¼Œè¯·å°è¯•è·Ÿæ‰“ä¸€æ®µèµ›æ–‡å¹¶ä¸Šå±æˆç»©";
 
-            sql = "select groupid from groupmap where groupname=?";
-            ptmt = Conn.getPtmt(con,sql);
+            String sql = "select groupid from groupmap where groupname=?";
+            PreparedStatement ptmt = Conn.getPtmt(con,sql);
             ptmt.setString(1,groupname);
-            rs = ptmt.executeQuery();
+            ResultSet rs = ptmt.executeQuery();
             if(rs.next())groupid=rs.getLong("groupid");
-            else return "ÎŞ¸ÃÈºÓ³ÉäÁĞ±í£¬·¢ËÍÖ¸Áî£¨ÈºÓ³ÉäÁĞ±í£©À´²é¿´¿ÉÒÔ²éÑ¯µÄÈºÃû";
+            else return "æ— è¯¥ç¾¤æ˜ å°„åˆ—è¡¨ï¼Œå‘é€æŒ‡ä»¤ï¼ˆç¾¤æ˜ å°„åˆ—è¡¨ï¼‰æ¥æŸ¥çœ‹å¯ä»¥æŸ¥è¯¢çš„ç¾¤å";
 
 
             sql = "select * from robothistory where id=? and groupid=? and date=?";
@@ -116,13 +176,16 @@ public class OutConn {
             ptmt.setDate(3,date);
             rs = ptmt.executeQuery();
             while(rs.next()){
-                message += "\nËÙ¶È£º"+RegexText.FourOutFiveIn(rs.getDouble("speed"))+
-                                " »÷¼ü£º"+RegexText.FourOutFiveIn(rs.getDouble("keyspeed"))+
-                                    " Âë³¤£º"+RegexText.FourOutFiveIn(rs.getDouble("keylength"));
+                message += "\né€Ÿåº¦ï¼š"+RegexText.FourOutFiveIn(rs.getDouble("speed"))+
+                                " å‡»é”®ï¼š"+RegexText.FourOutFiveIn(rs.getDouble("keyspeed"))+
+                                    " ç é•¿ï¼š"+RegexText.FourOutFiveIn(rs.getDouble("keylength"));
                 have = true;
             }
-            if(have==false)message = idname+"ÎŞ"+date+"ÔÚ"+groupname+"µÄ³É¼¨";
+            if(have==false)
+//                message = idname+"æ— "+date+"åœ¨"+groupname+"çš„æˆç»©";
+                message = "æ— æ”¶å½•æˆç»©";
         }catch (Exception e){
+
             e.printStackTrace();
         }
         return  message;

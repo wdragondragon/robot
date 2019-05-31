@@ -15,11 +15,11 @@ public class ComArti {
             ptmt.setDate(1, date);
             ResultSet rs = ptmt.executeQuery();
             if (rs.next()) {
-                respond = date + "ÍÏÀ­»úÈüÎÄ-" + rs.getString("author") + "\n";
+                respond = date + "æ‹–æ‹‰æœºèµ›æ–‡-" + rs.getString("author") + "\n";
                 respond += rs.getString("saiwen") + "\n";
-                respond += "-----µÚ0¶Î-¹²" + rs.getString("saiwen").length() + "×Ö";
+                respond += "-----ç¬¬0æ®µ-å…±" + rs.getString("saiwen").length() + "å­—";
             } else {
-                respond = "Ã»ÓĞÕâÒ»ÌìµÄÈüÎÄ";
+                respond = "æ²¡æœ‰è¿™ä¸€å¤©çš„èµ›æ–‡";
             }
             con.close();
         }catch (Exception e){
@@ -42,7 +42,7 @@ public class ComArti {
                 respond += name + " "+sudu+"\n";
                 sign = true;
             }
-            if(!sign)respond = "ÎŞ¸ÃÌìÈüÎÄ³É¼¨";
+            if(!sign)respond = "æ— è¯¥å¤©èµ›æ–‡æˆç»©";
 
         }catch (Exception e){
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class ComArti {
 
     public static String  responseStr(String s,Long QQnum,Date date,int model){
         if(Conn.getdate().toString().equals(s)&&model==1)
-            return "[CQ:at,qq="+QQnum+"]\n"+"²»ÄÜ»ñÈ¡½ñÈÕÈüÎÄ";
+            return "[CQ:at,qq="+QQnum+"]\n"+"ä¸èƒ½è·å–ä»Šæ—¥èµ›æ–‡";
         else if(model==1)
             return getComArti(date);
         else

@@ -1,19 +1,22 @@
 package Tool;
+import ConDatebase.OutConn;
+
 import java.util.*;
 
 public class SortMap {
-    public static String SendsortKey(Map<Long,Integer> map){
+    public static String SendsortKey(Map<Long,Integer> map,Map<Long,SortMap>namelist){
         String message="";
         Set set = map.keySet();
         Long[] arr = (Long[]) set.toArray();
         Arrays.sort(arr);
         for (Long key : arr) {
             System.out.println(key + ": " + map.get(key));
-            message +="�û�Q�ţ�" + key + " �÷֣�" + map.get(key) + "\n";
+            message +="用户名："+ namelist.get(key) +
+                    " 用户Q号：" + key + " 得分：" + map.get(key) + "\n";
         }
         return  message;
     }
-    public static String SendsortValue(Map<Long,Integer> map){
+    public static String SendsortValue(Map<Long,Integer> map,Map<Long,String> namelist){
         String message="";
         //value-sort
         List<Map.Entry<Long, Integer>> list = new ArrayList<Map.Entry<Long, Integer>>(map.entrySet());
@@ -26,11 +29,11 @@ public class SortMap {
         //for-each
         for (Map.Entry<Long, Integer> mapping : list) {
             System.out.println(mapping.getKey() + ": " + mapping.getValue());
-            message +="�û�Q�ţ�" + mapping.getKey() + " �÷֣�" + mapping.getValue() + "\n";
-        }
+            message +="用户名："+ namelist.get(mapping.getKey()) +" 用户Q号：" + mapping.getKey() + " 得分：" + mapping.getValue() + "\n";
+        }//OutConn.insteadName(mapping.getKey())
         return message;
     }
-    public static String SendsortValueFollow(Map<Long,Integer> math,Map<Long, Double> map){
+    public static String SendsortValueFollow(Map<Long,Integer> math,Map<Long, Double> map,Map<Long,String>namelist){
         String message="";
         //value-sort
         List<Map.Entry<Long, Double>> list = new ArrayList<Map.Entry<Long, Double>>(map.entrySet());
@@ -47,14 +50,15 @@ public class SortMap {
                 math.put(mapping.getKey(),(math.get(mapping.getKey())+3-i));
             else
                 break;
-            i++;
-            message +="�û�Q�ţ�" + mapping.getKey() +
-                    " �÷֣�" + math.get(mapping.getKey())+
-                    " �ö��ٶȣ�"+mapping.getValue()+"\n";
+            i++;// OutConn.insteadName(mapping.getKey())
+            message +="用户名："+ namelist.get(mapping.getKey())+
+                    " 用户Q号：" + mapping.getKey() +
+                    " 得分：" + math.get(mapping.getKey())+
+                    " 该段速度："+mapping.getValue()+"\n";
         }
         return message;
     }
-    public static String SendsortValueTeamOneSpeed(Map<Long,Double> map){
+    public static String SendsortValueTeamOneSpeed(Map<Long,Double> map,Map<Long,String> namelist){
         String message="";
         //value-sort
         List<Map.Entry<Long, Double>> list = new ArrayList<Map.Entry<Long, Double>>(map.entrySet());
@@ -67,7 +71,8 @@ public class SortMap {
         //for-each
         for (Map.Entry<Long, Double> mapping : list) {
             System.out.println(mapping.getKey() + ": " + mapping.getValue());
-            message +="�û�Q�ţ�" + mapping.getKey() + " �ö��ٶȣ�" + mapping.getValue() + "\n";
+            message +="用户名："+ namelist.get(mapping.getKey()) +//OutConn.insteadName(mapping.getKey())
+                    " 用户Q号：" + mapping.getKey() + " 该段速度：" + mapping.getValue() + "\n";
         }
         return message;
     }
@@ -88,7 +93,7 @@ public class SortMap {
             if(i==0){
                 math.put(mapping.getKey(),(math.get(mapping.getKey())+1));
             }
-            message +="�ŶӺţ�" + mapping.getKey() + " ��Աƽ���ٶȣ�" + mapping.getValue() + "����÷֣�"+math.get(mapping.getKey())+"\n";
+            message +="团队号：" + mapping.getKey() + " 队员平均速度：" + mapping.getValue() + "队伍得分："+math.get(mapping.getKey())+"\n";
             i++;
         }
         return message;
@@ -106,7 +111,7 @@ public class SortMap {
         //for-each
         for (Map.Entry<Integer, Integer> mapping : list) {
             System.out.println(mapping.getKey() + ": " + mapping.getValue());
-            message +="����ţ�" + mapping.getKey() + " �÷֣�" + mapping.getValue() + "\n";
+            message +="队伍号：" + mapping.getKey() + " 得分：" + mapping.getValue() + "\n";
         }
         return message;
     }

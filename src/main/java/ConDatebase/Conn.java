@@ -4,15 +4,15 @@ import java.sql.*;
 import java.util.Calendar;
 
 public class Conn  {
-    private static String url="jdbc:mysql://localhost:3306/students?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull";//Á¬½ÓÊı¾İ¿âµÄurl£¬testÊÇÎÒ×Ô¼ºµÄÒ»¸öÊı¾İ¿â°¡±¦±¦ÃÇ¡£
-    private static String user="root";//mysqlµÇÂ¼Ãû
-    private static String pass="951753";//mysqlµÇÂ¼ÃÜÂë
+    private static String url="jdbc:mysql://localhost:3306/students?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull";//è¿æ¥æ•°æ®åº“çš„urlï¼Œtestæ˜¯æˆ‘è‡ªå·±çš„ä¸€ä¸ªæ•°æ®åº“å•Šå®å®ä»¬ã€‚
+    private static String user="root";//mysqlç™»å½•å
+    private static String pass="951753";//mysqlç™»å½•å¯†ç 
     public static Connection getConnection(){
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(url, user, pass);
-//            System.out.print("Êı¾İ¿âÁ¬½Ó³É¹¦\r");
+//            System.out.print("æ•°æ®åº“è¿æ¥æˆåŠŸ\r");
         }catch(Exception e){
             e.printStackTrace();
         }
