@@ -15,8 +15,8 @@ public class GroupFollowThread extends  Thread {
     Map<Long,Integer> IDlist = new HashMap<Long, Integer>();
     Map<Long, Double> IDspendlist = new HashMap<Long,Double>();
     Map<Long,String> IDName = new HashMap<Long, String>();
+    Map<Long,Double> IDletspeed = new HashMap<Long, Double>();
     String art = "";
-
 
     public GroupFollowThread(EventGroupMessage event, int length, Long groupid){
         this.event = event;
@@ -48,11 +48,13 @@ public class GroupFollowThread extends  Thread {
         IDlist.put(id,0);
         IDspendlist.put(id,0.0);
         IDName.put(id,name);
+        IDletspeed.put(id,1.0);
     }
     public void removeID(Long id){
         IDlist.remove(id);
         IDspendlist.remove(id);
         IDName.remove(id);
+        IDletspeed.remove(id);
     }
     public Map<Long,Integer> getIDlist(){
         return IDlist;
@@ -77,5 +79,9 @@ public class GroupFollowThread extends  Thread {
     }
     public Map<Long,String> getIDnamelist(){
         return  IDName;
+    }
+    public Double getLetSpeed(Long id){return IDletspeed.get(id);}
+    public void setLetSpeed(Long id,Double speed){
+        IDletspeed.put(id,speed);
     }
 }

@@ -54,7 +54,9 @@ public class RobotGroupClient extends IcqListener {
         }
         CreateFollowTeamCom(event);
     }
+    private void OneATwoB(EventGroupMessage event){
 
+    }
     private void CarryName(EventGroupMessage event){
         try {
             System.out.println("名片操作");
@@ -352,6 +354,10 @@ public class RobotGroupClient extends IcqListener {
                 if(GroupFollowWarList.containsKey(GroupID)){
                     String message1 = "";
                     GroupFollowThread gp = GroupFollowWarList.get(GroupID);
+                    if (!gp.getIDlist().containsKey(ID)){
+                        event.respond(at+"你未曾加入混战，无法执行启动");
+                        return;
+                    }
                     message1 += SortMap.SendsortValue(gp.getIDlist(),gp.getIDnamelist());
                     gp.stop();
                     GroupFollowWarList.remove(GroupID);
@@ -365,8 +371,26 @@ public class RobotGroupClient extends IcqListener {
                         "#退出混战 = 退出本群混战\n"+
                         "#混战启动 = 与已加入混战的群友一起进行分段跟打\n"+
                         "#混战结算 = 将本群创建的混战结算成绩并删除\n"+
+                        "#让速 速度 = 结算临时成绩时，将实际成绩减去让速得出本段成绩\n"+
                         "记分规则：第一名3分，第二名2分，第三名1分，其他名次无分";
                 event.respond(message);
+            }else if(length==2&&s[0].equals("#让速")){
+                if(GroupFollowWarList.containsKey(GroupID)){
+                    GroupFollowThread gp = GroupFollowWarList.get(GroupID);
+                    if (!gp.getIDlist().containsKey(ID)){
+                        event.respond(at+"你未曾加入混战，无法执行启动");
+                        return;
+                    }
+                    try{
+
+                        Double letSpeed = Double.parseDouble(s[1]);
+                        if(letSpeed<1&&letSpeed>0) {
+                            gp.setLetSpeed(ID, letSpeed);
+                            event.respond(at + "让速设置成功");
+                        }else
+                            event.respond(at+"让速参数必须在0到1之间");
+                    }catch (Exception e){}
+                }
             }else if(GroupFollowWarList.containsKey(GroupID)){
                 GroupFollowThread gp = GroupFollowWarList.get(GroupID);
                 boolean next = true;
@@ -377,7 +401,7 @@ public class RobotGroupClient extends IcqListener {
                         double Grade[] = RegexText.getGrade(event.getMessage());
                         System.out.println(gp.getIDspend(ID));
                         if(gp.getIDspend(ID)==0.0) {
-                            gp.setIDspend(ID, Grade[0]);
+                            gp.setIDspend(ID, Grade[0]*gp.getLetSpeed(ID));
                             System.out.println(Grade[0]+" "+Grade[1]+" "+Grade[2]);
                         }
                         for(Long k:gp.getIDspendlist().keySet())
