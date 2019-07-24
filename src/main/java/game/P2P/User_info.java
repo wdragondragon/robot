@@ -7,16 +7,12 @@ public class User_info {
     private String type;
     private int roomnumber;
     private long age;
-    public User_info(String QQnumber,String username){
+    User_info(String QQnumber, String username){
         this.QQnumber = QQnumber;
         this.username = username;
     }
     public User_info sex(String sex){
         this.sex = sex;
-        return this;
-    }
-    public User_info roomnumber(int roomnumber){
-        this.roomnumber = roomnumber;
         return this;
     }
     public User_info type(String type){
@@ -27,29 +23,19 @@ public class User_info {
         this.age = age;
         return this;
     }
-
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
     public String getSex() {
         return sex;
     }
     public void setSex(String sex) {
         this.sex = sex;
     }
-    public String getQQnumber() {
+    String getQQnumber() {
         return QQnumber;
     }
-    public void setQQnumber(String QQnumber) {
-        this.QQnumber = QQnumber;
-    }
-    public int getRoomnumber() {
+    int getRoomnumber() {
         return roomnumber;
     }
-    public void setRoomnumber(int roomnumber) {
+    void setRoomnumber(int roomnumber) {
         this.roomnumber = roomnumber;
     }
     public String getType() {

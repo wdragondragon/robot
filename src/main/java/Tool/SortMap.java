@@ -1,5 +1,4 @@
 package Tool;
-import ConDatebase.OutConn;
 
 import java.util.*;
 

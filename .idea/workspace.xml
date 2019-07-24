@@ -7,32 +7,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c16079da-fbac-4e16-9ddd-79757c892b77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/itchat4j_1_1_0_jar_with_dependencies.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/itchat4j-1.1.0-jar-with-dependencies.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/itchat4j-1.1.0-sources.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/itchat4j-1.1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ConDatebase/royal/Fresh.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ConDatebase/royal/InConn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/OneATwoB/Room.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/P2P/Adapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/P2P/PointClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/P2P/User_info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/P2P/WXClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/P2P/controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/royal/RoyalClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/robot_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/robot_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/game/P2P/DownloadMsg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/typing/ConDatabase/ComArti.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/typing/ConDatabase/Conn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/typing/ConDatabase/InConn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/typing/ConDatabase/OneUserNum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/typing/ConDatabase/OutConn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/robot_jar/robot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/robot_jar/robot.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ConDatebase/Conn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConDatebase/Conn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GroupFollowWar/GroupFollowThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GroupFollowWar/GroupFollowThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PlayCards/CardCarry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/PlayCards/CardCarry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PlayCards/CardClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/PlayCards/CardClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PlayCards/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/PlayCards/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PlayCards/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/PlayCards/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ConDatebase/royal/Fresh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/royal/ConDatabase/Fresh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ConDatebase/royal/InConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/royal/ConDatabase/InConn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GroupFollowTeamWar/GroupFollowTeamThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/GroupFollowTeamWar/GroupFollowTeamThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GroupFollowWar/GroupFollowThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/GroupFollowWar/GroupFollowThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GroupWar/Count.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/GroupWar/Count.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GroupWar/GroupThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/GroupWar/GroupThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tool/RegexText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tool/RegexText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tool/SortMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tool/SortMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/P2P/Adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/P2P/Adapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/P2P/PointClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/P2P/PointClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/P2P/User_info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/P2P/User_info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/P2P/WXClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/P2P/controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/P2P/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/CommandVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/CommandVersion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/MessageMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/MessageMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/RamdomLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/cantoon/RamdomLoad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/ReturnAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/cantoon/ReturnAll.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/ReturnLast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/cantoon/ReturnLast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/RobotCrewl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/RobotCrewl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/RobotGroupClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/royal/RoyalClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/royal/RoyalClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/typing/ConDatebase/AllUserNum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/typing/ConDatebase/ComArti.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/typing/ConDatebase/Conn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/typing/ConDatebase/InConn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/typing/ConDatebase/OneUserNum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/typing/ConDatebase/OutConn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jdragon/club/CommandVersion.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/jdragon/club/robot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jdragon/club/robot.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -42,6 +54,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -61,54 +76,38 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/PointClient.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/typing/RobotGroupClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-377">
-              <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+            <state>
+              <caret line="258" column="24" selection-start-line="258" selection-start-column="24" selection-end-line="258" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3895#3896#0" expanded="true" />
-                <element signature="e#3922#3923#0" expanded="true" />
-                <element signature="e#3985#3986#0" expanded="true" />
-                <element signature="e#4012#4013#0" expanded="true" />
-                <element signature="e#4075#4076#0" expanded="true" />
-                <element signature="e#4102#4103#0" expanded="true" />
-                <element signature="e#4168#4169#0" expanded="true" />
-                <element signature="e#4195#4196#0" expanded="true" />
-                <element signature="e#4334#4335#0" expanded="true" />
-                <element signature="e#4361#4362#0" expanded="true" />
-                <element signature="e#4424#4425#0" expanded="true" />
-                <element signature="e#4451#4452#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/Adapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#218#219#0" expanded="true" />
-                <element signature="e#255#256#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/controller.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/AllUserNum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="242">
+              <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
               <folding>
-                <element signature="e#233#241#0" expanded="true" />
-                <element signature="e#297#320#0" expanded="true" />
-                <element signature="e#370#389#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/royal/RoyalClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,8 +116,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/robot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-265">
-              <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="29" selection-end-column="36" />
+            <state relative-caret-position="279">
+              <caret line="45" column="31" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,35 +126,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/User_info.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/typing/CommandVersion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+            <state relative-caret-position="-176">
+              <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
               <folding>
-                <element signature="e#157#158#0" expanded="true" />
-                <element signature="e#188#189#0" expanded="true" />
-                <element signature="e#236#237#0" expanded="true" />
-                <element signature="e#276#277#0" expanded="true" />
-                <element signature="e#306#307#0" expanded="true" />
-                <element signature="e#332#333#0" expanded="true" />
-                <element signature="e#370#371#0" expanded="true" />
-                <element signature="e#400#401#0" expanded="true" />
-                <element signature="e#433#434#0" expanded="true" />
-                <element signature="e#464#465#0" expanded="true" />
-                <element signature="e#510#511#0" expanded="true" />
-                <element signature="e#550#551#0" expanded="true" />
-                <element signature="e#584#585#0" expanded="true" />
-                <element signature="e#617#618#0" expanded="true" />
-                <element signature="e#666#667#0" expanded="true" />
-                <element signature="e#710#711#0" expanded="true" />
-                <element signature="e#1225#1226#0" expanded="true" />
-                <element signature="e#1252#1253#0" expanded="true" />
-                <element signature="e#1292#1293#0" expanded="true" />
-                <element signature="e#1324#1325#0" expanded="true" />
-                <element signature="e#1428#1429#0" expanded="true" />
-                <element signature="e#1454#1455#0" expanded="true" />
-                <element signature="e#1490#1491#0" expanded="true" />
-                <element signature="e#1520#1521#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/OneUserNum.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/Conn.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="21" column="19" lean-forward="true" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -166,6 +163,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -183,21 +181,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/RobotCrewl.java" />
-        <option value="$PROJECT_DIR$/robot.iml" />
-        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/CarryComGrade.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ConDatebase/ConnRobot.java" />
-        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/CarryComArti.java" />
-        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/SetName.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ConDatebase/OneUserNum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ConDatebase/AllUserNum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/RobotTLJClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ConDatebase/GroupCom.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ConDatebase/RobotCom.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ConDatebase/ComArti.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GroupWar/SendQQMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GroupWar/Count.java" />
-        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/RamdomLoad.java" />
         <option value="$PROJECT_DIR$/src/main/java/jdragon/club/RegexText.java" />
         <option value="$PROJECT_DIR$/src/main/java/jdragon/club/SortMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/GroupFollowWar/HumanBean.java" />
@@ -209,7 +192,6 @@
         <option value="$PROJECT_DIR$/src/main/java/jdragon/club/Translate.java" />
         <option value="$PROJECT_DIR$/src/main/java/GroupWar/GroupThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/GroupFollowTeamWar/GroupFollowTeamThread.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Tool/RegexText.java" />
         <option value="$PROJECT_DIR$/src/main/java/Tool/SortMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/ConDatebase/InConn.java" />
         <option value="$PROJECT_DIR$/src/main/java/ConDatebase/OutConn.java" />
@@ -227,13 +209,29 @@
         <option value="$PROJECT_DIR$/src/main/java/ConDatebase/Conn.java" />
         <option value="$PROJECT_DIR$/src/main/java/Tool/initGroupList.java" />
         <option value="$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/royal/RoyalClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/game/P2P/User_info.java" />
-        <option value="$PROJECT_DIR$/src/main/java/game/P2P/Adapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/game/P2P/PointClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/game/P2P/WXClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/robot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/game/P2P/FileController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/game/P2P/User_info.java" />
         <option value="$PROJECT_DIR$/src/main/java/game/P2P/controller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/game/P2P/SendMsg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/game/P2P/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/game/P2P/DownloadMsg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/game/P2P/PointClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/game/P2P/Adapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/cantoon/ReturnLast.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/cantoon/ReturnAll.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/cantoon/RamdomLoad.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/typing/MessageMove.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/typing/CommandVersion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/typing/RobotCrewl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/royal/RoyalClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/typing/ConDatebase/ComArti.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Tool/RegexText.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/typing/RobotGroupClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/royal/ConDatabase/InConn.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jdragon/club/robot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/typing/RobotGroupClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ConDatabase/AllUserNum.java" />
       </list>
     </option>
   </component>
@@ -259,8 +257,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="624" />
-    <option name="y" value="277" />
+    <option name="x" value="67" />
+    <option name="y" value="-8" />
     <option name="width" value="581" />
     <option name="height" value="496" />
   </component>
@@ -276,11 +274,6 @@
             <path>
               <item name="robot" type="b2602c69:ProjectViewProjectNode" />
               <item name="robot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="robot" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="robot" type="b2602c69:ProjectViewProjectNode" />
@@ -323,7 +316,35 @@
               <item name="robot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="club" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="typing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -345,7 +366,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.32355723" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -449,7 +470,9 @@
       <workItem from="1562669625203" duration="2537000" />
       <workItem from="1563688366619" duration="47000" />
       <workItem from="1563782415647" duration="14926000" />
-      <workItem from="1563859928635" duration="7993000" />
+      <workItem from="1563859928635" duration="41305000" />
+      <workItem from="1563958037554" duration="167000" />
+      <workItem from="1563958301863" duration="726000" />
     </task>
     <task id="LOCAL-00001" summary="获取历史赛文，拖拉机版本号，个人信息，全部人信息">
       <created>1557649729157</created>
@@ -493,16 +516,33 @@
       <option name="project" value="LOCAL" />
       <updated>1559279127666</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="微信qq使用适配器互同信息，P2P校园即时匹配聊天">
+      <created>1563874957625</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1563874957625</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="283490000" />
+    <option name="totallyTimeSpent" value="317695000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="-8" width="1307" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2702486" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27906978" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -511,13 +551,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290735" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4979952" visible="true" weight="0.2891374" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4979952" visible="true" weight="0.24121405" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.399361" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3290735" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.27955273" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3290735" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5020048" side_tool="true" weight="0.29073483" />
@@ -542,119 +582,10 @@
     <MESSAGE value="团战系统框架" />
     <MESSAGE value="团战系统" />
     <MESSAGE value="QQ斗地主框架增设" />
-    <option name="LAST_COMMIT_MESSAGE" value="QQ斗地主框架增设" />
+    <MESSAGE value="微信qq使用适配器互同信息，P2P校园即时匹配聊天" />
+    <option name="LAST_COMMIT_MESSAGE" value="微信qq使用适配器互同信息，P2P校园即时匹配聊天" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/src.zip!/java/util/Scanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="577" column="41" selection-start-line="577" selection-start-column="41" selection-end-line="577" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="394" column="19" lean-forward="true" selection-start-line="394" selection-start-column="19" selection-end-line="394" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/jre/lib/rt.jar!/com/sun/net/httpserver/HttpHandler.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/github/hydevelop/PicqBotX/3.2.2.896/PicqBotX-3.2.2.896.jar!/cc/moecraft/icq/utils/NetUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/github/hydevelop/HyLogger/4.0.254/HyLogger-4.0.254.jar!/cc/moecraft/logger/HyLogger.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2498">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/github/hydevelop/PicqBotX/3.2.2.896/PicqBotX-3.2.2.896.jar!/cc/moecraft/icq/receiver/PicqHttpServer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/github/hydevelop/PicqBotX/3.2.2.896/PicqBotX-3.2.2.896.jar!/cc/moecraft/icq/PicqBotX.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2480">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GroupFollowTeamWar/TeamBean.java" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/src.zip!/java/util/regex/Matcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="533" column="18" selection-start-line="533" selection-start-column="18" selection-end-line="533" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Tool/CardsSort.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/com/github/hydevelop/PicqBotX/3.2.2.896/PicqBotX-3.2.2.896.jar!/cc/moecraft/icq/event/Event.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-          <folding>
-            <element signature="e#737#738#0" expanded="true" />
-            <element signature="e#793#794#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/game/PlayCards/Member.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-171">
-          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#288#297#0" expanded="true" />
-            <element signature="e#248#249#0" expanded="true" />
-            <element signature="e#279#280#0" expanded="true" />
-            <element signature="e#328#329#0" expanded="true" />
-            <element signature="e#363#364#0" expanded="true" />
-            <element signature="e#256#257#0" expanded="true" />
-            <element signature="e#288#289#0" expanded="true" />
-            <element signature="e#345#346#0" expanded="true" />
-            <element signature="e#387#388#0" expanded="true" />
-            <element signature="e#144#145#0" expanded="true" />
-            <element signature="e#173#174#0" expanded="true" />
-            <element signature="e#214#215#0" expanded="true" />
-            <element signature="e#250#251#0" expanded="true" />
-            <element signature="e#145#146#0" expanded="true" />
-            <element signature="e#172#173#0" expanded="true" />
-            <element signature="e#212#213#0" expanded="true" />
-            <element signature="e#244#245#0" expanded="true" />
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#306#307#0" expanded="true" />
-            <element signature="e#350#351#0" expanded="true" />
-            <element signature="e#386#387#0" expanded="true" />
-            <element signature="e#420#421#0" expanded="true" />
-            <element signature="e#452#453#0" expanded="true" />
-            <element signature="e#500#501#0" expanded="true" />
-            <element signature="e#542#543#0" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#605#606#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#726#727#0" expanded="true" />
-            <element signature="e#758#759#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/game/PlayCards/Room.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -682,16 +613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ConDatebase/OutConn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-336">
-          <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/src.zip!/java/lang/Throwable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
@@ -710,7 +631,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GroupWar/GroupThread.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/GroupWar/GroupThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-582">
           <caret line="60" column="60" lean-forward="true" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="86" />
@@ -720,32 +641,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ConDatebase/OneUserNum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ConDatebase/InConn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="82" column="107" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/out/artifacts/robot_jar/logs/PicqBotX-Log@19-06-04-21-30-11.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.project">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="51" column="10" lean-forward="true" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Tool/test.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/game/OneATwoB/Room.java">
@@ -755,51 +655,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ConDatebase/AllUserNum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ConDatebase/ComArti.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ConDatebase/Conn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="15" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/ReturnAll.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GroupFollowTeamWar/GroupFollowTeamThread.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/GroupFollowTeamWar/GroupFollowTeamThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-568">
           <caret line="71" column="56" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/RobotCrewl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="49" column="49" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -813,33 +672,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ConDatebase/royal/InConn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="146" column="23" selection-start-line="146" selection-start-column="23" selection-end-line="146" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ConDatebase/royal/Fresh.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/royal/ConDatabase/Fresh.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Tool/RegexText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="119" column="44" lean-forward="true" selection-start-line="119" selection-start-column="44" selection-end-line="119" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#CarryCom#0;class#RegexText#0" />
           </folding>
         </state>
       </provider>
@@ -866,27 +704,6 @@
         <state relative-caret-position="-330" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/ReturnLast.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/MessageMove.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-242">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/Translate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-934">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Tool/initGroupList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
@@ -897,7 +714,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GroupFollowWar/GroupFollowThread.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/GroupFollowWar/GroupFollowThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
           <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
@@ -908,52 +725,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Tool/SortMap.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/WXClient.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/FileController.java" />
+    <entry file="jar://$PROJECT_DIR$/lib/itchat4j-1.1.0-sources.jar!/cn/zhouyafeng/itchat4j/core/Core.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="35" column="106" selection-start-line="35" selection-start-column="106" selection-end-line="35" selection-end-column="106" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="172">
+          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java">
+    <entry file="jar://$PROJECT_DIR$/lib/itchat4j-1.1.0-sources.jar!/cn/zhouyafeng/itchat4j/service/ILoginService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1431">
-          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        <state relative-caret-position="242">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/royal/RoyalClient.java">
+    <entry file="jar://$PROJECT_DIR$/lib/itchat4j-1.1.0-sources.jar!/cn/zhouyafeng/itchat4j/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="43" column="44" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+        <state relative-caret-position="220">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/itchat4j-1.1.0-sources.jar!/cn/zhouyafeng/itchat4j/Wechat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/src.zip!/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="221" column="31" selection-start-line="221" selection-start-column="31" selection-end-line="221" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/DownloadMsg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1177#1178#0" expanded="true" />
-            <element signature="e#1242#1243#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/User_info.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+        <state relative-caret-position="248">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
           <folding>
-            <element signature="e#157#158#0" expanded="true" />
-            <element signature="e#188#189#0" expanded="true" />
-            <element signature="e#236#237#0" expanded="true" />
-            <element signature="e#276#277#0" expanded="true" />
             <element signature="e#306#307#0" expanded="true" />
             <element signature="e#332#333#0" expanded="true" />
             <element signature="e#370#371#0" expanded="true" />
             <element signature="e#400#401#0" expanded="true" />
             <element signature="e#433#434#0" expanded="true" />
             <element signature="e#464#465#0" expanded="true" />
-            <element signature="e#510#511#0" expanded="true" />
-            <element signature="e#550#551#0" expanded="true" />
             <element signature="e#584#585#0" expanded="true" />
             <element signature="e#617#618#0" expanded="true" />
             <element signature="e#666#667#0" expanded="true" />
@@ -970,27 +806,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/WXClient.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        <state relative-caret-position="96">
+          <caret line="33" column="49" lean-forward="true" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#265#273#0" expanded="true" />
+            <element signature="e#341#364#0" expanded="true" />
+            <element signature="e#423#442#0" expanded="true" />
+            <element signature="e#517#518#0" expanded="true" />
+            <element signature="e#582#583#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/robot.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/PointClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-265">
-          <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="29" selection-end-column="36" />
+        <state relative-caret-position="-330">
+          <caret line="33" column="33" lean-forward="true" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
+            <element signature="e#1077#1078#0" expanded="true" />
+            <element signature="e#4681#4682#0" expanded="true" />
+            <element signature="e#4708#4709#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/Adapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        <state relative-caret-position="748">
+          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#218#219#0" expanded="true" />
@@ -999,36 +847,177 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/PointClient.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/cantoon.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/cantoon/ReturnLast.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-377">
-          <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+        <state relative-caret-position="88">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/cantoon/ReturnAll.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/cantoon/RamdomLoad.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/MessageMove.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/InConn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="82" column="107" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Tool/SortMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="35" column="106" selection-start-line="35" selection-start-column="106" selection-end-line="35" selection-end-column="106" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3895#3896#0" expanded="true" />
-            <element signature="e#3922#3923#0" expanded="true" />
-            <element signature="e#3985#3986#0" expanded="true" />
-            <element signature="e#4012#4013#0" expanded="true" />
-            <element signature="e#4075#4076#0" expanded="true" />
-            <element signature="e#4102#4103#0" expanded="true" />
-            <element signature="e#4168#4169#0" expanded="true" />
-            <element signature="e#4195#4196#0" expanded="true" />
-            <element signature="e#4334#4335#0" expanded="true" />
-            <element signature="e#4361#4362#0" expanded="true" />
-            <element signature="e#4424#4425#0" expanded="true" />
-            <element signature="e#4451#4452#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/controller.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/OutConn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2398">
+          <caret line="114" selection-start-line="114" selection-end-line="114" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Tool/RegexText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-902">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#CarryCom#0;class#RegexText#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/Translate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/CommandSay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/royal/ConDatabase/InConn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/ComArti.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/RobotCrewl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/Conn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="21" column="19" lean-forward="true" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/RobotGroupClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <caret line="258" column="24" selection-start-line="258" selection-start-column="24" selection-end-line="258" selection-end-column="24" />
           <folding>
-            <element signature="e#233#241#0" expanded="true" />
-            <element signature="e#297#320#0" expanded="true" />
-            <element signature="e#370#389#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/OneUserNum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/royal/RoyalClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/robot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="45" column="31" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/CommandVersion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-176">
+          <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/AllUserNum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

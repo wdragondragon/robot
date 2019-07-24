@@ -1,8 +1,6 @@
 package Tool;
 
 
-import ConDatebase.OutConn;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
