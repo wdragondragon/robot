@@ -1,4 +1,4 @@
-package typing;
+package Cantoon;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;

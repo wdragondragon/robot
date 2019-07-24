@@ -1,7 +1,9 @@
-package game.P2P;
+package game.P2P.handle;
 
 import cc.moecraft.icq.sender.IcqHttpApi;
 import cn.zhouyafeng.itchat4j.api.MessageTools;
+import game.P2P.Tools.DownloadMsg;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

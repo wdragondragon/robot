@@ -1,4 +1,4 @@
-package game.P2P;
+package game.P2P.Tools;
 
 import java.io.*;
 import java.net.MalformedURLException;

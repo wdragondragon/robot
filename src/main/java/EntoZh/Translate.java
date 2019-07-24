@@ -1,6 +1,5 @@
-package jdragon.club;
+package EntoZh;
 
-import EntoZh.TransApi;
 import cc.moecraft.icq.event.EventHandler;
 import cc.moecraft.icq.event.IcqListener;
 import cc.moecraft.icq.event.events.message.EventMessage;

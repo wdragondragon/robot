@@ -1,8 +1,8 @@
 package typing.GroupWar;
 
 import cc.moecraft.icq.event.events.message.EventGroupMessage;
-import jdragon.club.cantoon.RamdomLoad;
-import Tool.SortMap;
+import Cantoon.RamdomLoad;
+import typing.Tools.SortMap;
 
 import java.util.HashMap;
 import java.util.Map;

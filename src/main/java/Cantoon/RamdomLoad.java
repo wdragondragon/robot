@@ -1,6 +1,6 @@
-package jdragon.club.cantoon;
+package Cantoon;
 
-import Tool.RegexText;
+import typing.Tools.RegexText;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

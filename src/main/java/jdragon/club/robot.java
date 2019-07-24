@@ -1,18 +1,28 @@
 package jdragon.club;
 
+import EntoZh.Translate;
 import typing.ConDatabase.*;
 import cn.zhouyafeng.itchat4j.Wechat;
 import game.P2P.PointClient;
 import game.PlayCards.CardCarry;
 import cc.moecraft.icq.PicqBotX;
 import cc.moecraft.icq.PicqConfig;
-import jdragon.club.cantoon.ReturnAll;
-import jdragon.club.cantoon.ReturnLast;
+import Cantoon.ReturnAll;
+import Cantoon.ReturnLast;
 import royal.RoyalClient;
 import typing.CommandVersion;
 import typing.MessageMove;
 import typing.RobotGroupClient;
+import typing.OneUserNum;
 
+/**
+ * game 游戏模块
+ * EntoZh 翻译模块
+ * Cantoon 爬取饭堂消费模块
+ * royal 皇室战争群管理模块
+ * typing 跟打群管理模块
+ * 该类创建两种QQ与微信机器人
+ */
 public class robot
 {
 //    public static Long tljGroupNum = 974172771L;

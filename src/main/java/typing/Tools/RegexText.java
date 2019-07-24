@@ -1,4 +1,4 @@
-package Tool;
+package typing.Tools;
 
 
 import java.util.regex.Matcher;

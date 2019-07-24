@@ -1,7 +1,7 @@
 package typing.ConDatabase;
 
-import Tool.RegexText;
-import Tool.initGroupList;
+import typing.Tools.RegexText;
+import typing.Tools.initGroupList;
 
 import java.sql.Connection;
 import java.sql.Date;

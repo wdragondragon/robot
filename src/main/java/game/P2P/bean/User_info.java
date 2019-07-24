@@ -1,4 +1,4 @@
-package game.P2P;
+package game.P2P.bean;
 
 public class User_info {
     private String username;
@@ -29,13 +29,13 @@ public class User_info {
     public void setSex(String sex) {
         this.sex = sex;
     }
-    String getQQnumber() {
+    public String getQQnumber() {
         return QQnumber;
     }
-    int getRoomnumber() {
+    public int getRoomnumber() {
         return roomnumber;
     }
-    void setRoomnumber(int roomnumber) {
+    public void setRoomnumber(int roomnumber) {
         this.roomnumber = roomnumber;
     }
     public String getType() {

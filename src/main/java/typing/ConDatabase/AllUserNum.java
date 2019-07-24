@@ -1,4 +1,4 @@
-package ConDatebase;
+package typing.ConDatabase;
 
 import cc.moecraft.icq.command.CommandProperties;
 import cc.moecraft.icq.command.interfaces.EverywhereCommand;
@@ -41,6 +41,6 @@ public class AllUserNum implements EverywhereCommand {
         return getAllUser();
     }
     public CommandProperties properties() {
-        return new CommandProperties("usernum", "u", "用户字数");
+        return new CommandProperties("allnum", "n", "用户字数");
     }
 }

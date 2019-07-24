@@ -12,6 +12,8 @@ import cn.zhouyafeng.itchat4j.beans.RecommendInfo;
 import cn.zhouyafeng.itchat4j.face.IMsgHandlerFace;
 import cn.zhouyafeng.itchat4j.utils.enums.MsgTypeEnum;
 import cn.zhouyafeng.itchat4j.utils.tools.DownloadTools;
+import game.P2P.bean.User_info;
+import game.P2P.handle.Controller;
 import org.apache.log4j.Logger;
 
 import java.io.File;

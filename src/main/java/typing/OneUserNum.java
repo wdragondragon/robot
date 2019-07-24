@@ -1,8 +1,9 @@
-package ConDatebase;
+package typing;
 
 import cc.moecraft.icq.event.EventHandler;
 import cc.moecraft.icq.event.IcqListener;
 import cc.moecraft.icq.event.events.message.EventMessage;
+import typing.ConDatabase.Conn;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

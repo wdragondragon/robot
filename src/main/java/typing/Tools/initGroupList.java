@@ -1,4 +1,4 @@
-package Tool;
+package typing.Tools;
 
 import cc.moecraft.icq.event.events.message.EventGroupMessage;
 import cc.moecraft.icq.sender.returndata.returnpojo.get.RGroup;
