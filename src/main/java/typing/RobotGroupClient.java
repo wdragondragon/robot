@@ -1,32 +1,44 @@
 package typing;
 
-import typing.ConDatabase.ComArti;
-import typing.ConDatabase.Conn;
-import typing.ConDatabase.InConn;
-import typing.ConDatabase.OutConn;
-import typing.Tools.RegexText;
-import typing.Tools.SortMap;
-import typing.Tools.initGroupList;
 import cc.moecraft.icq.event.EventHandler;
 import cc.moecraft.icq.event.IcqListener;
 import cc.moecraft.icq.event.events.message.EventGroupMessage;
 import cc.moecraft.icq.event.events.message.EventMessage;
 import jdragon.club.robot;
+import typing.ConDatabase.ComArti;
+import typing.ConDatabase.Conn;
+import typing.ConDatabase.InConn;
+import typing.ConDatabase.OutConn;
 import typing.GroupFollowTeamWar.GroupFollowTeamThread;
 import typing.GroupFollowWar.GroupFollowThread;
 import typing.GroupWar.GroupThread;
+import typing.Tools.DownloadMsg;
+import typing.Tools.RegexText;
+import typing.Tools.SortMap;
+import typing.Tools.initGroupList;
 
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 
+import static java.io.File.separator;
+
 public class RobotGroupClient extends IcqListener {
     boolean respondSign;
     boolean init = false;
+    public static boolean automati_inclusion_sign;
+    public static HashMap<Long,Boolean> grouplist;
+    public RobotGroupClient(){
+        grouplist = OutConn.getGroupList();
+        automati_inclusion_sign = false;
+        Automatic_Inclusion automatic_inclusion = new Automatic_Inclusion();
+        automatic_inclusion.start();
+    }
     @EventHandler
     public void Carry(EventGroupMessage event)
     {
@@ -53,7 +65,50 @@ public class RobotGroupClient extends IcqListener {
             CreateCijicom(event);
             CreateFollowCom(event);
         }
+        if(automati_inclusion_sign){
+            Automatic_inclusion(event);
+        }
+        grouphistory(event);
         CreateFollowTeamCom(event);
+
+    }
+    public void grouphistory(EventGroupMessage event){
+        String message = event.getMessage();
+        long groupid = event.getGroupId();
+        String []s = message.split(" ");
+        if(s.length==2&&s[0].equals("历史成绩")){
+            s[1] = RegexText.AddZero(s[1]);
+            String image = "typinggroup"+ separator + groupid +"-"+ s[1]+".jpg";
+            event.respond("[CQ:image,file="+image+"]");
+        }
+    }
+    private void Automatic_inclusion(EventGroupMessage event){
+        System.out.println("收图");
+        String message = event.getMessage();
+        int imageindex = message.indexOf("url=");
+        long groupid = event.getGroupId();
+        long sendid = event.getSenderId();
+        String []s = message.split(" ");
+
+        if(sendid == robot.xiaochaiQ&&grouplist.containsKey(groupid)) {
+            if (grouplist.get(groupid)&&imageindex != -1) {
+                System.out.println(grouplist.get(groupid));
+                message = message.substring(imageindex + 4, message.length() - 1);
+                String filename = groupid +"-"+ new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) + ".jpg";
+                    String image = "/root/coolq/data/image/typinggroup/" + filename;
+                System.out.println(image);
+                DownloadMsg.downloadMsg(message, image);
+                grouplist.put(groupid,false);
+                for (Long o : grouplist.keySet()) {
+                    if(grouplist.get(o)==false){
+                        automati_inclusion_sign = false;
+                    }else {
+                        automati_inclusion_sign = true;
+                        break;
+                    }
+                }
+            }
+        }
     }
     private void CarryName(EventGroupMessage event){
         try {
@@ -118,25 +173,37 @@ public class RobotGroupClient extends IcqListener {
         try {
             String message = event.getMessage();
             System.out.println("赛文和成绩操作");
+            Long QQnum = event.getSenderId();
+            if(message.equals("#拖拉机成绩")){
+                String path = ComArti.responseStr(Conn.getdate().toString(), QQnum, Conn.getdate(), 2);
+                if(path.equals("无该天赛文成绩"))event.respond(path);
+                else event.respond("[CQ:image,file="+ path +"]");
+
+            }
             String s[] = message.split(" ");
             s[s.length - 1] = RegexText.AddZero(s[s.length - 1]);
             Date date = Date.valueOf(s[s.length - 1]);
             Matcher m = RegexText.isAt(s[1]);
-            Long QQnum = event.getSenderId();
 
             if (s.length == 2) {
-                if (s[0].equals("赛文")) {
+                if (s[0].equals("拖拉机赛文")) {
                     event.respond(ComArti.responseStr(s[1], QQnum, date, 1));
                     respondSign = true;
-                } else if (s[0].equals("成绩")) {
-                    event.respond(ComArti.responseStr(s[1], QQnum, date, 2));
+                } else if (s[0].equals("拖拉机成绩")) {
+//                    event.respond(ComArti.responseStr(s[1], QQnum, date, 2));
+                    event.respond("[CQ:image,file="+ComArti.responseStr(s[1], QQnum, date, 2)+"]");
                     respondSign = true;
+                } else if(s[0].equals("成绩")){
+
+                } else if(s[0].equals("成绩")){
+
                 }
             } else if (s.length == 3) {
                 if (s[0].equals("赛文")) {
                     event.respond(OutConn.ShowGroupSaiwen(s[1], date));
                     respondSign = true;
                 } else if (s[0].equals("成绩")) {
+
                     event.respond(OutConn.ShowGroupSaiwenMath(s[1],date));
                     respondSign = true;
                 }

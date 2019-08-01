@@ -36,6 +36,7 @@ public class PointClient extends IcqListener implements IMsgHandlerFace {
     public void Carry(EventPrivateMessage event){
         String message = event.getMessage();
         if(message.equals("-启动")){
+            event.respond("已启动");
             startup_status = true;
         } else if(message.equals("-关闭")){
             startup_status = false;

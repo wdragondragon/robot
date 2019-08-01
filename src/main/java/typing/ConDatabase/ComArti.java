@@ -1,9 +1,15 @@
 package typing.ConDatabase;
 
+import typing.Tools.Createimg;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ComArti {
 
     private static String getComArti(Date date){
@@ -49,13 +55,48 @@ public class ComArti {
         }
         return respond;
     }
+    private static String getComMathImgPath(Date date){
+        String sql = "select * from saiwenchengji where date=? order by sudu DESC";
+        String imgpath = "";
+        boolean sign = false;
+        try {
+            Connection con = Conn.getConnection();
+            PreparedStatement ptst = Conn.getPtmt(con,sql);
+            ptst.setDate(1, date);
+            ResultSet rs = ptst.executeQuery();
+            List<List<List<String>>> allValue = new ArrayList<List<List<String>>>();
+            List<List<String>> contentArray = new ArrayList<List<String>>();
+            List<String[]> headTitles = new ArrayList<String[]>();
+            List<String> titles = new ArrayList<String>();
+            titles.add("拖拉机"+date+"跟打成绩");
+            headTitles.add(new String[]{"序号","名字","成绩","击键","码长","退格","回改","选重","错字"});
+            allValue.add(contentArray);
+            while(rs.next()){
+                String name = rs.getString("name");
+                String sudu = String.valueOf(rs.getDouble("sudu"));
+                String key = String.valueOf(rs.getDouble("key"));
+                String keylenth = String.valueOf(rs.getDouble("keylength"));
+                String delete = String.valueOf(rs.getInt("delete"));
+                String deletetext = String.valueOf(rs.getInt("deletetext"));
+                String repeat = String.valueOf(rs.getInt("repeat"));
+                String mistake = String.valueOf(rs.getInt("mistake"));
+                sign = true;
+                contentArray.add(Arrays.asList(new String[]{name,sudu,key,keylenth,delete,deletetext,repeat,mistake}));
+            }
+            imgpath += Createimg.graphicsGeneration(allValue,titles,headTitles,"",9);
+            if(!sign)imgpath = "无该天赛文成绩";
 
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return imgpath;
+    }
     public static String  responseStr(String s,Long QQnum,Date date,int model){
         if(Conn.getdate().toString().equals(s)&&model==1)
             return "[CQ:at,qq="+QQnum+"]\n"+"不能获取今日赛文";
         else if(model==1)
             return getComArti(date);
         else
-            return getComMath(date);
+            return getComMathImgPath(date);
     }
 }

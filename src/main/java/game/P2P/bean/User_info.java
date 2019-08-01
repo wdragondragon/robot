@@ -7,7 +7,7 @@ public class User_info {
     private String type;
     private int roomnumber;
     private long age;
-    User_info(String QQnumber, String username){
+    public User_info(String QQnumber, String username){
         this.QQnumber = QQnumber;
         this.username = username;
     }

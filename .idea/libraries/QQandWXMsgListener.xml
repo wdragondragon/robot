@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="QQandWXMsgListener">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/QQandWXMsgListener.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

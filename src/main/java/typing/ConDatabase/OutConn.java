@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
 
 public class OutConn {
     public static String insteadName(Long id){
@@ -188,5 +189,19 @@ public class OutConn {
             e.printStackTrace();
         }
         return  message;
+    }
+    public static HashMap<Long,Boolean> getGroupList(){
+        HashMap<Long,Boolean> grouplist = new HashMap();
+        String sql  = "select * from groupmap";
+        try{
+            ResultSet rs = Conn.getStmtSet(Conn.getConnection(),sql);
+            while(rs.next()){
+                long groupid = rs.getLong("groupid");
+                grouplist.put(groupid,false);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return grouplist;
     }
 }
