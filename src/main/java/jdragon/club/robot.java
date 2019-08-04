@@ -24,7 +24,7 @@ import typing.RobotGroupClient;
  */
 public class robot
 {
-//    public static Long tljGroupNum = 974172771L;
+    public static Long tljGroupNum = 974172771L;
     public static  Long xiaochaiQ = 207938707L;
     public static PicqBotX bot = null;
     public static PicqBotX getInstance(){

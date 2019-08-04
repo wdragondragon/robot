@@ -17,6 +17,7 @@ public class OutConn {
             PreparedStatement ptmt = Conn.getPtmt(con,sql);
             ptmt.setLong(1,id);
             ResultSet rs = ptmt.executeQuery();
+            con.close();
             if(rs.next()){
                 return rs.getString("name");
             }
@@ -36,6 +37,7 @@ public class OutConn {
             PreparedStatement ptmt = Conn.getPtmt(con, sql);
             ptmt.setString(1, name);
             ResultSet rs = ptmt.executeQuery();
+            con.close();
             if(rs.next())
                 return getShowNameStr(rs);
             else{
@@ -149,27 +151,13 @@ public class OutConn {
         Long groupid;
         try{
             Connection con = Conn.getConnection();
-//            PreparedStatement ptmt = Conn.getPtmt(con,sql);
-//            ptmt.setString(1,idname);
-//            ResultSet rs = ptmt.executeQuery();
-//            if(rs.next())id=rs.getLong("id");
-//            else return "无该名片，发送指令（设置名片 名字）来设置名片，若已设置名片，请尝试跟打一段赛文并上屏成绩";
-
             String sql = "select groupid from groupmap where groupname=?";
             PreparedStatement ptmt = Conn.getPtmt(con,sql);
             ptmt.setString(1,groupname);
             ResultSet rs = ptmt.executeQuery();
             if(rs.next())groupid=rs.getLong("groupid");
-            else return "无该群映射列表，发送指令（群映射列表）来查看可以查询的群名";
-
-
+            else{ con.close();return "无该群映射列表，发送指令（群映射列表）来查看可以查询的群名";}
             sql = "select * from robothistory where id=? and groupid=? and date=?";
-//            sql = "select * from robothistory " +
-//                    "where id=" +
-//                    "(select id from robotclient where name=?)" +
-//                    " and groupid=" +
-//                    "(select groupid from groupmap where groupname=?)" +
-//                    " and date=?;";
             ptmt = Conn.getPtmt(con,sql);
             ptmt.setLong(1,id);
             ptmt.setLong(2,groupid);
@@ -178,14 +166,13 @@ public class OutConn {
             while(rs.next()){
                 message += "\n速度："+RegexText.FourOutFiveIn(rs.getDouble("speed"))+
                                 " 击键："+RegexText.FourOutFiveIn(rs.getDouble("keyspeed"))+
-                                    " 码长："+RegexText.FourOutFiveIn(rs.getDouble("keylength"));
+                                " 码长："+RegexText.FourOutFiveIn(rs.getDouble("keylength"));
                 have = true;
             }
             if(have==false)
-//                message = idname+"无"+date+"在"+groupname+"的成绩";
                 message = "无收录成绩";
+            con.close();
         }catch (Exception e){
-
             e.printStackTrace();
         }
         return  message;
@@ -203,5 +190,52 @@ public class OutConn {
             e.printStackTrace();
         }
         return grouplist;
+    }
+    public static String tljinfo(){
+        String message = "";
+        String sql = "select * from history";
+        String sql1 = "select * from client";
+        int wordnum = 0;
+        double time = 0;
+        int num = 0;
+        int datenum = 0;
+        int n = 0;
+        int people = 0;
+        int year;
+        int month;
+        int day;
+        int hour;
+        int minte;
+        int second;
+        try{
+            Connection con = Conn.getConnection();
+            ResultSet rs = Conn.getStmtSet(con,sql);
+            while(rs.next()){
+                wordnum += rs.getInt("number");
+                time += rs.getDouble("time");
+                n++;
+            }
+            rs = Conn.getStmtSet(con,sql1);
+            while(rs.next()){
+                num += rs.getInt("num");
+                datenum += rs.getInt("datenum");
+                people++;
+            }
+            year = (int)time/(60*60*24*30*12);
+            month = ((int)time/(60*60*24*30))%12;
+            day = ((int)time/(60*60*24))%30;
+            hour = ((int)time/(60*60))%60;
+            minte = ((int)time/60)%60;
+            second = ((int)time)%60;
+            message = "拖拉机详情：\n注册有"+people+"个账号" +
+                    "\n跟打器跟打总字数：" + num +
+                    "\n跟打器今日跟打总字数：" + datenum +
+                    "\n全体平均速度：" + String.format("%.2f",(wordnum/time)*60) +
+                    "\n全体共跟打次数：" + n +
+                    "\n全体在跟打上累计的有效时间：" + String.format("%.2f",time) + "秒"+
+                    "\n换算时间："+year+"年"+month+"月"+day+"天"+hour+"时"+minte+"分"+second+"秒";
+            con.close();
+        }catch (Exception e){e.printStackTrace();}
+        return message;
     }
 }

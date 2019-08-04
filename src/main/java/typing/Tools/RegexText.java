@@ -94,8 +94,15 @@ public class RegexText {
 		int keySpeedEnd = event.indexOf(" ",keySpeedSign);
 
 		Grade[0] = Double.parseDouble(event.substring(SpeedSign+2,SpeedEnd));
-		Grade[1] = Double.parseDouble(event.substring(keySpeedSign+2,keySpeedEnd));
-		Grade[2] = Double.parseDouble(event.substring(keylengthSign+2,keylengthEnd));
+
+		if(keylengthSign==-1)
+			Grade[1] = 0;
+		else
+			Grade[1] = Double.parseDouble(event.substring(keySpeedSign+2,keySpeedEnd));
+		if(keySpeedSign==-1)
+			Grade[2] = 0;
+		else
+			Grade[2] = Double.parseDouble(event.substring(keylengthSign+2,keylengthEnd));
 		return Grade;
 	}
 	public static String AddZero(String str){

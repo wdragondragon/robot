@@ -24,6 +24,6 @@ public class CommandVersion implements EverywhereCommand // 实现EverywhereComm
     {
         // 处理, 返回值会自动回复回去
         // 这里因为这个指令是用来查版本的, 所以直接返回字符串了
-        return "拖拉机最新版本1.700\n可用版本1.50-1.700";
+        return "拖拉机最新版本1.7\n可用版本1.704-1.706\n拖拉机下载地址：https://jdragon.club/s/tlj";
     }
 }

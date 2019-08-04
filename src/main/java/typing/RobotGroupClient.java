@@ -34,6 +34,7 @@ public class RobotGroupClient extends IcqListener {
     public static boolean automati_inclusion_sign;
     public static HashMap<Long,Boolean> grouplist;
     public RobotGroupClient(){
+        //定时收集赛文程序
         grouplist = OutConn.getGroupList();
         automati_inclusion_sign = false;
         Automatic_Inclusion automatic_inclusion = new Automatic_Inclusion();
@@ -54,23 +55,27 @@ public class RobotGroupClient extends IcqListener {
         respondSign = false;
         CarryName(event);
         if(!respondSign)
-            CarryComArti(event);
+            CarryComArti(event);//收集赛文
         if(!respondSign)
-            CarryComGrade(event);
+            CarryComGrade(event);//收集赛文成绩
         if(!respondSign)
-            CarryComShow(event);
+            CarryComShow(event);//发送成绩和赛文
         if(!respondSign)
-            ShowGroupList(event);
-        if(!respondSign) {
-            CreateCijicom(event);
-            CreateFollowCom(event);
-        }
+            ShowGroupList(event);//群映射列表
+
+        //每天收图
         if(automati_inclusion_sign){
             Automatic_inclusion(event);
         }
-        grouphistory(event);
-        CreateFollowTeamCom(event);
-
+        //发送各群的历史成绩
+        if(!respondSign)
+            grouphistory(event);
+        //创建比赛场地
+        if(!respondSign) {
+            CreateCijicom(event);//创建跟打战场
+            CreateFollowCom(event);//创建跟打战场
+            CreateFollowTeamCom(event);//创建团队跟打战场
+        }
     }
     public void grouphistory(EventGroupMessage event){
         String message = event.getMessage();
@@ -80,6 +85,7 @@ public class RobotGroupClient extends IcqListener {
             s[1] = RegexText.AddZero(s[1]);
             String image = "typinggroup"+ separator + groupid +"-"+ s[1]+".jpg";
             event.respond("[CQ:image,file="+image+"]");
+            respondSign = true;
         }
     }
     private void Automatic_inclusion(EventGroupMessage event){
@@ -89,15 +95,25 @@ public class RobotGroupClient extends IcqListener {
         long groupid = event.getGroupId();
         long sendid = event.getSenderId();
         String []s = message.split(" ");
-
         if(sendid == robot.xiaochaiQ&&grouplist.containsKey(groupid)) {
             if (grouplist.get(groupid)&&imageindex != -1) {
                 System.out.println(grouplist.get(groupid));
                 message = message.substring(imageindex + 4, message.length() - 1);
-                String filename = groupid +"-"+ new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) + ".jpg";
-                    String image = "/root/coolq/data/image/typinggroup/" + filename;
+                String filename = "typinggroup/"+groupid +"-"+ new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) + ".jpg";
+                    String image = "/root/coolq/data/image/" + filename;
                 System.out.println(image);
                 DownloadMsg.downloadMsg(message, image);
+                grouplist.put(groupid,false);
+                event.getHttpApi().sendGroupMsg(robot.tljGroupNum, "[CQ:image,file="+filename+"]");
+                for (Long o : grouplist.keySet()) {
+                    if(grouplist.get(o)==false){
+                        automati_inclusion_sign = false;
+                    }else {
+                        automati_inclusion_sign = true;
+                        break;
+                    }
+                }
+            }else if(message.equals("没有找到今天的比赛成绩！")){
                 grouplist.put(groupid,false);
                 for (Long o : grouplist.keySet()) {
                     if(grouplist.get(o)==false){
@@ -147,7 +163,7 @@ public class RobotGroupClient extends IcqListener {
                 Long SendId = event.getSenderId();
                 message = "群:" + GroupId + " 人:" + SendId + " 捕获赛文段：\n" + message;
                 System.out.println(message);
-                if (SendId.equals(robot.xiaochaiQ)) {
+                if (SendId.equals(robot.xiaochaiQ)&&GroupId!=726064238L) {
                     InConn.AddGroupSaiwen(GroupId, Com);
                     respondSign = true;
                 }
@@ -179,12 +195,13 @@ public class RobotGroupClient extends IcqListener {
                 if(path.equals("无该天赛文成绩"))event.respond(path);
                 else event.respond("[CQ:image,file="+ path +"]");
 
+            }else if(message.equals("#拖拉机详情")){
+                event.respond(OutConn.tljinfo());
             }
             String s[] = message.split(" ");
             s[s.length - 1] = RegexText.AddZero(s[s.length - 1]);
             Date date = Date.valueOf(s[s.length - 1]);
             Matcher m = RegexText.isAt(s[1]);
-
             if (s.length == 2) {
                 if (s[0].equals("拖拉机赛文")) {
                     event.respond(ComArti.responseStr(s[1], QQnum, date, 1));

@@ -30,7 +30,6 @@ public class InConn {
                 con.close();
                 System.out.println("添加赛文:"+groupid+"日期:"+ Conn.getdate());
             }
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -71,6 +70,7 @@ public class InConn {
                 ptmt.execute();
                 System.out.println("添加成绩"+id+" 群"+groupid);
             }
+            con.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -126,10 +126,11 @@ public class InConn {
             PreparedStatement ptmt = Conn.getPtmt(con,sql1);
             ptmt.setString(1,name);
             ResultSet rs = ptmt.executeQuery();
-            if(rs.next())return "已存在相同用户名 Q号为："+rs.getLong("id");
+            if(rs.next()){con.close();return "已存在相同用户名 Q号为："+rs.getLong("id");}
             ptmt = Conn.getPtmt(con,sql);
             ptmt.setString(1,name);
             ptmt.setLong(2,id);
+            con.close();
             return "更改成功 账号："+id+" 名片："+name;
         }catch (Exception e){
             return "更改失败，先打一篇赛文上屏成绩";
