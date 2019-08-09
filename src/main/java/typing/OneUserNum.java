@@ -13,8 +13,8 @@ public class OneUserNum extends IcqListener {
     String getComArti(String username,Long QQnum){
         String sql = "SELECT a.*,(SELECT COUNT(DISTINCT aver) FROM client AS b WHERE a.aver<b.aver)+1 as rank FROM client as a where a.username=?";
         String respond = "[CQ:at,qq="+QQnum+"]\n";
+        Connection con = Conn.getConnection();
         try {
-            Connection con = Conn.getConnection();
             PreparedStatement ptmt = Conn.getPtmt(con,sql);
             ptmt.setString(1, username);
             ResultSet rs = ptmt.executeQuery();
@@ -33,12 +33,12 @@ public class OneUserNum extends IcqListener {
             } else {
                 respond += "该用户不存在";
             }
+            con.close();
         }catch (Exception e){
             e.printStackTrace();
         }
         return respond;
     }
-
     @EventHandler
     public void onPMEvent(EventMessage event){
         String message = event.getMessage();

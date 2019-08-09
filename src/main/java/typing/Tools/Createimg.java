@@ -5,13 +5,15 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.List;
 
 public class Createimg {
 
-    public static String graphicsGeneration(List<List<List<String>>> allValue, List<String> titles, List<String[]> headers , String receiver, int totalcol) throws Exception {
+    public static String graphicsGeneration(List<List<List<String>>> allValue, List<String> titles,
+                                            List<String[]> headers , String receiver, int totalcol,
+                                            HashMap<Integer,List<Double>> rankmap) throws Exception {
         int rows = 0;
         int maxfont = 0;
         for (List<List<String>> typeV : allValue) {
@@ -19,14 +21,14 @@ public class Createimg {
                 rows += (2+typeV.size());
             }
             for (List<String> strings : typeV) {
-                maxfont = strings.get(0).length()>maxfont?strings.get(0).length():maxfont;
+                maxfont = strings.get(0).getBytes().length>maxfont?strings.get(0).getBytes().length:maxfont;
             }
         }
         // 实际数据行数+标题+备注
         int numwidth = 50;
         int totalrow = 1+rows;
-        int namewidth = maxfont * 22;
-        int otherwidth = 80;
+        int namewidth = maxfont * 7;
+        int otherwidth = 87;
 
         int imageWidth = numwidth + namewidth  + otherwidth*(totalcol-2) + 20;
         int imageHeight = totalrow * 30 + 20;
@@ -38,52 +40,55 @@ public class Createimg {
         Graphics2D graphics = image.createGraphics();
         graphics.setColor(Color.WHITE);
         graphics.fillRect(0, 0, imageWidth, imageHeight);
-        //画背景
-//        graphics.setColor(new Color(0, 170, 192));
-        graphics.setColor(new Color(150,0,0));
-        int startH = 1;
-        int redstartH = 2;
-        for (List<List<String>> typeV : allValue) {
-            if (typeV != null && typeV.size() > 0) {
-                graphics.fillRect(startWidth + 1, startHeight + startH * rowheight + 1, imageWidth - startWidth - 5 - 1, rowheight - 1);
-                startH += 2 + typeV.size();
-            }
-            graphics.setColor(new Color(190,25,0));
-            for (int temp = 0; temp < typeV.size(); temp++) {
-                List strings = typeV.get(temp);
-                if (strings != null) {
-                    graphics.fillRect(startWidth + 1,startHeight + redstartH*rowheight +1 , imageWidth - startWidth - 6,rowheight - 1);
-                }
-                redstartH++;
-                if(temp==2)break;
-            }
 
-        }
-        graphics.setColor(new Color(220, 240, 240));
         // 画横线
-
+        int startH = 2;
+//        graphics.setColor(Color.gray);
+        graphics.setColor(new Color(200,200,200));
         for (int j = 0; j < totalrow - 1; j++) {
-            graphics.setColor(Color.gray);
-            graphics.drawLine(startWidth, startHeight + (j + 1) * rowheight, imageWidth - 5,
-                    startHeight + (j + 1) * rowheight);
+            graphics.drawLine(startWidth, startHeight + (j + startH) * rowheight, imageWidth - 10,
+                    startHeight + (j + startH) * rowheight);
         }
 
-        // 画竖线
-        graphics.setColor(Color.gray);
-        startH = 1;
+        // 画竖
+
         int rightLine = 0 ;
         for (List<List<String>> typeV : allValue) {
 
             if (typeV != null && typeV.size() > 0) {
                 for (int k = 0; k < totalcol+1; k++) {
-                    rightLine = getRightMargin(k,startWidth, namewidth,otherwidth,imageWidth);
+                    rightLine = getRightMargin(k,startWidth, namewidth,otherwidth,imageWidth,totalcol);
                     graphics.drawLine(rightLine, startHeight + startH*rowheight, rightLine,
                             startHeight + (typeV.size()+1+startH)*rowheight);
                 }
                 startH+=2+typeV.size();
             }
         }
+        //画背景
+        graphics.setColor(new Color(190,25,0));
+        startH = 2;
+        int redstartH = 3;
+        for (List<List<String>> typeV : allValue) {
+            if (typeV != null && typeV.size() > 0) {
+                graphics.fillRect(startWidth + 1, startHeight + startH * rowheight + 1, imageWidth - startWidth - 10, rowheight );
+                startH += 2 + typeV.size();
+            }
+            graphics.setColor(new Color(150,0,0));
+            for (int temp = 0; temp < typeV.size(); temp++) {
+                List strings = typeV.get(temp);
+                if (strings != null) {
+                    graphics.fillRect(startWidth + 1,startHeight + redstartH*rowheight +1 , imageWidth - startWidth - 10,rowheight );
+                }
+                redstartH++;
+                if(temp==2)break;
+            }
 
+        }
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);
+        Stroke s = new BasicStroke(imageWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER);
+        graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        graphics.setStroke(s);
         // 设置字体
         Font font = new Font("宋体", Font.BOLD, 20);
         graphics.setFont(font);
@@ -93,23 +98,33 @@ public class Createimg {
         int i = 0;
         for (List<List<String>> typeV : allValue) {
             if (typeV != null && typeV.size() > 0) {
-                graphics.drawString(titles.get(i), imageWidth / 3 + startWidth+30, startHeight + startH*rowheight - 10);
+                int strWidth = graphics.getFontMetrics().stringWidth(titles.get(i));
+                graphics.drawString(titles.get(i), (imageWidth-strWidth)/2, startHeight + startH*rowheight - 10);
                 startH+=2+typeV.size();
             }
             i++;
         }
-        // 写入表头
-        graphics.setColor(Color.WHITE);
-        font = new Font("宋体", Font.BOLD, 20);
+        font = new Font("微软雅黑", Font.BOLD, 17);
+        Font font1 = new Font("微软雅黑",Font.PLAIN,10);
+        //写时间
         graphics.setFont(font);
+        graphics.setColor(Color.gray);
         startH = 2;
+        String time =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        int strWidth = graphics.getFontMetrics().stringWidth(time);
+        graphics.drawString(time,imageWidth-20-strWidth,startHeight + startH*rowheight -10);
+        // 写入表头
+        font = new Font("微软雅黑", Font.PLAIN, 17);
+        graphics.setColor(Color.WHITE);
+        graphics.setFont(font);
+        startH = 3;
         i = 0;
         for (List<List<String>> typeV : allValue) {
             if (typeV != null && typeV.size() > 0) {
                 String[] headCells = headers.get(i);
                 for (int m = 0; m < headCells.length; m++) {
-                    int strWidth = graphics.getFontMetrics().stringWidth(headCells[m].toString());
-                    rightLine = getRightMargin(m,startWidth, namewidth,otherwidth,imageWidth);
+                    strWidth = graphics.getFontMetrics().stringWidth(headCells[m].toString());
+                    rightLine = getRightMargin(m,startWidth, namewidth,otherwidth,imageWidth,totalcol);
                     if(m==0)
                         rightLine = rightLine + (numwidth-strWidth)/2;
                     else if(m==1)
@@ -126,31 +141,50 @@ public class Createimg {
 
         // 写入内容
         graphics.setColor(Color.white);
-        graphics.setFont(new Font("宋体", Font.BOLD, 20));
-        startH = 3;
+        startH = 4;
         i = 0;
         for (List<List<String>> typeV : allValue) {
             if (typeV != null && typeV.size() > 0) {
                 for (int n = 0; n < typeV.size(); n++) {
                     if(n==3) {
                         graphics.setColor(Color.black);
-                        graphics.setFont(new Font("宋体", Font.PLAIN, 20));
+//                        graphics.setFont(new Font("微软雅黑", Font.PLAIN, 17));
                     }
                     List<String> arr = typeV.get(n);
                     for (int l = 0; l < arr.size()+1; l++) {
-                        rightLine = getRightMargin(l,startWidth, namewidth,otherwidth,imageWidth)+5;
+                        graphics.setFont(font);
+                        rightLine = getRightMargin(l,startWidth, namewidth,otherwidth,imageWidth,totalcol)+5;
                         if(l==0){
-                            int strWidth = graphics.getFontMetrics().stringWidth(String.valueOf(n+1));
+                            strWidth = graphics.getFontMetrics().stringWidth(String.valueOf(n+1));
                             graphics.drawString(String.valueOf(n+1), rightLine+(numwidth-strWidth)/2-5,
-                                    startHeight + rowheight * (n + startH) - 10);
+                                    startHeight + rowheight * (n + startH) - 8);
                         }else {
-                            int strWidth = graphics.getFontMetrics().stringWidth(arr.get(l-1));
+                             strWidth = graphics.getFontMetrics().stringWidth(arr.get(l-1));
                             if(l==1)
                                 graphics.drawString(arr.get(l - 1).toString(), rightLine,
-                                        startHeight + rowheight * (n + startH) - 10);
+                                        startHeight + rowheight * (n + startH) - 8);
                             else
                                 graphics.drawString(arr.get(l - 1).toString(), rightLine+(otherwidth-strWidth)/2-5,
-                                        startHeight + rowheight * (n + startH) - 10);
+                                        startHeight + rowheight * (n + startH) - 8);
+                            graphics.setFont(font1);
+                            if(rankmap.containsKey(l)&&!arr.get(l-1).equals("无")){
+                                List<Double> ranklist = rankmap.get(l);
+                                int rank = ranklist.indexOf(Double.parseDouble(arr.get(l-1)))+1;
+                                if(rank!=0)
+                                    graphics.drawString(String.valueOf(rank),rightLine+(otherwidth+strWidth)/2-2,
+                                            startHeight + rowheight * (n + startH) - 8);
+                            }
+//                            if(l==keycol-1&&!arr.get(l-1).equals("无")) {
+//                                int keynum = keylist.size()-keylist.indexOf(Double.parseDouble(arr.get(l-1)));
+//                                if(keynum!=0)
+//                                    graphics.drawString(String.valueOf(keynum),rightLine+(otherwidth-strWidth)/2+strWidth,
+//                                        startHeight + rowheight * (n + startH) - 8);
+//                            }else if(l==keylengthcol-1&&!arr.get(l-1).equals("无")){
+//                                int keylengthnum = keylengthlist.indexOf(Double.parseDouble(arr.get(l-1)))+1;
+//                                if(keylengthnum!=0)
+//                                    graphics.drawString(String.valueOf(keylengthnum),rightLine+(otherwidth-strWidth)/2+strWidth,
+//                                        startHeight + rowheight * (n + startH) - 8);
+//                            }
                         }
                     }
                 }
@@ -158,17 +192,13 @@ public class Createimg {
             }
             i++;
         }
-        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);
-        Stroke s = new BasicStroke(imageWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER);
-        graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         graphics.drawImage(image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_SMOOTH), 0, 0, null);
-        graphics.setStroke(s);
 
-        String path = "typinggroup/zmc.jpg";
+
+        String path = "typinggroup/zmc.png";
         System.out.println(path);
-        ImageIO.write(image, "jpg",
+        ImageIO.write(image, "png",
                 new File("/root/coolq/data/image/"
 //                new File("C:\\Users\\Lenovo\\Desktop\\酷Q Pro\\data\\image\\"
                         +path));
@@ -183,7 +213,7 @@ public class Createimg {
      * @param imageWidth
      * @return
      */
-    private static int getRightMargin(int k, int startWidth, int namewidth,int otherwidth, int imageWidth) {
+    private static int getRightMargin(int k, int startWidth, int namewidth,int otherwidth, int imageWidth,int totalcol) {
         int rightLine = 0;
         if (k == 0) {
             rightLine = startWidth;
@@ -191,10 +221,10 @@ public class Createimg {
             rightLine = startWidth + 50;
         } else if (k == 2) {
             rightLine = startWidth + 50 + namewidth;
-        } else if (k >= 3 &&k<9) {
-            rightLine = startWidth + +50 + namewidth + (k - 2) * otherwidth;
-        } else if (k == 9)
-            rightLine = imageWidth - 5;
+        } else if (k >= 3 &&k<totalcol) {
+            rightLine = startWidth +50 + namewidth + (k - 2) * otherwidth;
+        } else if (k == totalcol)
+            rightLine = imageWidth - 10;
         return rightLine;
     }
 
@@ -226,7 +256,7 @@ public class Createimg {
         titles.add("跟打成绩");
 //        titles.add("SQE部门人员统计");
         try {
-            graphicsGeneration(allValue,titles,headTitles ,"",9);
+//            graphicsGeneration(allValue,titles,headTitles ,"",9);
         } catch (Exception e) {
             e.printStackTrace();
         }

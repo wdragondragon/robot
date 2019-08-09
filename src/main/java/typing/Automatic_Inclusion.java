@@ -13,7 +13,7 @@ public class Automatic_Inclusion extends Thread {
             try {
 
                 Calendar calendar = Calendar.getInstance();
-                if(calendar.get(Calendar.HOUR_OF_DAY)==23&&calendar.get(Calendar.MINUTE)==30) {
+                if(calendar.get(Calendar.HOUR_OF_DAY)==23&&calendar.get(Calendar.MINUTE)==40) {
                     RobotGroupClient.automati_inclusion_sign = true;
 
 

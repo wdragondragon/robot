@@ -34,18 +34,20 @@ public class robot
     {
         // 创建机器人对象 ( 传入配置 )
         bot = new PicqBotX(new PicqConfig(9999).setDebug(true));
+        PicqConfig c = new PicqConfig(9999);
+        c.setDebug(true);
         // 添加一个机器人账户 ( 名字, 发送URL, 发送端口 )
         bot.addAccount("Bot01", "127.0.0.1", 5700);
         PointClient pointClient = new PointClient(bot.getAccountManager().getNonAccountSpecifiedApi());
         // 注册事件监听器, 可以注册多个监听器
         bot.getEventManager().registerListeners(
-                new OneUserNum(),
-                new RobotGroupClient(),
-                new MessageMove(),
-                new Translate(),
-                new CardCarry(),
-                new RoyalClient(),
-                pointClient
+                new OneUserNum(),//拖拉机
+                new RobotGroupClient(),//打字群
+                new MessageMove(),//消息转发
+                new Translate(),//翻译
+                new CardCarry(),//斗地主
+                new RoyalClient(),//皇室战争群
+                pointClient//传话筒
         );
         // 启用指令管理器
         // 这些字符串是指令前缀, 比如指令"!help"的前缀就是"!"

@@ -4,6 +4,7 @@ import cc.moecraft.icq.event.EventHandler;
 import cc.moecraft.icq.event.IcqListener;
 import cc.moecraft.icq.event.events.message.EventGroupMessage;
 import cc.moecraft.icq.event.events.message.EventMessage;
+import cc.moecraft.icq.event.events.message.EventPrivateMessage;
 import jdragon.club.robot;
 import typing.ConDatabase.ComArti;
 import typing.ConDatabase.Conn;
@@ -31,6 +32,7 @@ import static java.io.File.separator;
 public class RobotGroupClient extends IcqListener {
     boolean respondSign;
     boolean init = false;
+    boolean noticesign = false;
     public static boolean automati_inclusion_sign;
     public static HashMap<Long,Boolean> grouplist;
     public RobotGroupClient(){
@@ -41,40 +43,77 @@ public class RobotGroupClient extends IcqListener {
         automatic_inclusion.start();
     }
     @EventHandler
+    public void CarryPrivate(EventPrivateMessage event){
+        String message = event.getMessage();
+        if(message.equals("#我的投稿")){
+            event.respond(OutConn.lookmeAllGroupSaiwen(event.getSenderId()));
+        }else if(message.equals("#取消广播")){
+            noticesign = false;
+        }else if (message.equals("#广播")){
+            noticesign = true;
+        }else if(noticesign){
+            for (Long aLong : grouplist.keySet()) {
+                event.getHttpApi().sendGroupMsg(aLong,message);
+            }
+        }
+        String []s = message.split("\\s+");
+        if(s.length==3&&s[0].equals("赛文投稿")){
+            event.respond(InConn.AddAllGroupSaiwen(s[1],s[2],event.getSenderId()));
+        }else if(s.length==4&&s[0].equals("赛文投稿")){
+            event.respond(InConn.AddAllGroupSaiwenDate(RegexText.AddZero(s[1]),s[2],s[3],event.getSenderId()));
+        }else if(s.length==4&&s[0].equals("修改赛文")){
+            event.respond(InConn.ChangeAllGroupSaiwen(RegexText.AddZero(s[1]),s[2],s[3],event.getSenderId()));
+        }else if(s.length==4&&s[0].equals("比赛投稿")) {
+            event.respond(InConn.AddRobotSaiwen(s[1],s[2], s[3], event.getSenderId(), event.getSender().getInfo().getNickname()));
+        }
+    }
+    @EventHandler
     public void Carry(EventGroupMessage event)
     {
-        System.out.println(event);
-        System.out.println("群号："+event.getGroupId()+        //获取群名片
-                " Q号："+event.getGroupSender().getInfo().getUserId()+
-                " 群名片："+event.getGroupSender().getInfo().getCard()+
-                " 昵称："+event.getGroupSender().getInfo().getNickname());
-        if(!init) {
-            initGroupList.init(event);
-            init = true;
-        }
-        respondSign = false;
-        CarryName(event);
-        if(!respondSign)
-            CarryComArti(event);//收集赛文
-        if(!respondSign)
-            CarryComGrade(event);//收集赛文成绩
-        if(!respondSign)
-            CarryComShow(event);//发送成绩和赛文
-        if(!respondSign)
-            ShowGroupList(event);//群映射列表
+        try {
+            System.out.println(event);
+            System.out.println("群号：" + event.getGroupId() +        //获取群名片
+                    " Q号：" + event.getGroupSender().getInfo().getUserId() +
+                    " 群名片：" + event.getGroupSender().getInfo().getCard() +
+                    " 昵称：" + event.getGroupSender().getInfo().getNickname());
 
-        //每天收图
-        if(automati_inclusion_sign){
-            Automatic_inclusion(event);
-        }
-        //发送各群的历史成绩
-        if(!respondSign)
-            grouphistory(event);
-        //创建比赛场地
-        if(!respondSign) {
-            CreateCijicom(event);//创建跟打战场
-            CreateFollowCom(event);//创建跟打战场
-            CreateFollowTeamCom(event);//创建团队跟打战场
+            if (!init) {
+                initGroupList.init(event);
+                init = true;
+            }
+            respondSign = false;
+            CarryName(event);
+            if (!respondSign)
+                CarryComArti(event);//收集赛文
+            if (!respondSign)
+                CarryComGrade(event);//收集赛文成绩
+            if (!respondSign)
+                CarryComShow(event);//发送成绩和赛文
+            if (!respondSign)
+                ShowGroupList(event);//群映射列表
+
+            //每天收图
+            if (automati_inclusion_sign) {
+                Automatic_inclusion(event);
+            }
+            //发送各群的历史成绩
+            if (!respondSign)
+                grouphistory(event);
+            //创建比赛场地
+            if (!respondSign) {
+                CreateCijicom(event);//创建跟打战场
+                CreateFollowCom(event);//创建跟打战场
+                CreateFollowTeamCom(event);//创建团队跟打战场
+            }
+            if(chanllgelist.containsKey(event.getSenderId())&&!respondSign){
+                event.respond("[CQ:at,qq=" + event.getSenderId() + "]你还有文章未完成");
+            }
+            System.out.println(event.getMessage());
+            if(!respondSign&&RegexText.returnduan(event.getMessage())==-1){
+                InConn.AddGroupCheatNum(event.getMessage().length(),event.getSenderId());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
     public void grouphistory(EventGroupMessage event){
@@ -148,6 +187,10 @@ public class RobotGroupClient extends IcqListener {
                 }
                 event.respond(message);
                 respondSign = true;
+            } else if(message.equals("#刷新名片")){
+                event.getBot().getAccountManager().refreshCache();
+                initGroupList.init(event);
+
             }
         }catch (Exception e){}
     }
@@ -163,7 +206,7 @@ public class RobotGroupClient extends IcqListener {
                 Long SendId = event.getSenderId();
                 message = "群:" + GroupId + " 人:" + SendId + " 捕获赛文段：\n" + message;
                 System.out.println(message);
-                if (SendId.equals(robot.xiaochaiQ)&&GroupId!=726064238L) {
+                if (SendId.equals(robot.xiaochaiQ)) {
                     InConn.AddGroupSaiwen(GroupId, Com);
                     respondSign = true;
                 }
@@ -172,19 +215,47 @@ public class RobotGroupClient extends IcqListener {
     }
     private void CarryComGrade(EventMessage event){
         try {
-            if (event.getMessage().substring(0, 5).equals("第999段")) {
-                Long GroupID = RegexText.getGroupID(event.toString());
-                Long SendID = event.getSenderId();
+            Long GroupID = RegexText.getGroupID(event.toString());
+            Long SendID = event.getSenderId();
+//            System.out.println(event.getMessage());
+//            if(!initGroupList.QQlist.containsKey(GroupID))return;
+            if (event.getMessage().length()>5&&event.getMessage().substring(0, 5).equals("第999段")) {
                 double Grade[] = RegexText.getGrade(event.getMessage());
                 String message = "群号:" + GroupID + "用户:" + SendID + "\n速度:" + Grade[0] + " 击键:" + Grade[1] + " 码长:" + Grade[2];
                 System.out.println(message);
-                InConn.AddRobotHistory(SendID, GroupID, Grade);
+                if(GroupID!=726064238L)
+                    InConn.AddRobotHistory(SendID, GroupID, Grade);
                 InConn.addMaxComMath(SendID, GroupID, Grade);
 //                event.getHttpApi().sendPrivateMsg(1061917196L, message);
                 respondSign = true;
+            }else if(event.getMessage().length()>6&&event.getMessage().substring(0, 6).equals("第9999段")){
+                System.out.println("第9999段");
+                double Grade[] = RegexText.getGrade(event.getMessage());
+                System.out.println(Grade);
+                InConn.AddRobotHistory(SendID, GroupID, Grade);
+                InConn.addMaxAllGroupComMath(SendID, GroupID, Grade,event.getSender().getInfo().getNickname());
+                respondSign = true;
+            }else if(RegexText.returnduan(event.getMessage())==1&&chanllgelist.containsKey(SendID)){
+                System.out.println("挑战段");
+                double Grade[] = RegexText.getGrade(event.getMessage());
+                event.respond(InConn.addRobotSaiwenMath(SendID,GroupID,Grade,
+                        event.getSender().getInfo().getNickname(),
+                        chanllgelist.get(SendID)));
+                chanllgelist.remove(SendID);
+                respondSign = true;
+            }else if(event.getMessage().equals("#取消上传")){
+                if(chanllgelist.containsKey(SendID)) {
+                    chanllgelist.remove(SendID);
+                    event.respond("取消成功");
+                }
+                else
+                    event.respond("取消你妹，你都没开始！");
             }
-        }catch (Exception e){}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
+    HashMap<Long,String> chanllgelist = new HashMap<>();
     private void CarryComShow(EventGroupMessage event){
         try {
             String message = event.getMessage();
@@ -194,11 +265,39 @@ public class RobotGroupClient extends IcqListener {
                 String path = ComArti.responseStr(Conn.getdate().toString(), QQnum, Conn.getdate(), 2);
                 if(path.equals("无该天赛文成绩"))event.respond(path);
                 else event.respond("[CQ:image,file="+ path +"]");
-
-            }else if(message.equals("#拖拉机详情")){
+                respondSign = true;
+            }else if(message.equals("#联赛")){
+                event.respond(OutConn.ShowAllGroupSaiwen(Conn.getdate()));
+                respondSign = true;
+            }else if(message.equals("#联赛成绩")){
+                String path = ComArti.responseStr(Conn.getdate().toString(), QQnum, Conn.getdate(), 3);
+                if(path.equals("无该天赛文成绩"))event.respond(path);
+                else event.respond("[CQ:image,file="+ path +"]");
+                respondSign = true;
+            }else if(message.equals("#统计成绩")){
+                String path =  ComArti.responseStr(Conn.getdate().toString(), QQnum, Conn.getdate(), 4);
+                if(path.equals("无该天赛文成绩"))event.respond(path);
+                else event.respond("[CQ:image,file="+ path +"]");
+                respondSign = true;
+            }
+            else if(message.equals("#拖拉机详情")){
                 event.respond(OutConn.tljinfo());
+                respondSign = true;
             }
             String s[] = message.split(" ");
+            if(s.length==2&&s[0].equals("#文章")){
+                event.respond(OutConn.ShowRobotSaiwen(s[1],0,1));
+            }
+            else if(s.length==3&&s[0].equals("#文章")){
+                chanllgelist.put(QQnum,s[1]+"%"+s[2]);
+                event.respond(OutConn.ShowRobotSaiwen(s[1],Integer.valueOf(s[2]),2));
+                respondSign = true;
+            }else if (s.length==3&&s[0].equals("#文章成绩")){
+                String path = ComArti.getRobotArMathImgPath(s[1],Integer.valueOf(s[2]));
+                if(path.equals("没有该文章成绩"))event.respond(path);
+                else event.respond("[CQ:image,file="+path+"]");
+                respondSign = true;
+            }
             s[s.length - 1] = RegexText.AddZero(s[s.length - 1]);
             Date date = Date.valueOf(s[s.length - 1]);
             Matcher m = RegexText.isAt(s[1]);
@@ -210,7 +309,7 @@ public class RobotGroupClient extends IcqListener {
 //                    event.respond(ComArti.responseStr(s[1], QQnum, date, 2));
                     event.respond("[CQ:image,file="+ComArti.responseStr(s[1], QQnum, date, 2)+"]");
                     respondSign = true;
-                } else if(s[0].equals("成绩")){
+                }else if(s[0].equals("成绩")){
 
                 } else if(s[0].equals("成绩")){
 
@@ -221,7 +320,7 @@ public class RobotGroupClient extends IcqListener {
                     respondSign = true;
                 } else if (s[0].equals("成绩")) {
 
-                    event.respond(OutConn.ShowGroupSaiwenMath(s[1],date));
+                    event.respond(OutConn.ShowGroupSaiwenMath(s[1], date));
                     respondSign = true;
                 }
             } else if (s.length == 4) {
@@ -266,15 +365,24 @@ public class RobotGroupClient extends IcqListener {
             } else if (message.equals("人工智障帮助")) {
                 event.respond(
                         "群映射列表 = 查询各大跟打群映射的缩写名字\n" +
-                                "设置名片 名片 = 设置你名片（不是群名片）\n" +
-                                "查询 你的名片 = 查询你的赛文上屏成绩概况\n" +
-                                "赛文 年-月-日=查询拖拉机某天赛文\n" +
-                                "成绩 年-月-日 = 查询拖拉机某天赛文成绩\n" +
+                                "查询 @QQ = 查询你的赛文上屏成绩概况\n" +
                                 "赛文 群映射名字 年-月-日 = 查询某个群某一天的赛文\n" +
-                                "成绩 你的名片 群映射名字 年-月-日 = 查询你在某个群某天赛文成绩上屏记录\n"+
+                                "成绩 群映射名字 年-月-日 = 查询某个群某天成绩详情（文字成绩）\n"+
+                                "成绩 @QQ 群映射名字 年-月-日 = 查询你在某个群某天赛文成绩上屏记录（文字成绩）\n"+
+                                "历史成绩 yyyy-MM-dd = 查看本群的某日比赛成绩（图片成绩）\n" +
+                                "拖拉机 拖拉机号名 = 查询你拖拉机中账号信息\n"+
+                                "拖拉机成绩 yyyy-MM-dd = 查看某年某月某日的拖拉机生稿成绩\n"+
+                                "#拖拉机成绩 = 查看今天的拖拉机生稿成绩\n"+
+                                "#联赛 = 获取今天的联赛赛文\n"+
+                                "#联赛成绩 = 查看今天的联赛成绩\n"+
+                                "#统计成绩 查看统计所有群列表的日赛成绩汇总\n" +
+                                "私聊机器人->#我的投稿 = 能看到你已投稿的赛文信息\n"+
+                                "私聊机器人->赛文投稿（换行）标题（换行）内容 = 进行延续日期投稿赛文\n"+
+                                "私聊机器人->赛文投稿（换行）yyyy-MM-dd（换行）标题（换行）内容 = 进行指定日期投稿赛文\n"+
+                                "私聊机器人->修改赛文（换行）yyyy-MM-dd（换行）标题（换行）内容 = 修改指定日期已投稿的赛文\n"+
                                 "#随机战场 启动不需要跟打器的QQ私聊作对照区，Q群聊天框作跟打区的对战模式\n"+
                                 "#随机混战 启动一个以个人为单位计分的跟打发文\n"+
-                                "#随机团战 启动一个以队伍为单位计分的跟打发文"
+                                "#随机团战 启动一个以队伍为单位计分的跟打发文\n"
                 );
                 respondSign = true;
             }
