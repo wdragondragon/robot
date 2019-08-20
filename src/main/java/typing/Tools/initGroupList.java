@@ -1,6 +1,5 @@
 package typing.Tools;
 
-import cc.moecraft.icq.event.events.message.EventGroupMessage;
 import cc.moecraft.icq.sender.IcqHttpApi;
 import cc.moecraft.icq.sender.returndata.ReturnListData;
 import cc.moecraft.icq.sender.returndata.returnpojo.get.RGroupMemberInfo;
@@ -13,16 +12,16 @@ import java.util.Map;
 public class initGroupList {
     public static Map<Long,String> QQlist = new HashMap<>();
     public static Map<Long,Map<Long,String>> GroupMemberCardMap= new HashMap<Long, Map<Long, String>>();
-    public static void init(EventGroupMessage event){
+    public static void init(IcqHttpApi httpApi){
 //        List<RGroup> Grouplist= event.getHttpApi().getGroupList().getData();
         HashMap<Long,Boolean> Grouplist = OutConn.getGroupList();
         for(long GroupID :Grouplist.keySet()) {
             if (!GroupMemberCardMap.containsKey(GroupID)) {        //群名片散列
-                IcqHttpApi icqHttpApi = event.getHttpApi();
-                ReturnListData<RGroupMemberInfo> returnData = icqHttpApi.getGroupMemberList(GroupID);
+//                IcqHttpApi icqHttpApi = event.getHttpApi();
+                ReturnListData<RGroupMemberInfo> returnData = httpApi.getGroupMemberList(GroupID);
 //                System.out.println(returnData.getData());
                 List<RGroupMemberInfo> s ;
-                    s = event.getHttpApi().getGroupMemberList(GroupID).getData();
+                    s = httpApi.getGroupMemberList(GroupID).getData();
                 Map<Long, String> memberlist = new HashMap<Long, String>();
                 for (RGroupMemberInfo key : s) {
                     memberlist.put(key.getUserId(), key.getCard());
@@ -33,7 +32,7 @@ public class initGroupList {
             }
         }
         for(long GroupID :Grouplist.keySet()) {
-            List<RGroupMemberInfo> s = event.getHttpApi().getGroupMemberList(GroupID).getData();
+            List<RGroupMemberInfo> s = httpApi.getGroupMemberList(GroupID).getData();
             for (RGroupMemberInfo key : s) {
                 if(QQlist.get(key.getUserId())==null||QQlist.get(key.getUserId()).equals(""))
                     QQlist.get(key.getNickname());

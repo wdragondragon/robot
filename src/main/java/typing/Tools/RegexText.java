@@ -96,6 +96,7 @@ public class RegexText {
 			int mistake = event.indexOf("错字");
 			int rightkeyper = event.indexOf("键准");
 			Grade[0] = Double.parseDouble(event.substring(SpeedSign + 2, SpeedEnd));
+			if(Grade[0]>1000)Grade[0] = 0;
 			if (keylengthSign != -1) {
 				int keySpeedEnd = event.indexOf(" ", keySpeedSign);
 				Grade[1] = Double.parseDouble(event.substring(keySpeedSign + 2, keySpeedEnd));

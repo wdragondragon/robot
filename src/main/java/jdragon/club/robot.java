@@ -5,6 +5,7 @@ import Cantoon.ReturnLast;
 import EntoZh.Translate;
 import cc.moecraft.icq.PicqBotX;
 import cc.moecraft.icq.PicqConfig;
+import game.OneATwoB.O2TCarry;
 import game.P2P.PointClient;
 import game.PlayCards.CardCarry;
 import royal.RoyalClient;
@@ -48,6 +49,7 @@ public class robot
                 new CardCarry(),//斗地主
                 new RoyalClient(),//皇室战争群
                 pointClient//传话筒
+                ,new O2TCarry()
         );
         // 启用指令管理器
         // 这些字符串是指令前缀, 比如指令"!help"的前缀就是"!"

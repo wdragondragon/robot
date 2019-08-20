@@ -5,6 +5,7 @@ import cc.moecraft.icq.event.IcqListener;
 import cc.moecraft.icq.event.events.message.EventGroupMessage;
 import cc.moecraft.icq.event.events.message.EventMessage;
 import cc.moecraft.icq.event.events.message.EventPrivateMessage;
+import cc.moecraft.icq.sender.IcqHttpApi;
 import jdragon.club.robot;
 import typing.ConDatabase.ComArti;
 import typing.ConDatabase.Conn;
@@ -65,11 +66,14 @@ public class RobotGroupClient extends IcqListener {
             event.respond(InConn.ChangeAllGroupSaiwen(RegexText.AddZero(s[1]),s[2],s[3],event.getSenderId()));
         }else if(s.length==4&&s[0].equals("比赛投稿")) {
             event.respond(InConn.AddRobotSaiwen(s[1],s[2], s[3], event.getSenderId(), event.getSender().getInfo().getNickname()));
+        }else if(s.length==2&&s[0].equals("清零")&&event.getSender().getId()==1061917196L){
+            event.respond(InConn.Deleterobotinfo(Long.valueOf(s[1])));
         }
     }
     @EventHandler
     public void Carry(EventGroupMessage event)
     {
+        IcqHttpApi httpApi = event.getHttpApi();
         try {
             System.out.println(event);
             System.out.println("群号：" + event.getGroupId() +        //获取群名片
@@ -78,7 +82,7 @@ public class RobotGroupClient extends IcqListener {
                     " 昵称：" + event.getGroupSender().getInfo().getNickname());
 
             if (!init) {
-                initGroupList.init(event);
+                initGroupList.init(httpApi);
                 init = true;
             }
             respondSign = false;
@@ -189,7 +193,7 @@ public class RobotGroupClient extends IcqListener {
                 respondSign = true;
             } else if(message.equals("#刷新名片")){
                 event.getBot().getAccountManager().refreshCache();
-                initGroupList.init(event);
+                initGroupList.init(event.getHttpApi());
 
             }
         }catch (Exception e){}
@@ -312,7 +316,9 @@ public class RobotGroupClient extends IcqListener {
                 }else if(s[0].equals("成绩")){
 
                 } else if(s[0].equals("成绩")){
-
+                    event.respond("[CQ:image,file="+InConn.Deleterobotinfo(Long.parseLong(s[0]))+"]");
+                } else if(s[0].equals("清零")&&QQnum==1061917196L){
+                    event.respond(InConn.Deleterobotinfo(Long.valueOf(s[1])));
                 }
             } else if (s.length == 3) {
                 if (s[0].equals("赛文")) {
@@ -366,13 +372,13 @@ public class RobotGroupClient extends IcqListener {
                 event.respond(
                         "群映射列表 = 查询各大跟打群映射的缩写名字\n" +
                                 "查询 @QQ = 查询你的赛文上屏成绩概况\n" +
+                                "-----群赛指令-----\n"+
                                 "赛文 群映射名字 年-月-日 = 查询某个群某一天的赛文\n" +
                                 "成绩 群映射名字 年-月-日 = 查询某个群某天成绩详情（文字成绩）\n"+
                                 "成绩 @QQ 群映射名字 年-月-日 = 查询你在某个群某天赛文成绩上屏记录（文字成绩）\n"+
                                 "历史成绩 yyyy-MM-dd = 查看本群的某日比赛成绩（图片成绩）\n" +
-                                "拖拉机 拖拉机号名 = 查询你拖拉机中账号信息\n"+
-                                "拖拉机成绩 yyyy-MM-dd = 查看某年某月某日的拖拉机生稿成绩\n"+
-                                "#拖拉机成绩 = 查看今天的拖拉机生稿成绩\n"+
+
+                                "-----联赛指令-----\n"+
                                 "#联赛 = 获取今天的联赛赛文\n"+
                                 "#联赛成绩 = 查看今天的联赛成绩\n"+
                                 "#统计成绩 查看统计所有群列表的日赛成绩汇总\n" +
@@ -380,9 +386,26 @@ public class RobotGroupClient extends IcqListener {
                                 "私聊机器人->赛文投稿（换行）标题（换行）内容 = 进行延续日期投稿赛文\n"+
                                 "私聊机器人->赛文投稿（换行）yyyy-MM-dd（换行）标题（换行）内容 = 进行指定日期投稿赛文\n"+
                                 "私聊机器人->修改赛文（换行）yyyy-MM-dd（换行）标题（换行）内容 = 修改指定日期已投稿的赛文\n"+
+
+                                "-----拖拉机指令-----\n"+
+                                "拖拉机 拖拉机号名 = 查询你拖拉机中账号信息\n"+
+                                "拖拉机成绩 yyyy-MM-dd = 查看某年某月某日的拖拉机生稿成绩\n"+
+                                "#拖拉机成绩 = 查看今天的拖拉机生稿成绩\n"+
+
+                                "-----战场指令-----\n"+
                                 "#随机战场 启动不需要跟打器的QQ私聊作对照区，Q群聊天框作跟打区的对战模式\n"+
                                 "#随机混战 启动一个以个人为单位计分的跟打发文\n"+
-                                "#随机团战 启动一个以队伍为单位计分的跟打发文\n"
+                                "#随机团战 启动一个以队伍为单位计分的跟打发文\n"+
+
+                                "-----交友指令-----\n"+
+                                "私聊机器人->#匹配 = 随机与另一同为人工智障好友的人匹配聊天\n"+
+                                "私聊机器人->#退出 = 已配对成功后，该指令用于退出聊天\n" +
+                                "https://jdragon.club/s/1565351363708" +
+
+                                "-----游戏指令-----\n"+
+                                "1A2B = 启动以个人为单位的1A2B游戏（默认4个数）\n"+
+                                "1A2B 个位数 = 启动以个人为单位的1A2B游戏（指定位数）"
+
                 );
                 respondSign = true;
             }

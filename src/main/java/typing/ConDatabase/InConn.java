@@ -2,10 +2,7 @@ package typing.ConDatabase;
 
 import typing.Tools.initGroupList;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -124,8 +121,8 @@ public class InConn {
     }
     public static void AddGroupCheatNum(int num,long id){
         String sql = "select * from robotclient where id="+id;
+        Connection con = Conn.getConnection();
         try{
-            Connection con = Conn.getConnection();
             ResultSet rs = Conn.getStmtSet(con,sql);
             if(rs.next()){
                 sql = "update robotclient set cheatnum="
@@ -138,8 +135,12 @@ public class InConn {
                 ptmt.setLong(1,id);
                 ptmt.execute();
             }
-            con.close();
         }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            con.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -400,6 +401,21 @@ public class InConn {
             e.printStackTrace();
         }
         return message;
+    }
+    public static String Deleterobotinfo(long id){
+        String deletechengji  = "delete from allgroupsaiwenchengji where id="+id;
+        String deleteinfo = "delete from robotclient where id="+id;
+        String deletehistory = "delete from robothistory where id="+id;
+        try{
+            Connection connection = Conn.getConnection();
+            Conn.execute(connection,deletechengji);
+            Conn.execute(connection,deleteinfo);
+            Conn.execute(connection,deletehistory);
+            return "删除所有信息包括群跟打记录，历史联赛成绩成功。";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "清零失败";
+        }
     }
     public static String  setName(String name,Long id){
         try{

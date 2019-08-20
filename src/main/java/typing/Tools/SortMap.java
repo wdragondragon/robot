@@ -47,8 +47,6 @@ public class SortMap {
         for (Map.Entry<Long, Double> mapping : list) {
             if(i<3)
                 math.put(mapping.getKey(),(math.get(mapping.getKey())+3-i));
-            else
-                break;
             i++;// OutConn.insteadName(mapping.getKey())
             message +="用户名："+ namelist.get(mapping.getKey())+
                     " 用户Q号：" + mapping.getKey() +
