@@ -50,6 +50,7 @@ public class robot
                 new RoyalClient(),//皇室战争群
                 pointClient//传话筒
                 ,new O2TCarry()
+                ,new ownUse()
         );
         // 启用指令管理器
         // 这些字符串是指令前缀, 比如指令"!help"的前缀就是"!"

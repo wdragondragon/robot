@@ -16,12 +16,18 @@ public class Createimg {
                                             HashMap<Integer,List<Double>> rankmap) throws Exception {
         int rows = 0;
         int maxfont = 0;
+        Map<String,String> QQdo = new HashMap();
         for (List<List<String>> typeV : allValue) {
             if (typeV != null && typeV.size() > 0) {
                 rows += (2+typeV.size());
             }
             for (List<String> strings : typeV) {
                 maxfont = strings.get(0).getBytes().length>maxfont?strings.get(0).getBytes().length:maxfont;
+                if(strings.get(0).indexOf("%")!=-1) {
+                    String s[] = strings.get(0).split("%");
+                    QQdo.put(s[0], s[1]);
+                    strings.set(0,s[0]);
+                }
             }
         }
         // 实际数据行数+标题+备注
@@ -146,34 +152,37 @@ public class Createimg {
         for (List<List<String>> typeV : allValue) {
             if (typeV != null && typeV.size() > 0) {
                 for (int n = 0; n < typeV.size(); n++) {
-                    if(n==3) {
-                        graphics.setColor(Color.black);
-//                        graphics.setFont(new Font("微软雅黑", Font.PLAIN, 17));
-                    }
                     List<String> arr = typeV.get(n);
                     for (int l = 0; l < arr.size()+1; l++) {
-                        graphics.setFont(font);
                         rightLine = getRightMargin(l,startWidth, namewidth,otherwidth,imageWidth,totalcol)+5;
+                        //画正文
+                        graphics.setFont(font);
+                        if (n<3)graphics.setColor(Color.white);
+                        if (n >= 3) graphics.setColor(Color.black);
                         if(l==0){
                             strWidth = graphics.getFontMetrics().stringWidth(String.valueOf(n+1));
                             graphics.drawString(String.valueOf(n+1), rightLine+(numwidth-strWidth)/2-5,
                                     startHeight + rowheight * (n + startH) - 8);
                         }else {
                              strWidth = graphics.getFontMetrics().stringWidth(arr.get(l-1));
-                            if(l==1)
-                                graphics.drawString(arr.get(l - 1).toString(), rightLine,
+                            if(l==1) {
+                                graphics.drawString(arr.get(l - 1), rightLine,
                                         startHeight + rowheight * (n + startH) - 8);
+                                //画捐赠者
+                                if(QQdo.containsKey(arr.get(l - 1))) {
+                                    String sign = QQdo.get(arr.get(l - 1));
+//                                    graphics.setColor(Color.green);
+                                    graphics.setColor(new Color(150,0,0));
+                                    graphics.fillRect(rightLine + strWidth + 3, rowheight * (n + startH) - 5, 10, 10);
+                                    graphics.setColor(Color.white);
+                                    graphics.setFont(new Font("微软雅黑", Font.BOLD, 10));
+                                    graphics.drawString(sign, rightLine + strWidth + 3,
+                                            rowheight * (n + startH) + 4);
+                                }
+                            }
                             else
                                 graphics.drawString(arr.get(l - 1).toString(), rightLine+(otherwidth-strWidth)/2-5,
                                         startHeight + rowheight * (n + startH) - 8);
-                            graphics.setFont(font1);
-                            if(rankmap.containsKey(l)&&!arr.get(l-1).equals("无")){
-                                List<Double> ranklist = rankmap.get(l);
-                                int rank = ranklist.indexOf(Double.parseDouble(arr.get(l-1)))+1;
-                                if(rank!=0)
-                                    graphics.drawString(String.valueOf(rank),rightLine+(otherwidth+strWidth)/2-2,
-                                            startHeight + rowheight * (n + startH) - 8);
-                            }
 //                            if(l==keycol-1&&!arr.get(l-1).equals("无")) {
 //                                int keynum = keylist.size()-keylist.indexOf(Double.parseDouble(arr.get(l-1)));
 //                                if(keynum!=0)
@@ -185,6 +194,17 @@ public class Createimg {
 //                                    graphics.drawString(String.valueOf(keylengthnum),rightLine+(otherwidth-strWidth)/2+strWidth,
 //                                        startHeight + rowheight * (n + startH) - 8);
 //                            }
+                        }
+                        //画下标
+                        if (n<3)graphics.setColor(Color.white);
+                        if (n >= 3) graphics.setColor(Color.black);
+                        graphics.setFont(font1);
+                        if(rankmap.containsKey(l)&&!arr.get(l-1).equals("无")){
+                            List<Double> ranklist = rankmap.get(l);
+                            int rank = ranklist.indexOf(Double.parseDouble(arr.get(l-1)))+1;
+                            if(rank!=0)
+                                graphics.drawString(String.valueOf(rank),rightLine+(otherwidth+strWidth)/2-2,
+                                        startHeight + rowheight * (n + startH) - 8);
                         }
                     }
                 }

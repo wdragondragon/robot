@@ -216,6 +216,9 @@ public class ComArti {
                 String sudu = String.valueOf(rs.getDouble("sudu"));
                 String key = String.valueOf(key1);
                 String firstsudu = String.valueOf(firstsudu1);
+                name = name.replaceAll("%","");
+                if(initGroupList.QQDomap.containsKey(id))
+                    name += "%" + initGroupList.QQDomap.get(id);
                 if(key.equals("-1.0"))
                     key = "无";
                 else if(keylenth1<4)
