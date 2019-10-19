@@ -1,5 +1,6 @@
 package typing.ConDatabase;
 
+import typing.Tools.Createimg;
 import typing.Tools.RegexText;
 import typing.Tools.initGroupList;
 
@@ -7,7 +8,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
+import java.util.*;
 
 public class OutConn {
     public static String insteadName(Long id){
@@ -230,19 +231,72 @@ public class OutConn {
             ptmt.setLong(2,groupid);
             ptmt.setDate(3,date);
             rs = ptmt.executeQuery();
+            List<List<List<String>>> allValue = new ArrayList<List<List<String>>>();
+            List<List<String>> contentArray = new ArrayList<List<String>>();
+            List<String[]> headTitles = new ArrayList<String[]>();
+            List<String> titles = new ArrayList<String>();
+            titles.add(idname+"的"+date+"成绩");
+            headTitles.add(new String[]{"序号","名字","成绩","击键","码长"});
+            allValue.add(contentArray);
+            List<Double> keylist = new ArrayList<>();
+            List<Double> keylenthlist = new ArrayList<>();
             while(rs.next()){
-                message += "\n速度："+RegexText.FourOutFiveIn(rs.getDouble("speed"))+
-                                " 击键："+RegexText.FourOutFiveIn(rs.getDouble("keyspeed"))+
-                                " 码长："+RegexText.FourOutFiveIn(rs.getDouble("keylength"));
+                keylist.add(RegexText.FourOutFiveIn(rs.getDouble("keyspeed")));
+                keylenthlist.add(RegexText.FourOutFiveIn(rs.getDouble("keylength")));
+                contentArray.add(Arrays.asList(new String[]{
+                        idname
+                        ,String.valueOf(RegexText.FourOutFiveIn(rs.getDouble("speed")))
+                        ,String.valueOf(RegexText.FourOutFiveIn(rs.getDouble("keyspeed")))
+                                ,String.valueOf(RegexText.FourOutFiveIn(rs.getDouble("keylength")))
+                }));
                 have = true;
             }
             if(have==false)
                 message = "无收录成绩";
+            else {
+                Collections.sort(keylist,Collections.reverseOrder());
+                Collections.sort(keylenthlist);
+                HashMap<Integer, List<Double>> rankmap = new HashMap<>();
+                rankmap.put(3,keylist);
+                rankmap.put(4,keylenthlist);
+                message = Createimg.graphicsGeneration(allValue,titles,headTitles,null,headTitles.get(0).length,rankmap);
+            }
             con.close();
         }catch (Exception e){
             e.printStackTrace();
         }
         return  message;
+    }
+    public static long getTodayMaxByGroupId(long groupid,double sudu,int duan){
+        String sql;
+        if(duan==999)
+            sql = "select speed,id from groupsaiwenmax where date=? and groupid=? order by speed desc limit 1";
+        else
+            sql = "select sudu,id from allgroupsaiwenchengji where saiwendate=? order by sudu desc limit 1";
+        try{
+            Connection con = Conn.getConnection();
+            PreparedStatement ptmt = Conn.getPtmt(con,sql);
+            ptmt.setDate(1,Conn.getdate());
+            if(duan==999)
+                ptmt.setLong(2,groupid);
+            ResultSet rs = ptmt.executeQuery();
+            if(rs.next()){
+                double speed;
+                if(duan==999)
+                    speed = rs.getDouble(("speed"));
+                else
+                    speed = rs.getDouble(("sudu"));
+                if(speed<sudu){
+                    long ret= rs.getLong("id");
+                    con.close();
+                    return ret;
+                }
+            }
+            con.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0L;
     }
     public static String lookmeAllGroupSaiwen(long id){
         String sql = "select * from allgroupsaiwen where author="+id;

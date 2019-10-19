@@ -260,12 +260,18 @@ public class ComArti {
             Collections.sort(keylenthlist);
             Collections.sort(firstplaylist,Collections.reverseOrder());
             Collections.sort(ranklist,Collections.reverseOrder());
-            System.out.println(ranklist);
+
             rankmap.put(4,ranklist);
             rankmap.put(5,firstplaylist);
             rankmap.put(6,keylist);
             rankmap.put(7,keylenthlist);
+            System.out.println("查看联赛成绩");
+            System.out.println(ranklist);
+            System.out.println(firstplaylist);
+            System.out.println(keylist);
+            System.out.println(keylenthlist);
             path += Createimg.graphicsGeneration(allValue,titles,headTitles,null,headTitles.get(0).length,rankmap);
+            System.out.println(ranklist+path);
             if(!sign)path = "无该天赛文成绩";
 
         }catch (Exception e){

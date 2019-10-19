@@ -9,11 +9,14 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
 
+import static java.io.File.separator;
+
 public class Createimg {
 
     public static String graphicsGeneration(List<List<List<String>>> allValue, List<String> titles,
                                             List<String[]> headers , String receiver, int totalcol,
                                             HashMap<Integer,List<Double>> rankmap) throws Exception {
+        System.out.println("19");
         int rows = 0;
         int maxfont = 0;
         Map<String,String> QQdo = new HashMap();
@@ -30,6 +33,7 @@ public class Createimg {
                 }
             }
         }
+        System.out.println("36");
         // 实际数据行数+标题+备注
         int numwidth = 50;
         int totalrow = 1+rows;
@@ -41,12 +45,12 @@ public class Createimg {
         int rowheight = 30;
         int startHeight = 10;
         int startWidth = 10;
-
+        System.out.println("47");
         BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics = image.createGraphics();
         graphics.setColor(Color.WHITE);
         graphics.fillRect(0, 0, imageWidth, imageHeight);
-
+        System.out.println("53");
         // 画横线
         int startH = 2;
 //        graphics.setColor(Color.gray);
@@ -55,7 +59,7 @@ public class Createimg {
             graphics.drawLine(startWidth, startHeight + (j + startH) * rowheight, imageWidth - 10,
                     startHeight + (j + startH) * rowheight);
         }
-
+        System.out.println("61");
         // 画竖
 
         int rightLine = 0 ;
@@ -70,6 +74,7 @@ public class Createimg {
                 startH+=2+typeV.size();
             }
         }
+        System.out.println("76");
         //画背景
         graphics.setColor(new Color(190,25,0));
         startH = 2;
@@ -95,6 +100,8 @@ public class Createimg {
         Stroke s = new BasicStroke(imageWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         graphics.setStroke(s);
+
+        System.out.println("103");
         // 设置字体
         Font font = new Font("宋体", Font.BOLD, 20);
         graphics.setFont(font);
@@ -145,6 +152,7 @@ public class Createimg {
             i++;
         }
 
+        System.out.println("154");
         // 写入内容
         graphics.setColor(Color.white);
         startH = 4;
@@ -212,11 +220,11 @@ public class Createimg {
             }
             i++;
         }
+        String path = "typinggroup"+separator+"zmc.png";
 
         graphics.drawImage(image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_SMOOTH), 0, 0, null);
 
 
-        String path = "typinggroup/zmc.png";
         System.out.println(path);
         ImageIO.write(image, "png",
                 new File("/root/coolq/data/image/"

@@ -168,4 +168,16 @@ public class RegexText {
 			return Integer.valueOf(m.group(1));
 		} else return -1;
 	}
+	public static String biaoding(String str){
+		char []a = str.toCharArray();
+		String ding = "，。、！?↓,.!?";
+		for(int i=0;i<a.length-1;i++){
+			if(a[i]=='_'&&ding.indexOf(String.valueOf(a[i+1]))!=-1){
+				a[i]='#';
+			}
+		}
+		str = new String(a);
+		str = str.replaceAll("#","");
+		return str;
+	}
 }

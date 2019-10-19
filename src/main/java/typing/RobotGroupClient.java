@@ -6,6 +6,8 @@ import cc.moecraft.icq.event.events.message.EventGroupMessage;
 import cc.moecraft.icq.event.events.message.EventMessage;
 import cc.moecraft.icq.event.events.message.EventPrivateMessage;
 import cc.moecraft.icq.sender.IcqHttpApi;
+import cc.moecraft.icq.sender.message.MessageBuilder;
+import cc.moecraft.icq.sender.message.components.ComponentAt;
 import jdragon.club.robot;
 import typing.ConDatabase.ComArti;
 import typing.ConDatabase.Conn;
@@ -14,10 +16,8 @@ import typing.ConDatabase.OutConn;
 import typing.GroupFollowTeamWar.GroupFollowTeamThread;
 import typing.GroupFollowWar.GroupFollowThread;
 import typing.GroupWar.GroupThread;
-import typing.Tools.DownloadMsg;
-import typing.Tools.RegexText;
-import typing.Tools.SortMap;
-import typing.Tools.initGroupList;
+import typing.ShortCoding.BetterTyping;
+import typing.Tools.*;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -34,14 +34,30 @@ public class RobotGroupClient extends IcqListener {
     boolean respondSign;
     boolean init = false;
     boolean noticesign = false;
-    public static boolean automati_inclusion_sign;
-    public static HashMap<Long,Boolean> grouplist;
+    public static boolean automati_inclusion_sign;//收集赛文成绩标记
+    public static HashMap<Long,Boolean> grouplist;//判断群是否已收
+
+
+    HashMap<String,BetterTyping> betterTypingHashMap = new HashMap<>();
     public RobotGroupClient(){
         //定时收集赛文程序
         grouplist = OutConn.getGroupList();
         automati_inclusion_sign = false;
         Automatic_Inclusion automatic_inclusion = new Automatic_Inclusion();
         automatic_inclusion.start();
+
+        //最佳编码码表加载
+        betterTypingHashMap.put("词组提示码表",new BetterTyping("词组提示码表"));
+    }
+    @EventHandler
+    public void CarryBoth(EventMessage event){
+        String message = event.getMessage();
+        if(message.substring(0,1).equals("？")){
+            BetterTyping betterTyping = betterTypingHashMap.get("词组提示码表");
+            betterTyping.changecolortip(message.substring(1));
+            betterTyping.compalllength(message.substring(1));
+            event.respond("标点顶点屏理论码长："+betterTyping.getDingKeylength()+" 总键数"+betterTyping.getDingalllength()+"\n"+betterTyping.getDingShowStr());
+        }
     }
     @EventHandler
     public void CarryPrivate(EventPrivateMessage event){
@@ -75,12 +91,6 @@ public class RobotGroupClient extends IcqListener {
     {
         IcqHttpApi httpApi = event.getHttpApi();
         try {
-            System.out.println(event);
-            System.out.println("群号：" + event.getGroupId() +        //获取群名片
-                    " Q号：" + event.getGroupSender().getInfo().getUserId() +
-                    " 群名片：" + event.getGroupSender().getInfo().getCard() +
-                    " 昵称：" + event.getGroupSender().getInfo().getNickname());
-
             if (!init) {
                 initGroupList.init(httpApi);
                 init = true;
@@ -112,7 +122,6 @@ public class RobotGroupClient extends IcqListener {
             if(chanllgelist.containsKey(event.getSenderId())&&!respondSign){
                 event.respond("[CQ:at,qq=" + event.getSenderId() + "]你还有文章未完成");
             }
-            System.out.println(event.getMessage());
             if(!respondSign&&RegexText.returnduan(event.getMessage())==-1){
                 InConn.AddGroupCheatNum(event.getMessage().length(),event.getSenderId());
             }
@@ -172,9 +181,18 @@ public class RobotGroupClient extends IcqListener {
     private void CarryName(EventGroupMessage event){
         try {
             System.out.println("名片操作");
-            String set[] = event.getMessage().split(" ");
             Long id = event.getSenderId();
             String message = "[CQ:at,qq=" + id + "]\n";
+            if(event.getMessage().equals("#刷新缓存")){
+                event.getGroupSender().refreshInfo();
+                event.getGroup().refreshInfo();
+                event.getBot().getAccountManager().refreshCache();
+                initGroupList.init(event.getHttpApi());
+//                event.respond("刷新成功，你现在的群名片为"+event.getGroupSender().getInfo().getCard());
+                event.respond("刷新成功，你现在的群名片为"+event.getHttpApi().getGroupMemberInfo(event.getGroupId(),id).getData().getCard());
+                respondSign = true;
+            }
+            String set[] = event.getMessage().split(" ");
             if (set[0].equals("设置名片")) {
                 message += InConn.setName(set[1], id);
                 event.respond(message);
@@ -191,12 +209,10 @@ public class RobotGroupClient extends IcqListener {
                 }
                 event.respond(message);
                 respondSign = true;
-            } else if(message.equals("#刷新名片")){
-                event.getBot().getAccountManager().refreshCache();
-                initGroupList.init(event.getHttpApi());
-
             }
-        }catch (Exception e){}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     private void CarryComArti(EventMessage event)
     {
@@ -221,12 +237,15 @@ public class RobotGroupClient extends IcqListener {
         try {
             Long GroupID = RegexText.getGroupID(event.toString());
             Long SendID = event.getSenderId();
-//            System.out.println(event.getMessage());
-//            if(!initGroupList.QQlist.containsKey(GroupID))return;
+
             if (event.getMessage().length()>5&&event.getMessage().substring(0, 5).equals("第999段")) {
                 double Grade[] = RegexText.getGrade(event.getMessage());
                 String message = "群号:" + GroupID + "用户:" + SendID + "\n速度:" + Grade[0] + " 击键:" + Grade[1] + " 码长:" + Grade[2];
                 System.out.println(message);
+                long MaxQQ = OutConn.getTodayMaxByGroupId(GroupID,Grade[0],RegexText.returnduan(event.getMessage()));
+                if(MaxQQ!=0L&&MaxQQ!=SendID){
+                    event.respond(new MessageBuilder().add(new ComponentAt(MaxQQ)).add("你第一被抢了").toString());
+                }
                 if(GroupID!=726064238L)
                     InConn.AddRobotHistory(SendID, GroupID, Grade);
                 InConn.addMaxComMath(SendID, GroupID, Grade);
@@ -236,6 +255,10 @@ public class RobotGroupClient extends IcqListener {
                 System.out.println("第9999段");
                 double Grade[] = RegexText.getGrade(event.getMessage());
                 System.out.println(Grade);
+                long MaxQQ = OutConn.getTodayMaxByGroupId(GroupID,Grade[0],RegexText.returnduan(event.getMessage()));
+                if(MaxQQ!=0L&&MaxQQ!=SendID){
+                    event.respond(new MessageBuilder().add(new ComponentAt(MaxQQ)).add("你联赛第一被抢了").toString());
+                }
                 InConn.AddRobotHistory(SendID, GroupID, Grade);
                 InConn.addMaxAllGroupComMath(SendID, GroupID, Grade,event.getSender().getInfo().getNickname());
                 respondSign = true;
@@ -265,7 +288,11 @@ public class RobotGroupClient extends IcqListener {
             String message = event.getMessage();
             System.out.println("赛文和成绩操作");
             Long QQnum = event.getSenderId();
-            if(message.equals("#拖拉机成绩")){
+            if(message.equals("#成绩")){
+                String path = OutConn.ShowGroupIdMath(QQnum, initGroupList.QQGroupMap.get(event.getGroupId()), Conn.getdate(),event.getHttpApi().getGroupMemberInfo(event.getGroupId(),QQnum).getData().getCard());
+                if(path.equals("无收录成绩"))event.respond(path);
+                else event.respond("[CQ:image,file="+ path +"]");
+            }else if(message.equals("#拖拉机成绩")){
                 String path = ComArti.responseStr(Conn.getdate().toString(), QQnum, Conn.getdate(), 2);
                 if(path.equals("无该天赛文成绩"))event.respond(path);
                 else event.respond("[CQ:image,file="+ path +"]");
@@ -291,6 +318,7 @@ public class RobotGroupClient extends IcqListener {
             String s[] = message.split(" ");
             if(s.length==2&&s[0].equals("#文章")){
                 event.respond(OutConn.ShowRobotSaiwen(s[1],0,1));
+                respondSign = true;
             }
             else if(s.length==3&&s[0].equals("#文章")){
                 chanllgelist.put(QQnum,s[1]+"%"+s[2]);
@@ -302,8 +330,12 @@ public class RobotGroupClient extends IcqListener {
                 else event.respond("[CQ:image,file="+path+"]");
                 respondSign = true;
             }
+            if(respondSign=true)return;
+            Date date = null;
             s[s.length - 1] = RegexText.AddZero(s[s.length - 1]);
-            Date date = Date.valueOf(s[s.length - 1]);
+            try {
+                date = Date.valueOf(s[s.length - 1]);
+            }catch (Exception e){e.printStackTrace();}
             Matcher m = RegexText.isAt(s[1]);
             if (s.length == 2) {
                 if (s[0].equals("拖拉机赛文")) {
@@ -313,10 +345,18 @@ public class RobotGroupClient extends IcqListener {
 //                    event.respond(ComArti.responseStr(s[1], QQnum, date, 2));
                     event.respond("[CQ:image,file="+ComArti.responseStr(s[1], QQnum, date, 2)+"]");
                     respondSign = true;
-                }else if(s[0].equals("成绩")){
-
                 } else if(s[0].equals("成绩")){
-                    event.respond("[CQ:image,file="+InConn.Deleterobotinfo(Long.parseLong(s[0]))+"]");
+                    String path;
+                    String path2;
+                    if(date!=null){
+                        path = OutConn.ShowGroupIdMath(event.getSenderId(), initGroupList.QQGroupMap.get(event.getGroupId()), date, initGroupList.QQlist.get(event.getSenderId()));
+                        path2 = "typinggroup/"+event.getGroupId() +"-"+ date + ".jpg";
+                    }else if(initGroupList.QQGroupMap.values().contains(s[1])) {
+                        path = OutConn.ShowGroupIdMath(event.getSenderId(), s[1], Conn.getdate(), initGroupList.QQlist.get(event.getSenderId()));
+                    }else path = "无收录成绩";
+                    if(path.equals("无收录成绩"))event.respond(path);
+                    else event.respond("[CQ:image,file="+ path +"]");
+
                 } else if(s[0].equals("清零")&&QQnum==1061917196L){
                     event.respond(InConn.Deleterobotinfo(Long.valueOf(s[1])));
                 }
@@ -325,12 +365,13 @@ public class RobotGroupClient extends IcqListener {
                     event.respond(OutConn.ShowGroupSaiwen(s[1], date));
                     respondSign = true;
                 } else if (s[0].equals("成绩")) {
-
-                    event.respond(OutConn.ShowGroupSaiwenMath(s[1], date));
+                    String path  = OutConn.ShowGroupIdMath(event.getSenderId(), s[1], date, initGroupList.QQlist.get(event.getSenderId()));
+                    if(path.equals("无收录成绩"))event.respond(path);
+                    else event.respond("[CQ:image,file="+ path +"]");
+//                    event.respond(OutConn.ShowGroupSaiwenMath(s[1], date));
                     respondSign = true;
                 }
             } else if (s.length == 4) {
-                System.out.println("长度4");
                 if (s[0].equals("成绩")) {
                     System.out.println("成绩");
                     Long QQ;
@@ -338,7 +379,10 @@ public class RobotGroupClient extends IcqListener {
                         QQ = Long.valueOf(m.group(1));
                     else
                         QQ = Long.valueOf(s[1]);
-                    event.respond(OutConn.ShowGroupIdMath(QQ, s[2], date,event.getGroupSender().getInfo().getCard()));
+//                    event.respond(OutConn.ShowGroupIdMath(QQ, s[2], date,event.getGroupSender().getInfo().getCard()));
+                    String path = OutConn.ShowGroupIdMath(QQ, s[2], date,initGroupList.QQlist.get(QQ));
+                    if(path.equals("无收录成绩"))event.respond(path);
+                    else event.respond("[CQ:image,file="+ path +"]");
                     respondSign = true;
                 }
             }
@@ -374,8 +418,10 @@ public class RobotGroupClient extends IcqListener {
                                 "查询 @QQ = 查询你的赛文上屏成绩概况\n" +
                                 "-----群赛指令-----\n"+
                                 "赛文 群映射名字 年-月-日 = 查询某个群某一天的赛文\n" +
-                                "成绩 群映射名字 年-月-日 = 查询某个群某天成绩详情（文字成绩）\n"+
-                                "成绩 @QQ 群映射名字 年-月-日 = 查询你在某个群某天赛文成绩上屏记录（文字成绩）\n"+
+                                "成绩 群映射名字 = 查询你在某个群今天成绩上屏记录\n" +
+                                "成绩 年-月-日 = 查询你在这个群某天的成绩上屏记录\n" +
+                                "成绩 群映射名字 年-月-日 = 查询你在某个群某天成绩详情\n"+
+                                "成绩 @QQ 群映射名字 年-月-日 = 查询你在某个群某天赛文成绩上屏记录\n"+
                                 "历史成绩 yyyy-MM-dd = 查看本群的某日比赛成绩（图片成绩）\n" +
 
                                 "-----联赛指令-----\n"+
@@ -400,7 +446,7 @@ public class RobotGroupClient extends IcqListener {
                                 "-----交友指令-----\n"+
                                 "私聊机器人->#匹配 = 随机与另一同为人工智障好友的人匹配聊天\n"+
                                 "私聊机器人->#退出 = 已配对成功后，该指令用于退出聊天\n" +
-                                "https://jdragon.club/s/1565351363708" +
+                                "https://jdragon.club/s/1565351363708\n" +
 
                                 "-----游戏指令-----\n"+
                                 "1A2B = 启动以个人为单位的1A2B游戏（默认4个数）\n"+
@@ -420,6 +466,7 @@ public class RobotGroupClient extends IcqListener {
             int length = s.length;
             Long GroupID = RegexText.getGroupID(event.toString());
             Long ID = event.getSenderId();
+            String card = event.getHttpApi().getGroupMemberInfo(event.getGroupId(),ID).getData().getCard();
             String at = "[CQ:at,qq="+ID+"]\n";
             if (length == 4 && s[0].equals("#随机战场")) {
                 if (GroupWarList.containsKey(GroupID))
@@ -439,7 +486,7 @@ public class RobotGroupClient extends IcqListener {
                     else if (gp.getIDlist().containsKey(ID))
                         event.respond(at+"请勿重复加入,退出战场指令：#退出战场");
                     else {
-                        gp.addID(ID,event.getGroupSender().getInfo().getCard());
+                        gp.addID(ID,card);
                         event.respond(at+"加入成功");
                     }
                 } else
@@ -517,6 +564,7 @@ public class RobotGroupClient extends IcqListener {
             int length = s.length;
             Long GroupID = RegexText.getGroupID(event.toString());
             Long ID = event.getSenderId();
+            String card = event.getHttpApi().getGroupMemberInfo(event.getGroupId(),ID).getData().getCard();
             String at = "[CQ:at,qq="+ID+"]\n";
             if(length==2&&s[0].equals("#随机混战")) {
                 if (GroupFollowWarList.containsKey(GroupID))
@@ -533,7 +581,7 @@ public class RobotGroupClient extends IcqListener {
                     if (gp.getIDlist().containsKey(ID))
                         event.respond(at+"请勿重复加入,退出混战指令：#退出混战");
                     else {
-                        gp.addID(ID,event.getGroupSender().getInfo().getCard());
+                        gp.addID(ID,card);
                         event.respond(at+"加入成功");
                     }
                 } else
@@ -652,6 +700,7 @@ public class RobotGroupClient extends IcqListener {
             int length = s.length;
             Long GroupID = RegexText.getGroupID(event.toString());
             Long ID = event.getSenderId();
+            String card = event.getHttpApi().getGroupMemberInfo(event.getGroupId(),ID).getData().getCard();
             String at = "[CQ:at,qq="+ID+"]\n";
             if(length==2&&s[0].equals("#随机团战")) {
                 if (GroupFolloTeamWarList.containsKey(GroupID))
@@ -665,7 +714,7 @@ public class RobotGroupClient extends IcqListener {
             } else if (length==2&&s[0].equals("#加入团战")) {
                 if (GroupFolloTeamWarList.containsKey(GroupID)) {
                     GroupFollowTeamThread gp = GroupFolloTeamWarList.get(GroupID);
-                    gp.addID(Integer.valueOf(s[1]),ID,event.getGroupSender().getInfo().getCard());
+                    gp.addID(Integer.valueOf(s[1]),ID,card);
                 } else
                     event.respond(at+"该群还未创建团战，指令：#随机团战");
             } else if (message.equals("#退出团战")) {

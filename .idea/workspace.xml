@@ -10,14 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c16079da-fbac-4e16-9ddd-79757c892b77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/ownUse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/typing/Tools/shell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/typing/ShortCoding/BetterTyping.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/编码文件/符号文件/符号文件.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/编码文件/输入法编码/词组提示码表.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdragon/club/robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdragon/club/robot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/typing/ConDatabase/ComArti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/ConDatabase/ComArti.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/typing/ConDatabase/Conn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/ConDatabase/Conn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/typing/ConDatabase/OutConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/ConDatabase/OutConn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/typing/RobotGroupClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/RobotGroupClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/typing/Tools/Createimg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/Tools/Createimg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/typing/Tools/RegexText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/Tools/RegexText.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/typing/Tools/initGroupList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/typing/Tools/initGroupList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jdragon/club/robot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jdragon/club/robot.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -49,13 +52,117 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/typing/RobotGroupClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="824">
-              <caret line="235" column="45" lean-forward="true" selection-start-line="235" selection-start-column="45" selection-end-line="235" selection-end-column="45" />
+            <state relative-caret-position="463">
+              <caret line="49" column="51" lean-forward="true" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/robot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="33" column="42" lean-forward="true" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/CommandSay.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="13" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/AllUserNum.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1424#1425#0" expanded="true" />
+                <element signature="e#1491#1492#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/PointClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-92">
+              <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1091#1092#0" expanded="true" />
+                <element signature="e#1143#1144#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/typing/Tools/Createimg.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="222" column="45" selection-start-line="222" selection-start-column="36" selection-end-line="222" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#13267#13268#0" expanded="true" />
+                <element signature="e#13298#13299#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/typing/ShortCoding/BetterTyping.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="242" column="45" lean-forward="true" selection-start-line="242" selection-start-column="45" selection-end-line="242" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#828#843#0" expanded="true" />
+                <element signature="e#971#980#0" expanded="true" />
+                <element signature="e#1048#1057#0" expanded="true" />
+                <element signature="e#1125#1134#0" expanded="true" />
+                <element signature="e#1201#1210#0" expanded="true" />
+                <element signature="e#1280#1289#0" expanded="true" />
+                <element signature="e#1359#1368#0" expanded="true" />
+                <element signature="e#1434#1443#0" expanded="true" />
+                <element signature="e#1511#1520#0" expanded="true" />
+                <element signature="e#1589#1598#0" expanded="true" />
+                <element signature="e#1665#1674#0" expanded="true" />
+                <element signature="e#1744#1753#0" expanded="true" />
+                <element signature="e#1824#1833#0" expanded="true" />
+                <element signature="e#1899#1908#0" expanded="true" />
+                <element signature="e#1976#1985#0" expanded="true" />
+                <element signature="e#2054#2063#0" expanded="true" />
+                <element signature="e#2131#2140#0" expanded="true" />
+                <element signature="e#2210#2219#0" expanded="true" />
+                <element signature="e#2290#2299#0" expanded="true" />
+                <element signature="e#2362#2371#0" expanded="true" />
+                <element signature="e#2437#2453#0" expanded="true" />
+                <element signature="e#15505#15506#0" expanded="true" />
+                <element signature="e#15539#15540#0" expanded="true" />
+                <element signature="e#15571#15572#0" expanded="true" />
+                <element signature="e#15601#15602#0" expanded="true" />
+                <element signature="e#16681#16682#0" expanded="true" />
+                <element signature="e#16717#16718#0" expanded="true" />
+                <element signature="e#16761#16762#0" expanded="true" />
+                <element signature="e#16782#16783#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,6 +184,7 @@
       <find>read</find>
       <find>printDebug</find>
       <find>查询</find>
+      <find>iltd</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -85,11 +193,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/ConDatebase/royal/Fresh.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ConDatebase/royal/InConn.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Tool/test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/OneATwoB/Room.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ConDatebase/Conn.java" />
         <option value="$PROJECT_DIR$/src/main/java/Tool/initGroupList.java" />
         <option value="$PROJECT_DIR$/src/main/java/jdragon/club/RobotGroupClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/game/P2P/WXClient.java" />
@@ -118,24 +221,29 @@
         <option value="$PROJECT_DIR$/src/main/java/game/P2P/handle/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/game/P2P/PointClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/typing/Tools/DownloadMsg.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/typing/ConDatabase/Conn.java" />
         <option value="$PROJECT_DIR$/src/main/java/typing/CommandVersion.java" />
         <option value="$PROJECT_DIR$/src/main/java/typing/OneUserNum.java" />
         <option value="$PROJECT_DIR$/src/main/java/typing/Automatic_Inclusion.java" />
-        <option value="$PROJECT_DIR$/src/main/java/typing/ConDatabase/OutConn.java" />
         <option value="$PROJECT_DIR$/src/main/java/typing/Tools/SortMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/typing/Tools/RegexText.java" />
         <option value="$PROJECT_DIR$/src/main/java/game/OneATwoB/Room.java" />
         <option value="$PROJECT_DIR$/src/main/java/typing/ConDatabase/InConn.java" />
-        <option value="$PROJECT_DIR$/src/main/java/typing/RobotGroupClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/typing/ConDatabase/ComArti.java" />
         <option value="$PROJECT_DIR$/src/main/java/game/OneATwoB/O2TCarry.java" />
         <option value="$PROJECT_DIR$/src/main/java/jdragon/club/robot.java" />
         <option value="$PROJECT_DIR$/src/main/java/jdragon/club/ownUse.java" />
         <option value="$PROJECT_DIR$/src/main/java/typing/Tools/shell.java" />
+        <option value="$PROJECT_DIR$/src/main/java/typing/ConDatabase/ComArti.java" />
+        <option value="$PROJECT_DIR$/src/main/java/typing/ConDatabase/Conn.java" />
         <option value="$PROJECT_DIR$/src/main/java/typing/Tools/Createimg.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/typing/ConDatabase/OutConn.java" />
+        <option value="$PROJECT_DIR$/src/main/java/typing/Tools/RegexText.java" />
+        <option value="$PROJECT_DIR$/src/main/java/typing/Tools/BetterTyping.java" />
         <option value="$PROJECT_DIR$/src/main/java/typing/Tools/initGroupList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/typing/ShortCoding/ReturnCoding.java" />
+        <option value="$PROJECT_DIR$/src/main/java/typing/GetBetterTyping.java" />
+        <option value="$PROJECT_DIR$/编码文件/输入法编码/词组提示码表.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/typing/RobotGroupClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/typing/ShortCoding/BetterTyping.java" />
       </list>
     </option>
   </component>
@@ -161,9 +269,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="720" />
-    <option name="width" value="645" />
-    <option name="height" value="256" />
+    <option name="x" value="713" />
+    <option name="width" value="660" />
+    <option name="height" value="775" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -171,7 +279,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -179,6 +286,41 @@
             <path>
               <item name="robot" type="b2602c69:ProjectViewProjectNode" />
               <item name="robot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="QQandWXMsgListener.jar" type="ab9368bb:PsiFileNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="QQandWXMsgListener.jar" type="ab9368bb:PsiFileNode" />
+              <item name="moecraft" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="QQandWXMsgListener.jar" type="ab9368bb:PsiFileNode" />
+              <item name="moecraft" type="462c0819:PsiDirectoryNode" />
+              <item name="icq" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="QQandWXMsgListener.jar" type="ab9368bb:PsiFileNode" />
+              <item name="moecraft" type="462c0819:PsiDirectoryNode" />
+              <item name="icq" type="462c0819:PsiDirectoryNode" />
+              <item name="command" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="robot" type="b2602c69:ProjectViewProjectNode" />
@@ -222,6 +364,31 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="P2P" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="club" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="typing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -229,7 +396,49 @@
               <item name="robot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="typing" type="462c0819:PsiDirectoryNode" />
+              <item name="ConDatabase" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="typing" type="462c0819:PsiDirectoryNode" />
+              <item name="ShortCoding" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="typing" type="462c0819:PsiDirectoryNode" />
+              <item name="Tools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="编码文件" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="编码文件" type="462c0819:PsiDirectoryNode" />
+              <item name="符号文件" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="robot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="编码文件" type="462c0819:PsiDirectoryNode" />
+              <item name="输入法编码" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="robot" type="b2602c69:ProjectViewProjectNode" />
@@ -239,18 +448,19 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/QQandWXMsgListener.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/编码文件/输入法编码" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.32355723" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
@@ -265,6 +475,8 @@
       <recent name="jdragon.club" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\IdeaProjects\robot\编码文件\输入法编码" />
+      <recent name="C:\Users\Lenovo\IdeaProjects\robot\编码文件\符号文件" />
       <recent name="C:\Users\Lenovo\IdeaProjects\robot\lib" />
       <recent name="C:\Users\Lenovo\IdeaProjects\robot\src\main\java" />
     </key>
@@ -375,7 +587,12 @@
       <workItem from="1566303780761" duration="11182000" />
       <workItem from="1566494194897" duration="7817000" />
       <workItem from="1567003029566" duration="642000" />
-      <workItem from="1567254883040" duration="295000" />
+      <workItem from="1567254883040" duration="904000" />
+      <workItem from="1567332905495" duration="871000" />
+      <workItem from="1569167531959" duration="642000" />
+      <workItem from="1570462226325" duration="11589000" />
+      <workItem from="1570808858237" duration="1885000" />
+      <workItem from="1570875387398" duration="29734000" />
     </task>
     <task id="LOCAL-00001" summary="获取历史赛文，拖拉机版本号，个人信息，全部人信息">
       <created>1557649729157</created>
@@ -468,11 +685,18 @@
       <option name="project" value="LOCAL" />
       <updated>1566303831763</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="addShell">
+      <created>1567255182798</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1567255182798</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="492342000" />
+    <option name="totallyTimeSpent" value="537672000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -487,7 +711,7 @@
     <frame x="67" y="-8" width="1861" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27151582" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20488617" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -495,8 +719,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3290735" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49719328" weight="0.39616615" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49719328" weight="0.30916846" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.399361" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -506,7 +730,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3290735" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5028067" side_tool="true" weight="0.10223642" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49719328" weight="0.10223642" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49719328" weight="0.15565032" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24939856" />
@@ -515,7 +739,7 @@
       <window_info anchor="right" id="Database" order="5" weight="0.329591" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven" order="8" weight="0.3287891" />
+      <window_info anchor="right" id="Maven" order="8" weight="0.32870626" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,59 +761,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="addShell" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/lib/itchat4j-1.1.0-sources.jar!/cn/zhouyafeng/itchat4j/Wechat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/src.zip!/java/io/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="221" column="31" selection-start-line="221" selection-start-column="31" selection-end-line="221" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/cantoon.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Cantoon/RamdomLoad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/royal/ConDatabase/InConn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Cantoon/ReturnLast.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Cantoon/ReturnAll.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/royal/RoyalClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/Tool.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/bean/User_info.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -622,27 +793,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/CommandSay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/game/PlayCards/CardClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3168">
           <caret line="150" column="44" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/PointClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-968">
-          <caret line="63" column="9" selection-start-line="63" selection-start-column="9" selection-end-line="63" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -709,49 +863,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/CommandVersion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/typing/MessageMove.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/AllUserNum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1424#1425#0" expanded="true" />
-            <element signature="e#1491#1492#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/Tools/DownloadMsg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/Conn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -817,30 +932,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/Tools/SortMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-336">
-          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/OutConn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6050">
-          <caret line="41" column="46" lean-forward="true" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/GroupFollowWar/GroupFollowThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/game/PlayCards/CardCarry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="94">
@@ -871,77 +962,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="796">
-          <caret line="42" column="14" lean-forward="true" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/ownUse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/Tools/Createimg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3872">
-          <caret line="182" column="32" selection-start-line="182" selection-start-column="32" selection-end-line="182" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/robot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/ComArti.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5676">
-          <caret line="265" column="35" selection-start-line="265" selection-start-column="35" selection-end-line="265" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/InConn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2046">
-          <caret line="97" column="35" selection-start-line="97" selection-start-column="35" selection-end-line="97" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/Tools/initGroupList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="41" column="37" lean-forward="true" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/Tools/RegexText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="98" column="26" selection-start-line="98" selection-start-column="26" selection-end-line="98" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -955,12 +979,255 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/typing/RobotGroupClient.java">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa0.606/SampleCode/SampleCode/Java/src/demo/Program.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/ComArti.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="824">
-          <caret line="235" column="45" lean-forward="true" selection-start-line="235" selection-start-column="45" selection-end-line="235" selection-end-column="45" />
+        <state relative-caret-position="7612">
+          <caret line="353" column="35" selection-start-line="353" selection-start-column="35" selection-end-line="353" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Cantoon/RamdomLoad.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/GroupFollowWar/GroupFollowThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="49" column="10" lean-forward="true" selection-start-line="49" selection-start-column="10" selection-end-line="49" selection-end-column="10" />
+          <folding>
+            <element signature="e#523#537#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/Tools/SortMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="541">
+          <caret line="50" column="49" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/Tools/DownloadMsg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/InConn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-83">
+          <caret line="262" column="23" selection-start-line="262" selection-start-column="23" selection-end-line="262" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/OutConn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1220">
+          <caret line="287" column="51" lean-forward="true" selection-start-line="287" selection-start-column="51" selection-end-line="287" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/Conn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/编码文件/符号文件/符号文件.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/Tools/RegexText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="140" selection-start-line="140" selection-end-line="140" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4179#4180#0" expanded="true" />
+            <element signature="e#4238#4239#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ShortCoding/ReturnCoding.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/Tools/initGroupList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-348">
+          <caret line="12" column="104" selection-start-line="12" selection-start-column="104" selection-end-line="12" selection-end-column="104" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/QQandWXMsgListener.jar!/cc/moecraft/icq/command/CommandProperties.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+          <folding>
+            <element signature="e#565#566#0" expanded="true" />
+            <element signature="e#628#629#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/GetBetterTyping.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#423#424#0" expanded="true" />
+            <element signature="e#450#451#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/CommandVersion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ConDatabase/AllUserNum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1424#1425#0" expanded="true" />
+            <element signature="e#1491#1492#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/robot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="33" column="42" lean-forward="true" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/编码文件/输入法编码/词组提示码表.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="17906" column="8" lean-forward="true" selection-start-line="17906" selection-start-column="8" selection-end-line="17906" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/Tools/Createimg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="222" column="45" selection-start-line="222" selection-start-column="36" selection-end-line="222" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#13267#13268#0" expanded="true" />
+            <element signature="e#13298#13299#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jdragon/club/CommandSay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/game/P2P/PointClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-92">
+          <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1091#1092#0" expanded="true" />
+            <element signature="e#1143#1144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/RobotGroupClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="49" column="51" lean-forward="true" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/typing/ShortCoding/BetterTyping.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="242" column="45" lean-forward="true" selection-start-line="242" selection-start-column="45" selection-end-line="242" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#828#843#0" expanded="true" />
+            <element signature="e#971#980#0" expanded="true" />
+            <element signature="e#1048#1057#0" expanded="true" />
+            <element signature="e#1125#1134#0" expanded="true" />
+            <element signature="e#1201#1210#0" expanded="true" />
+            <element signature="e#1280#1289#0" expanded="true" />
+            <element signature="e#1359#1368#0" expanded="true" />
+            <element signature="e#1434#1443#0" expanded="true" />
+            <element signature="e#1511#1520#0" expanded="true" />
+            <element signature="e#1589#1598#0" expanded="true" />
+            <element signature="e#1665#1674#0" expanded="true" />
+            <element signature="e#1744#1753#0" expanded="true" />
+            <element signature="e#1824#1833#0" expanded="true" />
+            <element signature="e#1899#1908#0" expanded="true" />
+            <element signature="e#1976#1985#0" expanded="true" />
+            <element signature="e#2054#2063#0" expanded="true" />
+            <element signature="e#2131#2140#0" expanded="true" />
+            <element signature="e#2210#2219#0" expanded="true" />
+            <element signature="e#2290#2299#0" expanded="true" />
+            <element signature="e#2362#2371#0" expanded="true" />
+            <element signature="e#2437#2453#0" expanded="true" />
+            <element signature="e#15505#15506#0" expanded="true" />
+            <element signature="e#15539#15540#0" expanded="true" />
+            <element signature="e#15571#15572#0" expanded="true" />
+            <element signature="e#15601#15602#0" expanded="true" />
+            <element signature="e#16681#16682#0" expanded="true" />
+            <element signature="e#16717#16718#0" expanded="true" />
+            <element signature="e#16761#16762#0" expanded="true" />
+            <element signature="e#16782#16783#0" expanded="true" />
           </folding>
         </state>
       </provider>

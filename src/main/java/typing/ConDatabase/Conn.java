@@ -12,6 +12,7 @@ public class Conn  {
             String user = "root";
             //连接数据库的url，test是我自己的一个数据库啊宝宝们。
             String url = "jdbc:mysql://localhost:3306/students?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull";
+//            String url = "jdbc:mysql://39.96.83.89:3306/students?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull";
             //mysql登录密码
             String pass = "951753";
             con = DriverManager.getConnection(url, user, pass);
