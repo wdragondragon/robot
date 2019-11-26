@@ -11,6 +11,7 @@ import game.PlayCards.CardCarry;
 import royal.RoyalClient;
 import typing.CommandVersion;
 import typing.ConDatabase.AllUserNum;
+import typing.ConDatabase.HeartCon;
 import typing.MessageMove;
 import typing.OneUserNum;
 import typing.RobotGroupClient;
@@ -66,6 +67,8 @@ public class robot
         );
         // 启动机器人, 不会占用主线程
         bot.startBot();
+        HeartCon h = new HeartCon();
+        h.start();
 //        //微信机器人
 //        String qrPath = System.getProperty("user.dir")+"/login";
 ////                "D://itchat4j//login"; // 保存登陆二维码图片的路径，这里需要在本地新建目录

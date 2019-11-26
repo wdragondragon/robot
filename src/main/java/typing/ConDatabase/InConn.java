@@ -169,6 +169,43 @@ public class InConn {
             return "未知原因发布失败";
         }
     }
+    public static String AddAllGroupSaiwenWait(String title,String saiwen,long id){
+        String sql = "insert into allgroupsaiwenwait(title,saiwen,author) values(?,?,?)";
+        try{
+            Connection con = Conn.getConnection();
+            PreparedStatement ptst = Conn.getPtmt(con,sql);
+            ptst.setString(1,title);
+            ptst.setString(2,saiwen);
+            ptst.setLong(3,id);
+            ptst.execute();
+            con.close();
+            return "等待审核";
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "未知原因发布失败";
+        }
+    }
+    public static String WaitToUpload(Object[] QQandId,boolean agree){
+        int id = Integer.valueOf(QQandId[0].toString());
+        String sql = "select * from allgroupsaiwenwait where id="+id;
+        String str = "发布拒绝";
+        try{
+            Connection con = Conn.getConnection();
+            ResultSet rs = Conn.getStmtSet(con,sql);
+            if(rs.next()&&agree){
+                str = AddAllGroupSaiwen(rs.getString("title"),rs.getString("saiwen"),rs.getLong("author"));
+            }
+            sql = "delete from allgroupsaiwenwait where id="+id;
+            QQandId[1] = rs.getLong("author");
+            QQandId[2] = rs.getString("title");
+            Conn.execute(con,sql);
+            con.close();
+            return str;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return str;
+        }
+    }
     public static String AddAllGroupSaiwen(String title,String saiwen,long id){
         String sql = "select * from allgroupsaiwen ORDER BY saiwendate DESC";
         try{
@@ -196,14 +233,28 @@ public class InConn {
             ptst.setLong(4,id);
             ptst.execute();
             con.close();
-            return "发布成功赛文日期："+ date;
+            return "审核通过赛文日期："+ date;
 //            }
         }catch (Exception e){
             e.printStackTrace();
             return "未知原因发布失败";
         }
     }
-    public static String ChangeAllGroupSaiwen(String date,String title,String saiwen,long id){
+    public static String DeleteAllGroupSaiwenByDate(String date){
+        String sql = "delete from allgroupsaiwen where saiwendate=?";
+        try{
+            Connection con = Conn.getConnection();
+            PreparedStatement ptmt = Conn.getPtmt(con,sql);
+            ptmt.setDate(1,Date.valueOf(date));
+            int i = ptmt.executeUpdate();
+            if(i==0)return "删除失败";
+             else return "删除成功";
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "删除失败"+e.getMessage();
+        }
+    }
+    public static String ChangeAllGroupSaiwen(String date,String title,String saiwen,long id,boolean admin){
         String sql = "select * from allgroupsaiwen where saiwendate=?";
         String message = "";
         try{
@@ -212,7 +263,7 @@ public class InConn {
             ptst.setDate(1,Date.valueOf(date));
             ResultSet rs = ptst.executeQuery();
             if(rs.next()){
-                if(rs.getLong("author")==id){
+                if(rs.getLong("author")==id || admin){
                     sql = "update allgroupsaiwen set title=?,saiwen=? where saiwendate=?";
                     ptst = Conn.getPtmt(con,sql);
                     ptst.setString(1,title);

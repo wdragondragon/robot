@@ -8,6 +8,7 @@ import cc.moecraft.icq.event.events.message.EventPrivateMessage;
 import cc.moecraft.icq.sender.IcqHttpApi;
 import cc.moecraft.icq.sender.message.MessageBuilder;
 import cc.moecraft.icq.sender.message.components.ComponentAt;
+import cc.moecraft.icq.sender.message.components.ComponentImage;
 import jdragon.club.robot;
 import typing.ConDatabase.ComArti;
 import typing.ConDatabase.Conn;
@@ -19,6 +20,7 @@ import typing.GroupWar.GroupThread;
 import typing.ShortCoding.BetterTyping;
 import typing.Tools.*;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -46,18 +48,41 @@ public class RobotGroupClient extends IcqListener {
         Automatic_Inclusion automatic_inclusion = new Automatic_Inclusion();
         automatic_inclusion.start();
 
-        //最佳编码码表加载
-        betterTypingHashMap.put("词组提示码表",new BetterTyping("词组提示码表"));
+        loadCodeFile();
+//        betterTypingHashMap.put("词组提示码表",new BetterTyping("词组提示码表"));
     }
     @EventHandler
-    public void CarryBoth(EventMessage event){
+    public void CarryBoth(EventMessage event) throws IOException {
         String message = event.getMessage();
-        if(message.substring(0,1).equals("？")){
+        if(message.length()>1&&message.substring(0,1).equals("？")){
             BetterTyping betterTyping = betterTypingHashMap.get("词组提示码表");
             betterTyping.changecolortip(message.substring(1));
-            betterTyping.compalllength(message.substring(1));
-            event.respond("标点顶点屏理论码长："+betterTyping.getDingKeylength()+" 总键数"+betterTyping.getDingalllength()+"\n"+betterTyping.getDingShowStr());
+            betterTyping.compalllength();
+            event.respond("标点顶点屏理论码长："+ RegexText.FourOutFiveIn(betterTyping.getDingKeylength())+" 总键数"+betterTyping.getDingalllength()
+                    +"\n"+new ComponentImage(Createimg.drawTipImg(betterTyping.getSubscriptInstances())));
+        }else if(message.length()>5&&message.substring(0,5).equals("一词不漏 ")){
+            BetterTyping betterTyping = betterTypingHashMap.get("词组提示码表");
+            betterTyping.changecolortip(message.substring(5));
+            betterTyping.compalllength();
+            event.respond("标点顶点屏理论码长："+ RegexText.FourOutFiveIn(betterTyping.getDingKeylength())+" 总键数"+betterTyping.getDingalllength()
+                    +"\n"+new ComponentImage(Createimg.drawTipImg(betterTyping.getSubscriptInstances())));
         }
+        else if(message.contains("？")&&betterTypingHashMap.containsKey(message.substring(0,message.indexOf("？")))){
+            BetterTyping betterTyping = betterTypingHashMap.get(message.substring(0,message.indexOf("？")));
+            betterTyping.changecolortip(message.substring(message.indexOf("？")+1));
+            betterTyping.compalllength();
+            event.respond(message.substring(0,message.indexOf("？"))+" 标点顶点屏理论码长："+ RegexText.FourOutFiveIn(betterTyping.getDingKeylength())+" 总键数："+betterTyping.getDingalllength()
+                    +"\n"+new ComponentImage(Createimg.drawTipImg(betterTyping.getSubscriptInstances())));
+        }else if(message.equals("#更新词库")){
+            loadCodeFile();
+        }else if(message.equals("#词库列表")){
+            List<String> codeNameList = CodeFilesName.getCodeFilesName();
+            StringBuffer stringBuffer = new StringBuffer();
+            for(String codeName : codeNameList)
+                stringBuffer.append(codeName+"\n");
+            event.respond(stringBuffer.toString());
+        }
+        BetterTyping.setSubscriptInstanceNull();
     }
     @EventHandler
     public void CarryPrivate(EventPrivateMessage event){
@@ -66,23 +91,34 @@ public class RobotGroupClient extends IcqListener {
             event.respond(OutConn.lookmeAllGroupSaiwen(event.getSenderId()));
         }else if(message.equals("#取消广播")){
             noticesign = false;
+            event.respond("广播被关闭");
         }else if (message.equals("#广播")){
             noticesign = true;
-        }else if(noticesign){
+            event.respond("广播开启");
+        }else if(noticesign&&initGroupList.adminList.contains(event.senderId)){
             for (Long aLong : grouplist.keySet()) {
                 event.getHttpApi().sendGroupMsg(aLong,message);
             }
         }
         String []s = message.split("\\s+");
-        if(s.length==3&&s[0].equals("赛文投稿")){
-            event.respond(InConn.AddAllGroupSaiwen(s[1],s[2],event.getSenderId()));
-        }else if(s.length==4&&s[0].equals("赛文投稿")){
+        if(s.length==3&&s[0].equals("#赛文投稿")){
+            char []a = s[2].toCharArray();
+            for(char b : a){
+                if(!WordSet.get().contains(b)){
+                    event.respond("文章有无法识别的字符");
+                    return;
+                }
+            }
+            event.respond(InConn.AddAllGroupSaiwenWait(s[1],s[2],event.getSenderId()));
+            event.getHttpApi().sendGroupMsg(206666041L,"有新投稿："+s[1]+" 投稿自QQ号："+event.getSenderId()+"\n"+s[2]+"\n-----第9999段-共"+s[2].length()+"字");
+//            event.respond(InConn.AddAllGroupSaiwen(s[1],s[2],event.getSenderId()));
+        }else if(s.length==4&&s[0].equals("#赛文投稿")){
             event.respond(InConn.AddAllGroupSaiwenDate(RegexText.AddZero(s[1]),s[2],s[3],event.getSenderId()));
-        }else if(s.length==4&&s[0].equals("修改赛文")){
-            event.respond(InConn.ChangeAllGroupSaiwen(RegexText.AddZero(s[1]),s[2],s[3],event.getSenderId()));
-        }else if(s.length==4&&s[0].equals("比赛投稿")) {
+        }else if(s.length==4&&s[0].equals("#修改赛文")){
+            event.respond(InConn.ChangeAllGroupSaiwen(RegexText.AddZero(s[1]),s[2],s[3],event.getSenderId(),false));
+        }else if(s.length==4&&s[0].equals("#比赛投稿")) {
             event.respond(InConn.AddRobotSaiwen(s[1],s[2], s[3], event.getSenderId(), event.getSender().getInfo().getNickname()));
-        }else if(s.length==2&&s[0].equals("清零")&&event.getSender().getId()==1061917196L){
+        }else if(s.length==2&&s[0].equals("清零")&&initGroupList.adminList.contains(event.senderId)){
             event.respond(InConn.Deleterobotinfo(Long.valueOf(s[1])));
         }
     }
@@ -105,7 +141,6 @@ public class RobotGroupClient extends IcqListener {
                 CarryComShow(event);//发送成绩和赛文
             if (!respondSign)
                 ShowGroupList(event);//群映射列表
-
             //每天收图
             if (automati_inclusion_sign) {
                 Automatic_inclusion(event);
@@ -125,19 +160,77 @@ public class RobotGroupClient extends IcqListener {
             if(!respondSign&&RegexText.returnduan(event.getMessage())==-1){
                 InConn.AddGroupCheatNum(event.getMessage().length(),event.getSenderId());
             }
+            if(!respondSign){
+                passSaiwen(event);
+            }
         }catch (Exception e){
             e.printStackTrace();
+        }
+    }
+    public void passSaiwen(EventGroupMessage event) {
+        String[] s = event.getMessage().split("\\s+");
+        if (!(event.getGroupId() == 206666041L)) return;
+        if (event.getMessage().equals("#所有已通过")){
+            event.respond(OutConn.lookAllGroupSaiwen());
+        }else if (event.getMessage().equals("#所有投稿")) {
+            event.respond(OutConn.getAllAllGroupSaiwenWait());
+        } else if(s.length==2){
+            switch (s[0]) {
+                case "#查看已通过":
+                    event.respond(OutConn.ShowAllGroupSaiwen(Date.valueOf(RegexText.AddZero(s[1]))));
+                    break;
+                case "#删除已通过":
+                    event.respond(InConn.DeleteAllGroupSaiwenByDate(RegexText.AddZero(s[1])));
+                    break;
+                case "#同意":
+                    Object[] ret = {Integer.valueOf(s[1]), null,null};
+                    String message = InConn.WaitToUpload(ret,true);
+                    event.respond(message + " 审核者：" + event.getSenderId());
+                    event.getHttpApi().sendPrivateMsg(Long.valueOf(ret[1].toString()), message + " 审核者：" + event.getSenderId() + " 审核文章："+ret[2].toString());
+                    break;
+                case "#拒绝":
+                    Object[] ret1 = {Integer.valueOf(s[1]), null,null};
+                    String message1 = InConn.WaitToUpload(ret1, false);
+                    event.respond(message1 + " 审核者：" + event.getSenderId());
+                    event.getHttpApi().sendPrivateMsg(Long.valueOf(ret1[1].toString()), message1 + " 审核者：" + event.getSenderId() + " 审核文章："+ ret1[2].toString());
+                    break;
+
+                case "#查看投稿":
+                    event.respond(OutConn.getAllGroupSaiwenWatiById(Integer.valueOf(s[1])));
+                    break;
+            }
+        }else if (s.length == 4 && s[0].equals("#修改赛文")) {
+            event.respond(InConn.ChangeAllGroupSaiwen(RegexText.AddZero(s[1]), s[2], s[3], event.getSenderId(),true));
+        }
+    }
+    public void loadCodeFile(){
+        List<String> codeNameList = CodeFilesName.getCodeFilesName();
+
+        //最佳编码码表加载
+        for(String codeName : codeNameList){
+            betterTypingHashMap.put(codeName,new BetterTyping(codeName));
         }
     }
     public void grouphistory(EventGroupMessage event){
         String message = event.getMessage();
         long groupid = event.getGroupId();
         String []s = message.split(" ");
-        if(s.length==2&&s[0].equals("历史成绩")){
-            s[1] = RegexText.AddZero(s[1]);
-            String image = "typinggroup"+ separator + groupid +"-"+ s[1]+".jpg";
-            event.respond("[CQ:image,file="+image+"]");
-            respondSign = true;
+        if(s[0].equals("历史成绩")){
+            if(s.length==2) {
+                s[1] = RegexText.AddZero(s[1]);
+                String image = "typinggroup" + separator + groupid + "-" + s[1] + ".jpg";
+                event.respond("[CQ:image,file=" + image + "]");
+                respondSign = true;
+            }else if(s.length==3){
+                if(initGroupList.QQGroupNameMap.containsKey(s[1])) {
+                    s[2] = RegexText.AddZero(s[2]);
+                    String image = "typinggroup" + separator + initGroupList.QQGroupNameMap.get(s[1]) + "-" + s[2] + ".jpg";
+                    event.respond("[CQ:image,file=" + image + "]");
+                    respondSign = true;
+                }else{
+                    event.respond("无该群");
+                }
+            }
         }
     }
     private void Automatic_inclusion(EventGroupMessage event){
@@ -193,11 +286,11 @@ public class RobotGroupClient extends IcqListener {
                 respondSign = true;
             }
             String set[] = event.getMessage().split(" ");
-            if (set[0].equals("设置名片")) {
+            if (set[0].equals("#设置名片")) {
                 message += InConn.setName(set[1], id);
                 event.respond(message);
                 respondSign = true;
-            } else if (set[0].equals("查询")) {
+            } else if (set[0].equals("#查询")) {
                 System.out.println(event.getMessage());
                 Matcher m = RegexText.isAt(event.getMessage());
                 if(m.find()){
@@ -330,7 +423,7 @@ public class RobotGroupClient extends IcqListener {
                 else event.respond("[CQ:image,file="+path+"]");
                 respondSign = true;
             }
-            if(respondSign=true)return;
+            if(respondSign==true)return;
             Date date = null;
             s[s.length - 1] = RegexText.AddZero(s[s.length - 1]);
             try {
@@ -338,14 +431,14 @@ public class RobotGroupClient extends IcqListener {
             }catch (Exception e){e.printStackTrace();}
             Matcher m = RegexText.isAt(s[1]);
             if (s.length == 2) {
-                if (s[0].equals("拖拉机赛文")) {
+                if (s[0].equals("#拖拉机赛文")) {
                     event.respond(ComArti.responseStr(s[1], QQnum, date, 1));
                     respondSign = true;
-                } else if (s[0].equals("拖拉机成绩")) {
+                } else if (s[0].equals("#拖拉机成绩")) {
 //                    event.respond(ComArti.responseStr(s[1], QQnum, date, 2));
                     event.respond("[CQ:image,file="+ComArti.responseStr(s[1], QQnum, date, 2)+"]");
                     respondSign = true;
-                } else if(s[0].equals("成绩")){
+                } else if(s[0].equals("#成绩")){
                     String path;
                     String path2;
                     if(date!=null){
@@ -357,14 +450,14 @@ public class RobotGroupClient extends IcqListener {
                     if(path.equals("无收录成绩"))event.respond(path);
                     else event.respond("[CQ:image,file="+ path +"]");
 
-                } else if(s[0].equals("清零")&&QQnum==1061917196L){
+                } else if(s[0].equals("#清零")&&QQnum==1061917196L){
                     event.respond(InConn.Deleterobotinfo(Long.valueOf(s[1])));
                 }
             } else if (s.length == 3) {
-                if (s[0].equals("赛文")) {
+                if (s[0].equals("#赛文")) {
                     event.respond(OutConn.ShowGroupSaiwen(s[1], date));
                     respondSign = true;
-                } else if (s[0].equals("成绩")) {
+                } else if (s[0].equals("#成绩")) {
                     String path  = OutConn.ShowGroupIdMath(event.getSenderId(), s[1], date, initGroupList.QQlist.get(event.getSenderId()));
                     if(path.equals("无收录成绩"))event.respond(path);
                     else event.respond("[CQ:image,file="+ path +"]");
@@ -372,8 +465,8 @@ public class RobotGroupClient extends IcqListener {
                     respondSign = true;
                 }
             } else if (s.length == 4) {
-                if (s[0].equals("成绩")) {
-                    System.out.println("成绩");
+                if (s[0].equals("#成绩")) {
+                    System.out.println("#成绩");
                     Long QQ;
                     if(m.find())
                         QQ = Long.valueOf(m.group(1));
@@ -395,7 +488,7 @@ public class RobotGroupClient extends IcqListener {
             String message = event.getMessage();
             System.out.println("群映射操作");
             boolean sessced = false;
-            if (message.equals("群映射列表")) {
+            if (message.equals("#群映射列表")) {
                 try {
                     String sql = "select * from groupmap";
                     Connection con = Conn.getConnection();
@@ -412,10 +505,13 @@ public class RobotGroupClient extends IcqListener {
                 if (sessced)
                     event.respond(message.substring(0, message.length() - 1));
                 respondSign = true;
-            } else if (message.equals("人工智障帮助")) {
+            } else if (message.equals("#人工智障帮助")) {
                 event.respond(
                         "群映射列表 = 查询各大跟打群映射的缩写名字\n" +
-                                "查询 @QQ = 查询你的赛文上屏成绩概况\n" +
+                                "查询 @QQ = 查询你的赛文上屏成绩概况 \n" +
+                                "-----群赛指令-----\n" +
+                                "？+ 要查询的字词 = 该词小鹤的最佳编码\n" +
+                                "例：？奇怪 = qg" +
                                 "-----群赛指令-----\n"+
                                 "赛文 群映射名字 年-月-日 = 查询某个群某一天的赛文\n" +
                                 "成绩 群映射名字 = 查询你在某个群今天成绩上屏记录\n" +
@@ -423,6 +519,7 @@ public class RobotGroupClient extends IcqListener {
                                 "成绩 群映射名字 年-月-日 = 查询你在某个群某天成绩详情\n"+
                                 "成绩 @QQ 群映射名字 年-月-日 = 查询你在某个群某天赛文成绩上屏记录\n"+
                                 "历史成绩 yyyy-MM-dd = 查看本群的某日比赛成绩（图片成绩）\n" +
+                                "历史成绩 群映射名字 yyyy-MM-dd = 查询某个群的某日比赛成绩（图片成绩）\n"+
 
                                 "-----联赛指令-----\n"+
                                 "#联赛 = 获取今天的联赛赛文\n"+
@@ -454,6 +551,18 @@ public class RobotGroupClient extends IcqListener {
 
                 );
                 respondSign = true;
+            }else if(message.equals("#管理指令")){
+                event.respond(
+                        "#所有已通过 = 查看今日以后的所有已通过赛文粗略信息\n" +
+                                "#查看已通过 = 查看已通过的某天详细赛文\n" +
+                                "#删除已通过 = 删除已通过的赛文\n" +
+                                "#所有投稿 = 查看所有未通过投稿粗略信息\n" +
+                                "#查看投稿 id = 通过id查看未通过的详细赛文\n" +
+                                "#同意 id = 通过id来通过文章\n"+
+                                "#拒绝 id = 通过id来拒绝文章\n"+
+                                "#修改赛文 = 修改已通过某一日的赛文\n"
+
+                );
             }
         }catch (Exception e){}
     }

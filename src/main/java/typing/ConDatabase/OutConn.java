@@ -4,10 +4,8 @@ import typing.Tools.Createimg;
 import typing.Tools.RegexText;
 import typing.Tools.initGroupList;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.*;
 
 public class OutConn {
@@ -311,6 +309,65 @@ public class OutConn {
                 message += "日期："+date+" 标题："+title+" 字数："+saiwen.length()+"\n";
             }
             if(message.equals(""))message = "你未投稿任何一篇赛文";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return message;
+    }
+    public static String lookAllGroupSaiwen(){
+        String sql = "select * from allgroupsaiwen where saiwendate>=now()";
+        String message = "";
+        try{
+            Connection con = Conn.getConnection();
+            ResultSet rs = Conn.getStmtSet(con,sql);
+            while(rs.next()){
+                String date = String.valueOf(rs.getDate("saiwendate"));
+                String title = rs.getString("title");
+                String saiwen = rs.getString("saiwen");
+                message += "日期："+date+" 标题："+title+" 字数："+saiwen.length()+"\n";
+            }
+            if(message.equals(""))message = "今天之后没有联赛赛文";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return message;
+    }
+    public static String getAllAllGroupSaiwenWait(){
+        String sql = "select * from allgroupsaiwenwait ORDER BY id DESC";
+        StringBuffer str = new StringBuffer();
+        try{
+            Connection con = Conn.getConnection();
+            ResultSet rs = Conn.getStmtSet(con,sql);
+            while(rs.next()){
+                String id = String.valueOf(rs.getInt("id"));
+                String title = rs.getString("title");
+                String saiwen = rs.getString("saiwen");
+                Long author = rs.getLong("author");
+                str.append(id+" 标题："+title+" 字数："+saiwen.length()+" 投稿人："+author+"\n");
+            }
+            con.close();
+            return str.toString();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "无需审核投稿";
+        }
+
+    }
+    public static String getAllGroupSaiwenWatiById(int id){
+        String message = "";
+        try{
+            String sql = "select * from allgroupsaiwenwait where id="+id;
+            Connection con = Conn.getConnection();
+            ResultSet rs = Conn.getStmtSet(con,sql);
+            if(rs.next()) {
+                String title = rs.getString("title");
+                String saiwen = rs.getString("saiwen");
+                long author = rs.getLong("author");
+                message = title+" 投稿自QQ号："+author+"\n"+saiwen+"\n-----第9999段-共"+saiwen.length()+"字";
+            }
+            else
+                message =  "无";
+            con.close();
         }catch (Exception e){
             e.printStackTrace();
         }

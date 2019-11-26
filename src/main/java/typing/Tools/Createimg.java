@@ -1,10 +1,14 @@
 package typing.Tools;
 
 
+import typing.ShortCoding.BetterTyping;
+import typing.ShortCoding.SubscriptInstance;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
@@ -16,7 +20,6 @@ public class Createimg {
     public static String graphicsGeneration(List<List<List<String>>> allValue, List<String> titles,
                                             List<String[]> headers , String receiver, int totalcol,
                                             HashMap<Integer,List<Double>> rankmap) throws Exception {
-        System.out.println("19");
         int rows = 0;
         int maxfont = 0;
         Map<String,String> QQdo = new HashMap();
@@ -33,7 +36,6 @@ public class Createimg {
                 }
             }
         }
-        System.out.println("36");
         // 实际数据行数+标题+备注
         int numwidth = 50;
         int totalrow = 1+rows;
@@ -45,21 +47,18 @@ public class Createimg {
         int rowheight = 30;
         int startHeight = 10;
         int startWidth = 10;
-        System.out.println("47");
         BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics = image.createGraphics();
         graphics.setColor(Color.WHITE);
         graphics.fillRect(0, 0, imageWidth, imageHeight);
-        System.out.println("53");
         // 画横线
         int startH = 2;
-//        graphics.setColor(Color.gray);
+
         graphics.setColor(new Color(200,200,200));
         for (int j = 0; j < totalrow - 1; j++) {
             graphics.drawLine(startWidth, startHeight + (j + startH) * rowheight, imageWidth - 10,
                     startHeight + (j + startH) * rowheight);
         }
-        System.out.println("61");
         // 画竖
 
         int rightLine = 0 ;
@@ -74,7 +73,6 @@ public class Createimg {
                 startH+=2+typeV.size();
             }
         }
-        System.out.println("76");
         //画背景
         graphics.setColor(new Color(190,25,0));
         startH = 2;
@@ -101,7 +99,6 @@ public class Createimg {
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         graphics.setStroke(s);
 
-        System.out.println("103");
         // 设置字体
         Font font = new Font("宋体", Font.BOLD, 20);
         graphics.setFont(font);
@@ -152,7 +149,6 @@ public class Createimg {
             i++;
         }
 
-        System.out.println("154");
         // 写入内容
         graphics.setColor(Color.white);
         startH = 4;
@@ -191,17 +187,6 @@ public class Createimg {
                             else
                                 graphics.drawString(arr.get(l - 1).toString(), rightLine+(otherwidth-strWidth)/2-5,
                                         startHeight + rowheight * (n + startH) - 8);
-//                            if(l==keycol-1&&!arr.get(l-1).equals("无")) {
-//                                int keynum = keylist.size()-keylist.indexOf(Double.parseDouble(arr.get(l-1)));
-//                                if(keynum!=0)
-//                                    graphics.drawString(String.valueOf(keynum),rightLine+(otherwidth-strWidth)/2+strWidth,
-//                                        startHeight + rowheight * (n + startH) - 8);
-//                            }else if(l==keylengthcol-1&&!arr.get(l-1).equals("无")){
-//                                int keylengthnum = keylengthlist.indexOf(Double.parseDouble(arr.get(l-1)))+1;
-//                                if(keylengthnum!=0)
-//                                    graphics.drawString(String.valueOf(keylengthnum),rightLine+(otherwidth-strWidth)/2+strWidth,
-//                                        startHeight + rowheight * (n + startH) - 8);
-//                            }
                         }
                         //画下标
                         if (n<3)graphics.setColor(Color.white);
@@ -221,11 +206,7 @@ public class Createimg {
             i++;
         }
         String path = "typinggroup"+separator+"zmc.png";
-
         graphics.drawImage(image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_SMOOTH), 0, 0, null);
-
-
-        System.out.println(path);
         ImageIO.write(image, "png",
                 new File("/root/coolq/data/image/"
 //                new File("C:\\Users\\Lenovo\\Desktop\\酷Q Pro\\data\\image\\"
@@ -289,8 +270,123 @@ public class Createimg {
             e.printStackTrace();
         }
     }
-    public static void main(String[] args) {
-        initChartData();
+    enum typeColor{
+        dan(0,Color.black,new Font("微软雅黑",  Font.BOLD,20)),
+        q(1,new Color(128, 138, 135),new Font("微软雅黑",  Font.BOLD,20)),
+        cq(2,new Color(128, 138, 135),new Font("微软雅黑",  Font.BOLD+ Font.ITALIC ,20)),
+        sj(3,Color.BLUE,new Font("微软雅黑",  Font.BOLD,20)),
+        csj(4,Color.BLUE,new Font("微软雅黑",  Font.BOLD+ Font.ITALIC,20)),
+        ej(5,Color.ORANGE,new Font("微软雅黑",  Font.BOLD,20)),
+        cej(6,Color.ORANGE,new Font("微软雅黑",  Font.BOLD+ Font.ITALIC ,20));
+        private Color color;
+        private int type;
+        private Font font;
+        typeColor(int type,Color color,Font font){
+            this.type = type;
+            this.color = color;
+            this.font = font;
+        }
+        public static Color getColor(int type){
+            for (typeColor typeColor : typeColor.values()) {
+                if(typeColor.type == type)
+                    return typeColor.color;
+            }
+            return null;
+        }
+        public static  Font getFont(int type){
+            for (typeColor typeColor : typeColor.values()) {
+                if(typeColor.type == type)
+                    return typeColor.font;
+            }
+            return null;
+        }
+    }
+    public static String drawTipImg(SubscriptInstance[] subscriptInstances) throws IOException {
+            Font font = new Font("宋体", Font.BOLD, 20);
+        class DrawSub{
+            int x,y;
+            String words,wordsCode;
+            Color color;
+            Font font;
+            DrawSub(int x,int y,String words,String wordsCode,Color color,Font font){
+                this.x = x;
+                this.y = y;
+                this.words = words;
+                this.wordsCode = wordsCode;
+                this.color = color;
+                this.font = font;
+            }
+        }
+
+        List<DrawSub> drawSubList = new ArrayList<>();
+        int imageWidth = 1000;
+        int imageHeight = 65;
+
+        int imageWidthTemp = 10;
+        for(int i = 0;i<subscriptInstances.length;i++){
+            String words,wordsCode;
+            int type = subscriptInstances[i].getType();
+            if(subscriptInstances[i].isUseWordSign()) {
+                i = subscriptInstances[i].getNext();
+                words = subscriptInstances[i].getShortCodePreInfo().getWords();
+                wordsCode = subscriptInstances[i].getShortCodePreInfo().getWordsCode();
+            }else{
+                words = subscriptInstances[i].getWord();
+                wordsCode = subscriptInstances[i].getWordCode();
+            }
+            int wordsLength = words.length();
+            int wordsCodeLength = wordsCode.length();
+            int length = wordsLength>wordsCodeLength?wordsLength:wordsCodeLength;
+            if(imageWidthTemp +length*20  > imageWidth) {
+                imageWidthTemp = 10;
+                imageHeight += 65;
+            }
+            DrawSub drawSub = new DrawSub(imageWidthTemp,imageHeight-40,words,wordsCode,typeColor.getColor(type),typeColor.getFont(type));
+            drawSubList.add(drawSub);
+            imageWidthTemp += length*20 + 10;
+
+        }
+
+        BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
+        Graphics2D graphics = image.createGraphics();
+
+        graphics.setColor(new Color(238, 238, 238));
+        graphics.setFont(font);
+        graphics.fillRect(0, 0, imageWidth, imageHeight);
+        int x = 0,y = 0;
+        for(DrawSub drawSub:drawSubList){
+            String words = drawSub.words;
+            String wordsCode = drawSub.wordsCode;
+            graphics.setColor(drawSub.color);
+            graphics.setFont(drawSub.font);
+            graphics.drawString(words, drawSub.x, drawSub.y);
+            graphics.drawString(wordsCode, drawSub.x, drawSub.y+30);
+        }
+//        graphics.drawString(titles.get(i), (imageWidth-strWidth)/2, startHeight + startH*rowheight - 10);
+        graphics.setColor(Color.black);
+        for(int i = 0;i<imageHeight/65;i++){
+            graphics.drawLine(0, (i+1)*65,imageWidth,(i+1)*65);
+        }
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);
+        Stroke s = new BasicStroke(imageWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER);
+        graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        graphics.setStroke(s);
+        String path = "typinggroup"+separator+"zmc.png";
+        graphics.drawImage(image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_SMOOTH), 0, 0, null);
+        ImageIO.write(image, "png",
+                new File("/root/coolq/data/image/"
+//                new File("C:\\Users\\Lenovo\\Desktop\\酷Q Pro\\data\\image\\"
+                        +path));
+        return path;
+    }
+    public static void main(String[] args) throws IOException {
+        BetterTyping betterTyping = new BetterTyping("词组提示码表");
+        betterTyping.changecolortip("最新的测试版是哪个最新的测试版是哪个最新的测试版是哪个最新的测试版是哪个最新的测试版是哪个最新的测试版是哪个");
+        betterTyping.compalllength();
+        SubscriptInstance[] subscriptInstances = betterTyping.getSubscriptInstances();
+        System.out.println(betterTyping.getDingShowStr());
+        drawTipImg(subscriptInstances);
     }
 }
 
